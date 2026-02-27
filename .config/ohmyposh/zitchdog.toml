@@ -1,0 +1,79 @@
+# Oh my Posh - Zitchdog Prompt
+
+console_title_template = 'Terminal ({{ .Shell }})'
+version = 3
+final_space = true
+
+[secondary_prompt]
+  template = '<magenta>→</> : '
+  foreground = 'green'
+  background = 'transparent'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+
+  [[blocks.segments]]
+    # template = '<#8443e3> 󰫢  </>'
+    template = '<#8443e3>󰫢 </> '
+    type = 'text'
+    style = 'plain'
+    foreground = '#8443e3'
+    # background = '#2a1549'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+
+  [[blocks.segments]]
+    template = '<yellow>[</> <red>{{ .Path }}</> <yellow>]</>'
+    foreground = 'blue'
+    background = 'transparent'
+    type = 'path'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      style = 'folder'
+
+  [[blocks.segments]]
+    template = ' ({{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }} *{{ end }}{{ if .Working.Untracked }}%{{ end }}{{ if .Working.Deleted }}-{{ end }}{{ if .Working.Added }}+{{ end }}{{ if gt .Behind 0 }} ↓{{ end }}{{ if gt .Ahead 0 }} ↑{{ end }})'
+    foreground = 'cyan'
+    background = 'transparent'
+    type = 'git'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      branch_icon = ''
+      cache_duration = 'none'
+      commit_icon = '@'
+      fetch_status = true
+
+[[blocks]]
+  type = 'rprompt'
+  overflow = 'hidden'
+
+  [[blocks.segments]]
+    template = '<yellow>{ </><red>{{ .FormattedMs }}</><yellow> }</>'
+    background = 'transparent'
+    type = 'executiontime'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      threshold = 5000
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+
+  [[blocks.segments]]
+    template = ' :'
+    type = 'text'
+    style = 'plain'
+    foreground_templates = [
+      '{{ if gt .Code 0 }}red{{ end }}',
+      '{{ if eq .Code 0 }}green{{ end }}'
+    ]
+
+    [blocks.segments.properties]
+      cache_duration = 'none'

@@ -1,0 +1,5 @@
+/* system-wide font setting */
+* {
+  font-family: "SF Pro Display", "Inter", sans-serif;
+  font-weight: 500;
+}

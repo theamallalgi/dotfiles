@@ -1,0 +1,108 @@
+@import "colors/zitchdog.css";
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "SF Pro Text", "Adwaita Sans", "JetBrainsMono Nerd Font Propo", sans-serif;
+  font-size: 14px;
+  min-height: 0;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+}
+
+window#waybar {
+  background: transparent;
+}
+
+tooltip {
+  background: @aubergine;
+  border: 1px solid @bg2;
+  border-radius: 0;
+}
+
+tooltip label {
+  color: @purple;
+  padding: 6px;
+}
+
+#workspaces {
+  background-color: @bg0;
+  padding: 0px;
+  /* padding: 5px; */
+  margin: 8px 8px 0px 8px;
+  border-radius: 0;
+  /* border-radius: 3px; */
+  /* border: 1px solid @bg2; */
+}
+ 
+#workspaces button {
+  background: @lilac;
+  border-radius: 0;
+  /* border-radius: 1px; */
+  margin: 0rem;
+  /* margin: 0rem 0.1em; */
+  min-width: 0.5rem;
+  min-height: 0.5rem;
+  /* min-height: 1.0rem; */
+  color: transparent;
+  animation: gradient_f 20s ease-in infinite;
+  transition: all 0.2s cubic-bezier(.55,-0.68,.48,1.682);
+}
+ 
+#workspaces button.empty {
+  background: @graphite;
+  transition: all 0.2s cubic-bezier(0.77,0.00,0.175,1.00);
+}
+ 
+#workspaces button.active {
+  background: @purple;
+  min-width: 1.5rem;
+  transition: all 0.2s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#battery,
+#pulseaudio,
+#network,
+#clock,
+#custom-power,
+#custom-notification {
+  background-color: @bg0;
+  padding: 2px 10px;
+  /* margin: 8px 0px 0px 0px; */
+  margin: 8px 8px 0px 0px;
+  border-radius: 0px;
+  /* border: 1px solid @bg2; */
+}
+
+#clock {
+  color: @blue;
+  background-color: @indigo;
+  /* margin-right: 8px; */
+  border-left: 4px solid @blue;
+}
+#custom-notification {
+  color: @fg;
+  background-color: @charcoal;
+  border-left: 4px solid @fg;
+}
+#custom-power {
+  color: @red;
+  background-color: @maroon;
+  border-left: 4px solid @red;
+}
+#pulseaudio {
+  color: @yellow;
+  background-color: @umber;
+  border-left: 4px solid @yellow;
+}
+#network {
+  color: @purple;
+  background-color: @aubergine;
+  border-left: 4px solid @purple;
+}
+#battery {
+  color: @green;
+  background-color: @pine;
+  border-left: 4px solid @green;
+}

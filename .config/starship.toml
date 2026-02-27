@@ -1,0 +1,107 @@
+# Starship config - Translated from Oh My Posh Zitchdog theme
+# Place this file at ~/.config/starship.toml
+
+# Add a blank line between shell prompts
+add_newline = true
+
+# Main prompt format
+format = """
+[󰫢](bold #8443e3)\
+[ ]()\
+[\\[](yellow)$directory[\\]](yellow)\
+$git_branch\
+$git_status\
+$line_break\
+$character\
+"""
+
+# Right prompt (execution time)
+right_format = """$cmd_duration"""
+
+# Configure the prompt character (the arrow/colon at the start of input line)
+[character]
+success_symbol = "[](green) :"
+error_symbol = "[](red) :"
+# NOTE: Oh My Posh uses a space before the colon, Starship uses the character module differently
+# The ":" is added as part of the symbol itself
+
+# Directory module - shows current path
+[directory]
+format = "[$path]($style)"
+style = "red"
+truncation_length = 100
+truncate_to_repo = false
+# NOTE: Oh My Posh uses 'folder' style which shows only the folder name
+# Starship doesn't have exact equivalent, using full path with high truncation_length
+# If you want only the current folder name, use:
+# fish_style_pwd_dir_length = 1
+# truncation_length = 0
+
+# Git branch module
+[git_branch]
+format = "[(](cyan)[$branch](cyan)"
+symbol = ""
+# NOTE: Oh My Posh doesn't show branch icon, so we remove it with empty symbol
+
+# Git status module
+[git_status]
+format = "([$all_status$ahead_behind](cyan)[)](cyan) "
+conflicted = ""
+ahead = "↑"
+behind = "↓"
+diverged = "↕"
+untracked = "%"
+stashed = ""
+modified = "*"
+staged = ""
+renamed = ""
+deleted = "-"
+added = "+"
+style = "cyan"
+# NOTE: Oh My Posh shows symbols like *, %, -, + for different statuses
+# The display is slightly different but captures the same information
+
+# Command duration module (right side)
+[cmd_duration]
+min_time = 5000  # 5 seconds (Oh My Posh uses 5000ms threshold)
+format = "[{](yellow)[ $duration](red) [}](yellow)"
+show_milliseconds = false
+
+# Disable modules that Oh My Posh doesn't show
+[package]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[python]
+disabled = true
+
+[rust]
+disabled = true
+
+[golang]
+disabled = true
+
+# NOTE: Oh My Posh secondary prompt (the continuation prompt) is not directly
+# translatable to Starship. Starship uses the shell's native continuation prompt.
+# If you want to customize it, you'll need to set it in your shell config (zshrc).
+
+# TRANSLATION NOTES:
+# 1. Console title: Starship doesn't support setting console/terminal titles.
+#    You'd need to set this in your shell config (precmd in zsh).
+#
+# 2. Secondary prompt: Oh My Posh's secondary_prompt feature (the "→ :" prompt)
+#    is not available in Starship. This is typically handled by the shell itself.
+#    In zsh, you can set PS2='%F{magenta}→%f : '
+#
+# 3. The purple "tab" icon (󰫢) before the path: Translated as plain text symbol.
+#
+# 4. Exact color matching: Oh My Posh uses #8443e3 for the icon, which I've
+#    preserved. Other colors (yellow, red, cyan, green) are approximated.
+#
+# 5. Git status symbols: Starship and Oh My Posh handle these differently.
+#    The mapping is approximate but functional.
+#
+# 6. Spacing: Oh My Posh has specific spacing that may look slightly different
+#    in Starship due to how the two tools handle formatting.

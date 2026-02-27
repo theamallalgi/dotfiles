@@ -1,0 +1,94 @@
+# ~/.config/git/config
+
+[user]
+  name = Amal Lalgi
+  email = amallalgi2487@gmail.com
+  signingkey = CD6D09CCCC982BD938345D3F2C0EB18405556A1E
+
+[core]
+  compression = 9
+  whitespace = error
+  preloadindex = true
+  pager = "if [ ! -z \"$(which diff-so-fancy)\" ]; then diff-so-fancy | less --tabs=4 -RFX; else less; fi"
+
+[advice]
+  addEmptyPathspec = false
+  pushNonFastForward = false
+  statusHints = false
+
+[status]
+  branch = true
+  showStash = true
+  showUntrackedFiles = all
+
+[diff]
+  context = 3
+  renames = copies
+  interHunkContext = 10
+
+[pager]
+  diff = diff-so-fancy | $PAGER
+
+[diff-so-fancy]
+  markEmptyLines = false
+
+[color "diff"]
+  meta = black bold
+  frag = magenta
+  context = white
+  whitespace = yellow reverse
+  old = red
+
+[interactive]
+  diffFilter = diff-so-fancy --patch
+  singlekey = true
+
+[push]
+  autoSetupRemote = true
+  default = current
+  followTags = true
+
+[pull]
+  default = current
+  rebase = true
+
+[rebase]
+  autoStash = true
+  missingCommitsCheck = warn
+
+[commit]
+  gpgSign = false
+
+[log]
+  abbrevCommit = true
+  graphColors = blue,yellow,cyan,magenta,green,red
+
+[color "decorate"]
+  HEAD = red
+  branch = blue
+  tag = yellow
+  remoteBranch = magenta
+
+[color "branch"]
+  current = magenta
+  local = default
+  remote = yellow
+  upstream = green
+  plain = blue
+
+[branch]
+  sort = -committerdate
+
+[tag]
+  sort = -taggerdate
+
+[pager]
+  branch = false
+  tag = false
+
+# Aliases
+[url "git@github.com:theamallalgi/"] # use git clone al:dotfiles
+  insteadOf = "al:"
+
+[url "git@github.com:"] # use git clone gh:torvalis/linux
+  insteadOf = "gh:"

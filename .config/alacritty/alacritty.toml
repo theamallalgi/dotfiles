@@ -1,0 +1,105 @@
+# the cursor style
+[cursor.style]
+blinking = "On"
+shape = "Block"
+
+# scrolling history
+[scrolling]
+history = 10000
+
+# sets the default shell
+# [shell]
+# args = ["--login"]
+# program = "C:/Program Files/Git/bin/bash"
+
+# window setup
+[window]
+# decorations = "none" # configs the title bar and the buttons
+title = "Terminal" # the window name
+padding = { x = 8, y = 2 } # padding of the window
+# dimensions = { columns = 130, lines = 50 } # size of the window (116(c), 39(l))
+# position = { x = 431, y = 8 } # position of the window when starting up (409, 8)
+# dimensions = { columns = 114, lines = 47 } # size of the window (116(c), 39(l))
+# position = { x = 431, y = 7 } # position of the window when starting up (409, 8)
+dimensions = { columns = 115, lines = 37 } # size of the window (116(c), 39(l))
+# position = { x = 431, y = 7 } # position of the window when starting up (409, 8)
+
+# hotkey config
+[keyboard]
+bindings = [
+	{ key = "Back", mods = "Control", chars = "\u0017" }, # ctrl+bckspce - delete word
+	{ key = "N", mods = "Control|Shift", action = "CreateNewWindow" }, # creates a new window
+	# { key = "v", mods = "Control", action = "Paste" }, # pastes with ctrl+v (interferes with nvim)
+	{ key = "q", mods = "Control", action = "Quit" }, # pastes with ctrl+v
+]
+
+# Scrolling and History
+# [scrolling]
+# history = 10000
+# multiplier = 3
+
+# Additional Color related settings
+[colors]
+draw_bold_text_with_bright_colors = true
+
+# Font related settings
+# [font]
+# size=9
+# [font.normal]
+# family = "OCRA Nerd Font"
+# style = "Regular"
+# [font.bold]
+# family = "OCRA Nerd Font"
+# style = "Bold"
+# [font.italic]
+# family = "OCRA Nerd Font"
+# style = "Italic"
+# [font.bold_italic]
+# family = "OCRA Nerd Font"
+# style = "Bold Italic"
+
+# Font related settings
+[font]
+size=12
+[font.normal]
+family = "KodeMono Nerd Font"
+style = "SemiBold"
+[font.bold]
+family = "KodeMono Nerd Font"
+style = "Bold"
+[font.italic]
+family = "KodeMono Nerd Font"
+style = "Italic"
+[font.bold_italic]
+family = "KodeMono Nerd Font"
+style = "Bold Italic"
+
+[general]
+
+# changes the home directory the console opens in
+# working_directory = "c:/Users/Amal Lalgi"
+working_directory = "."
+# Alacritty - Core Config
+
+# imports and sets up the colorscheme
+import = [
+	# "~/.config/alacritty/themes/themes/zitchdog-pine.toml" # zitchdog theme (pine flavor)
+	"~/.config/alacritty/themes/zitchdog-grape.toml" # zitchdog theme (grape flavor)
+  # "~/.config/alacritty/themes/themes/zitchdog-night.toml" # zitchdog theme (night flavor)
+	# "~/.config/alacritty/themes/themes/frozenembers.toml" # frozen embers theme
+]
+
+# [font]
+# size=10.5
+# [font.normal]
+# family = "GohuFont 14 Nerd Font Propo"
+# style = "Regular"
+# [font.bold]
+# family = "GohuFont 14 Nerd Font Propo"
+# style = "Bold"
+# [font.italic]
+# family = "GohuFont 14 Nerd Font Propo"
+# style = "Italic"
+# [font.bold_italic]
+# family = "GohuFont 14 Nerd Font Propo"
+# style = "Bold Italic"

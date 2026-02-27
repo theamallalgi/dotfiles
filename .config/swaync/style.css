@@ -1,0 +1,98 @@
+* {
+  all: unset;
+  font-family: 'KodeMono Nerd Font', monospace;
+  font-size: 16px;
+}
+
+.notification-row {
+  outline: none;
+  margin: 9px;
+}
+
+/* Base notification */
+.notification {
+  background: #0b080e;
+  border-top: 2px solid;
+  border-right: 2px solid;
+  border-bottom: 2px solid;
+  border-left: 8px solid;
+  border-radius: 0;
+  padding: 2px 6px;
+}
+
+.notification-background {
+  background: transparent;
+}
+
+/* LOW - blue/indigo, feels informational/subtle */
+.notification.low {
+  border-color: #64aae2;
+  background: #212f4a;
+  color: #64aae2;
+}
+
+/* NORMAL - purple, general status */
+.notification.normal {
+  border-color: #8543e4;
+  background: #2e1d46;
+  color: #8543e4;
+}
+
+/* CRITICAL - red, danger */
+.notification.critical {
+  border-color: #e4384c;
+  background: #481219;
+  color: #e4384c;
+}
+
+/* Text */
+.notification-action {
+  color: #542a91;
+  background: transparent;
+}
+
+.notification-content {
+  padding: 5px 10px;
+}
+
+.summary {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.body {
+  color: #abb2bf;
+  font-size: 14px;
+}
+
+.time {
+  color: #828997;
+  font-size: 11px;
+}
+
+/* Close button */
+.close-button {
+  background: transparent;
+  color: #828997;
+  border: none;
+  padding: 5px;
+}
+
+.close-button:hover {
+  color: #e4465d;
+}
+
+.notification.low .summary, .notification.low .body {
+  color: #64aae2;
+}
+
+.notification.normal .summary, .notification.normal .body {
+  color: #8543e4;
+}
+
+.notification.critical .summary, .notification.critical .body {
+  color: #e4384c;
+}
+

@@ -1,0 +1,132 @@
+{
+  "layer": "top",
+  "position": "top",
+  "margin-top": 0,
+  "modules-left": [
+    // "tray",
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "pulseaudio",
+    "bluetooth",
+    "network",
+    "battery",
+    "custom/power",
+    "clock"
+  ],
+  "clock": {
+    "interval": 60,
+    "format": "<span text_transform='uppercase'>T: {:%H:%M}</span>",
+    "max-length": 55,
+    "tooltip-format": "{calendar}",
+    "format-alt": "<span text_transform='uppercase'>{:%a. %d %b %Y}</span>"
+  },
+  "hyprland/workspaces": {
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{icon}",
+    "show-special": false,
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "persistent-workspaces": {
+      "*": 4
+    },
+    "format-icons": {
+      "active": "",
+      "default": ""
+    }
+  },
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
+  },
+  "pulseaudio": {
+    "format": "<span text_transform='uppercase'>V: {volume}%</span>",
+    "format-bluetooth": "<span text_transform='uppercase'>{icon} {volume}%</span>",
+    "format-muted": "MUTED",
+    "format-icons": {
+      "headphone": "󰋋 ",
+      "hands-free": "󰓔 ",
+      "headset": "󱡏 ",
+      "phone": "󰏲 ",
+      "phone-muted": " ",
+      "portable": "󰘂 ",
+      "car": "󰄋 ",
+      "default": [
+        " ",
+        " "
+      ]
+    },
+    "scroll-step": 2,
+    "on-click": "pavucontrol",
+    "ignored-sinks": [
+      "Easy Effects Sink"
+    ]
+  },
+  "network": {
+    "interface": "wlan0",
+    "format": "<span text_transform='uppercase'>N: {ifname}</span>",
+    "format-wifi": "<span text_transform='uppercase'>N: {essid}</span>",
+    "format-ethernet": "<span text_transform='uppercase'>  {ipaddr}/{cidr}</span>",
+    "format-disconnected": "<span text_transform='uppercase'>No Connection</span>",
+    "on-click": "networkmanager_dmenu",
+    "tooltip-format": "  {ifname} via {gwaddr}",
+    "tooltip-format-wifi": "󰤨  {essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "  {ifname}",
+    "tooltip-format-disconnected": "Internet Disconnected",
+    "max-length": 50
+  },
+  "battery": {
+    "interval": 60,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "<span text_transform='uppercase'>B: {capacity}%</span>",
+    "format-icons": [
+      "󰂃",
+      "󰁽",
+      "󰁿",
+      "󰂁",
+      "󰁹"
+    ],
+    "max-length": 25
+  },
+  "custom/notification": {
+    "tooltip": true,
+    "format": "<span size='16pt'>{icon}</span>",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂜",
+      "dnd-notification": "󰂠",
+      "dnd-none": "󰪓",
+      "inhibited-notification": "󰂛",
+      "inhibited-none": "󰪑",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰪑"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+  "custom/power": {
+    "format": "<span text_transform='uppercase'>!</span>",
+    "tooltip": true,
+    "tooltip-format": "Power Menu",
+    "on-click": "~/.config/waybar/scripts/powermenu.sh"
+  },
+  "bluetooth": {
+    "format": "<span text_transform='uppercase'>BLT: {status}</span>",
+    "format-connected": "<span text_transform='uppercase'>BLT: {device_alias}</span>",
+    "format-off": "",
+    "format-disabled": "",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "bzmenu -l rofi"
+  }
+}

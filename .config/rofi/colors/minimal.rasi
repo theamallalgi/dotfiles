@@ -1,0 +1,113 @@
+* {
+    font:                "KodeMono Nerd Font Bold 12";
+    background-color:    #0b080e;
+    text-color:          #542a91;
+    border-color:        #8543e4;
+    spacing:             0;
+}
+window {
+    background-color:    #0b080e;
+    padding:             0px;
+    width:               500px;
+    location:            northeast;
+    anchor:              northeast;
+    x-offset:            -9px;
+    y-offset:            9px;
+}
+inputbar {
+    background-color:    #150f25;
+    text-color:          #8543e4;
+    padding:             10px 12px;
+    margin:              0 0 5px 0;
+    border:              2px solid;
+    border-color:        #8543e4;
+}
+entry {
+    background-color:    #150f25;
+    text-color:          #8543e4;
+    placeholder-color:   #3d2268;
+    placeholder:         "search...";
+}
+prompt {
+    background-color:    #150f25;
+    text-color:          #4a2580;
+    padding:             0px 6px 0px 0px;
+}
+case-indicator {
+    background-color:    #150f25;
+    text-color:          #4a2580;
+}
+listview {
+    background-color:    #0b080e;
+    margin:              0px;
+    lines:               8;
+    border:              2px solid;
+    border-color:        #8543e4;
+}
+element {
+    padding:             8px 12px;
+    spacing:             8px;
+}
+
+/* normal */
+element normal.normal {
+    background-color:    #0b080e;
+    text-color:          #542a91;
+}
+element alternate.normal {
+    background-color:    #100c1a;
+    text-color:          #542a91;
+}
+
+/* active - inverted (purple bg, dark text) */
+element normal.active {
+    background-color:    #0b080e;
+    text-color:          #542a91;
+    border:              0px 16px 0px 0px;
+    border-color:        #08313f;
+}
+element alternate.active {
+    background-color:    #100c1a;
+    text-color:          #542a91;
+    border:              0px 16px 0px 0px;
+    border-color:        #08313f;
+}
+
+/* urgent - red fg */
+element normal.urgent {
+    background-color:    #0b080e;
+    text-color:          #e44343;
+}
+element alternate.urgent {
+    background-color:    #100c1a;
+    text-color:          #e44343;
+}
+
+/* selected states */
+element selected.normal {
+    background-color:    transparent;
+    text-color:          #8543e4;
+    border:              2px 0px 2px 16px;
+}
+element selected.active {
+    background-color:    #331b17;
+    text-color:          #e4465d;
+    border:              2px 2px 2px 16px;
+    border-color:        #e4465d;
+}
+element selected.urgent {
+    background-color:    #331016;
+    text-color:          #e39069;
+    border:              2px 0px 2px 16px;
+    border-color:        #e44343;
+}
+
+element-text {
+    background-color:    inherit;
+    text-color:          inherit;
+    vertical-align:      0.5;
+}
+element-icon {
+    background-color:    inherit;
+    size:                18px;
+}

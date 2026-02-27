@@ -1,0 +1,7 @@
+configuration {
+    modi:       "drun,run,window";
+    show-icons: true;
+}
+
+@theme "~/.config/rofi/colors/minimal.rasi"
+
