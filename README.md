@@ -13,16 +13,21 @@
 - Prompt Setup - [Oh My Posh](https://ohmyposh.dev/) (Not [Starship](https://starship.rs/), Not [Oh My Zsh](https://ohmyz.sh/))
 - Media Player - [MPV](https://mpv.io/) (Duh!)
 - Code - [Nvim](https://neovim.io/) (and absolutely nothing else)
+- Font(s) - KodeMono Nerd Font, SF Family ([check here](https://github.com/theamallalgi/dotfiles/tree/main/misc/fonts))
+
+https://github.com/user-attachments/assets/3df7121a-f1e5-4080-b1e8-0075af3712aa
 
 ## The Desktop
 
 <img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/s-desk-a.png?raw=true" title="" alt="current desktop" data-align="center">
 <img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/s-desk-b.png?raw=true" title="" alt="current desktop" data-align="center">
 
-## Windows
-
+<details>
+    <summary>See more images of the desktop and layouts</summary>
+</br>
 <img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/m-tiling-a.png?raw=true" title="" alt="current desktop" data-align="center">
 <img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/m-floating-a.png?raw=true" title="" alt="current desktop" data-align="center">
+</details>
 
 ## Waybar and Such
 
@@ -30,11 +35,18 @@
 <img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/b-waybar-mute.png?raw=true" title="" alt="current desktop" data-align="center">
 <img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/b-waybar-clock.png?raw=true" title="" alt="current desktop" data-align="center">
 
-## Misc
-
+<details>
+      <summary>See more images of the waybar and panel config</summary>
+</br>
 <img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/bw-power.png?raw=true" title="" alt="current desktop" data-align="center">
 <img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/bw-network-a.png?raw=true" title="" alt="current desktop" data-align="center">
 <img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/bw-network-b.png?raw=true" title="" alt="current desktop" data-align="center">
+</details>
+
+</br>
+
+> [!NOTE]
+> I don't listen to music, the media player given in the config is `ncmpcpp` with `mpd`, I don't use it, just thought it looked cool.
 
 > [!WARNING]
 > This repository and it's contents are technically 'Work in Progress', check the code before copying any.
