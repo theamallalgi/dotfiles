@@ -1,0 +1,14 @@
+All required dependencies are normally installed via Mason, But in cases where a manual installation is required,
+Install these dependencies are to be installed via PIP, Cargo, NPM etc.
+
+LSP Servers, Linters and Formatters
+
+black
+isort
+ruff
+stylua
+prettier
+eslint_d
+shfmt
+shellcheck
+buf
