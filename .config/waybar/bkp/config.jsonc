@@ -5,31 +5,26 @@
   "modules-left": [
     // "tray",
     "hyprland/workspaces"
-    // "hyprland/window"
-  ],
-  "modules-center": [
-    "clock"
   ],
   "modules-right": [
     "pulseaudio",
     "bluetooth",
     "network",
     "battery",
-    "custom/power"
+    "custom/power",
+    "clock"
   ],
   "clock": {
     "interval": 60,
-    // "format": "<span text_transform='uppercase'>{:%H:%M}</span>",
-    "format": "<span text_transform='uppercase'><span font_size='110%'>{:%a %b %e %I:%M %p}</span></span>",
+    "format": "<span text_transform='uppercase'>T: {:%H:%M}</span>",
     "max-length": 55,
     "tooltip-format": "{calendar}",
-    "format-alt": "<span text_transform='uppercase'><span font_size='110%'>{:%a %b %e %H:%M}</span></span>"
+    "format-alt": "<span text_transform='uppercase'>{:%a. %d %b %Y}</span>"
   },
   "hyprland/workspaces": {
     "active-only": false,
     "all-outputs": true,
-    "format": "<span font_size='120%'>{name}</span>",
-    // "format": "{icon}",
+    "format": "{icon}",
     "show-special": false,
     "on-click": "activate",
     "on-scroll-up": "hyprctl dispatch workspace e+1",
@@ -38,8 +33,8 @@
       "*": 4
     },
     "format-icons": {
-      "active": "<span font_size='100%'></span>",
-      "default": "<span font_size='120%'>󰝤</span>"
+      "active": "",
+      "default": ""
     }
   },
   "tray": {
@@ -47,9 +42,9 @@
     "spacing": 10
   },
   "pulseaudio": {
-    "format": "<span text_transform='uppercase' font_size='110%'><span color='#828997'>V:</span> {volume}%</span>",
-    "format-bluetooth": "<span text_transform='uppercase' font_size='110%'>V: {volume}%</span>",
-    "format-muted": "<span text_transform='uppercase' font_size='110%'>MUTED</span>",
+    "format": "<span text_transform='uppercase'>V: {volume}%</span>",
+    "format-bluetooth": "<span text_transform='uppercase'>{icon} {volume}%</span>",
+    "format-muted": "MUTED",
     "format-icons": {
       "headphone": "󰋋 ",
       "hands-free": "󰓔 ",
@@ -71,9 +66,9 @@
   },
   "network": {
     "interface": "wlan0",
-    "format": "<span text_transform='uppercase' font_size='110%'><span color='#828997'>N:</span> {ifname}</span>",
-    "format-wifi": "<span text_transform='uppercase' font_size='110%'><span color='#828997'>N:</span> {essid}</span>",
-    "format-ethernet": "<span text_transform='uppercase' font_size='110%'><span color='#828997'>N:</span> {ipaddr}/{cidr}</span>",
+    "format": "<span text_transform='uppercase'>N: {ifname}</span>",
+    "format-wifi": "<span text_transform='uppercase'>N: {essid}</span>",
+    "format-ethernet": "<span text_transform='uppercase'>  {ipaddr}/{cidr}</span>",
     "format-disconnected": "<span text_transform='uppercase'>No Connection</span>",
     "on-click": "networkmanager_dmenu",
     "tooltip-format": "  {ifname} via {gwaddr}",
@@ -88,7 +83,7 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "<span text_transform='uppercase' font_size='110%'><span color='#828997'>B:</span> {capacity}%</span>",
+    "format": "<span text_transform='uppercase'>B: {capacity}%</span>",
     "format-icons": [
       "󰂃",
       "󰁽",
@@ -119,24 +114,19 @@
     "escape": true
   },
   "custom/power": {
-    // "format": "<span text_transform='uppercase'> </span>",
-    "format": "<span text_transform='uppercase' font_size='120%'> </span>",
+    "format": "<span text_transform='uppercase'>!</span>",
     "tooltip": true,
     "tooltip-format": "Power Menu",
     "on-click": "~/.config/waybar/scripts/powermenu.sh"
   },
   "bluetooth": {
-    "format": "<span text_transform='uppercase' font_size='110%'><span color='#828997'>BLT:</span> {status}</span>",
-    "format-connected": "<span text_transform='uppercase' font_size='110%'><span color='#828997'>BLT:</span> {device_alias}</span>",
+    "format": "<span text_transform='uppercase'>BLT: {status}</span>",
+    "format-connected": "<span text_transform='uppercase'>BLT: {device_alias}</span>",
     "format-off": "",
     "format-disabled": "",
     "tooltip-format": "{controller_alias}\t{controller_address}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "on-click": "bzmenu -l rofi"
-  },
-  "hyprland/window": {
-    "format": "<span color='#828997'>{}</span>",
-    "max-length": 50
   }
 }

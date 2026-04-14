@@ -1,6 +1,6 @@
 #!/bin/bash
 
-chosen=$(printf "SHUTDOWN\nRESTART\nSLEEP\nLOG OUT\nLOCK\nHIBERNATE\nREBOOT TO BIOS\nREBOOT TO WINDOWS 11" | rofi -dmenu -i -p "Power" -theme ~/.config/rofi/colors/minimal.rasi)
+chosen=$(printf "SHUTDOWN\nRESTART\nSLEEP\nLOG OUT\nLOCK\nHIBERNATE\nREBOOT TO BIOS\nREBOOT TO WINDOWS 11" | rofi -dmenu -i -p "Power" -theme ~/.config/rofi/colors/minimal-grey.rasi)
 
 case "$chosen" in
     "SHUTDOWN")          systemctl poweroff ;;

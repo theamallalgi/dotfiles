@@ -22,7 +22,7 @@ done)
 # build menu
 menu=$(printf "%s\n%s" "$toggle" "$paired")
 
-chosen=$(echo "$menu" | rofi -dmenu -i -p "Bluetooth" -theme ~/.config/rofi/colors/minimal.rasi)
+chosen=$(echo "$menu" | rofi -dmenu -i -p "Bluetooth" -theme ~/.config/rofi/colors/minimal-grey.rasi)
 
 [ -z "$chosen" ] && exit
 

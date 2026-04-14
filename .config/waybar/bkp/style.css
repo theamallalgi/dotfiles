@@ -22,89 +22,104 @@ tooltip label {
   padding: 6px 12px;
 }
 #workspaces {
-  background: transparent;
+  background-color: @bg0;
   padding: 2px;
-  margin: 6px 0px 0px 8px;
+  margin: 8px 8px 0px 8px;
   border-radius: 0;
+  border: 2px solid @bg3;
+  border-left: 8px solid @bg3;
 }
-
+ 
 #workspaces button {
-  background: transparent;
+  background: @bg2;
   border-radius: 0;
   margin: 0rem;
-  color: @grey0;
+  margin-left: 1px;
+  min-width: 0.35rem;
+  min-height: 0.5rem;
+  color: transparent;
+  animation: gradient_f 20s ease-in infinite;
+  transition: all 0.2s cubic-bezier(.55,-0.68,.48,1.682);
 }
-
+ 
 #workspaces button.empty {
-  color: @bg3;
-  background: transparent;
+  background: @bg3;
+  transition: all 0.2s cubic-bezier(0.77,0.00,0.175,1.00);
 }
-
+ 
 #workspaces button.active {
-  color: @fg;
-  background: transparent;
+  background: @grey0;
+  min-width: 1.0rem;
+  transition: all 0.2s cubic-bezier(.55,-0.68,.48,1.682);
 }
-
 #battery,
 #pulseaudio,
 #bluetooth,
 #network,
 #clock,
-#window,
 #custom-power,
 #custom-notification {
-  background: transparent;
+  background-color: @bg0;
   padding: 2px 10px;
-  margin: 6px 0px 0px 0px;
+  margin: 8px 6px 0px 0px;
   border-radius: 0px;
+  border: 2px solid @bg3;
   color: @fg;
+  border-left: 8px solid @bg3;
 }
-
-#custom-power {
+#clock, #bluetooth {
   margin-right: 8px;
-  padding-right: 0;
 }
-
-#window {
-  margin-left: 8px;
-}
-
 /* low/warning: yellow accent, 8px left border */
 #battery.warning:not(.charging) {
   color: @yellow;
-  background: transparent;
+  background-color: @umber;
+  border: 2px solid @yellow;
+  border-left: 8px solid @yellow;
 }
 /* critical: red accent, 8px left border */
 #battery.critical:not(.charging) {
   color: @red;
-  background: transparent;
+  background-color: @maroon;
+  border: 2px solid @red;
+  border-left: 8px solid @red;
 }
 /* charging/plugged: green accent, 8px left border */
 #battery.charging,
 #battery.plugged {
   color: @green;
-  background: transparent;
+  background-color: @pine;
+  border: 2px solid @green;
+  border-left: 8px solid @green;
 }
 
 /* audio module setup */
 #pulseaudio.muted {
   color: @red;
-  background: transparent;
+  background-color: @maroon;
+  border: 2px solid @red;
+  border-left: 8px solid @red;
 }
 
 /* network module setup */
 #network.disconnected {
   color: @red;
-  background: transparent;
+  background-color: @maroon;
+  border: 2px solid @red;
+  border-left: 8px solid @red;
 }
 
 #network.linked,
 #network.disabled {
   color: @yellow;
-  background: transparent;
+  background-color: @umber;
+  border: 2px solid @yellow;
+  border-left: 8px solid @yellow;
 }
 
 #custom-power:hover {
-  color: @purple;
-  background: transparent;
+  color: @red;
+  background-color: @maroon;
+  border: 2px solid @red;
+  border-left: 8px solid @red;
 }
