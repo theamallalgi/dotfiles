@@ -32,3 +32,4 @@
 .local/share/themes/
 *.bak
 /nvim/lazy-lock.json
+/.config/nvim/lazy-lock.json
