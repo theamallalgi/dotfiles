@@ -1,5 +1,9 @@
 -- settings.lua
 
+-- global variables
+_G.diagnostics_enabled = false -- disable diagnostics by default (1)
+vim.diagnostic.enable(false) -- disable diagnostics by default (2)
+
 -- indentation config
 vim.opt.autoindent = true
 vim.opt.smartindent = true
