@@ -1,1 +1,0 @@
-return { "voldikss/vim-floaterm" }
