@@ -31,3 +31,4 @@
 .config/mpv/watch_later/
 .local/share/themes/
 *.bak
+/nvim/lazy-lock.json
