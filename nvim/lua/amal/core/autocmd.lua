@@ -105,5 +105,12 @@ vim.cmd([[
 ]])
 
 -- leading space highlight
-vim.api.nvim_set_hl(0, "TrailingSpace", { bg = "#08313f" })
-vim.fn.matchadd("TrailingSpace", [[\s\+$]])
+vim.api.nvim_set_hl(0, "TrailingSpace", { bg = "#201638" }) -- #08313f (pine) #201638 (amethyst)
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    if vim.fn.expand("%") ~= "" and vim.bo.buftype == "" then
+      vim.fn.clearmatches()
+      vim.fn.matchadd("TrailingSpace", [[\s\+$]])
+    end
+  end,
+})
