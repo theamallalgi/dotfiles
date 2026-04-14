@@ -74,7 +74,7 @@ api.nvim_create_autocmd("VimEnter", {
 -- highlight developer note keywords like TODO, FIXME, etc.
 local tag_group = vim.api.nvim_create_augroup("CodeTagHighlights", { clear = true })
 
--- Keyword to highlight group mapping
+-- keyword to highlight group mapping
 local keyword_highlights = {
 	TODO = "DiagnosticVirtualTextOk",
 	OPTIMIZE = "DiagnosticVirtualTextOk",
@@ -86,7 +86,7 @@ local keyword_highlights = {
 	XXX = "DiagnosticVirtualTextHint",
 }
 
--- Apply match highlights on buffer events
+-- apply match highlights on buffer events
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile", "InsertLeave", "TextChanged" }, {
 	group = tag_group,
 	callback = function()
@@ -97,9 +97,20 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile", "InsertLeave", "TextC
 	end,
 })
 
--- Custom right click context menu
+-- custom right click context menu
 vim.cmd([[
   anoremenu PopUp.-sep2-                     <Nop>
   anoremenu PopUp.Toggle\ Word\ Wrap         <cmd>set wrap!<CR>
   anoremenu PopUp.Toggle\ Diagnostics        <cmd>lua _G.diagnostics_enabled = not _G.diagnostics_enabled; vim.diagnostic.enable(_G.diagnostics_enabled); require('lualine').refresh()<CR>
 ]])
+
+-- leading space highlight
+vim.api.nvim_set_hl(0, "TrailingSpace", { bg = "#201638" }) -- #08313f (pine) #201638 (amethyst)
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    if vim.fn.expand("%") ~= "" and vim.bo.buftype == "" then
+      vim.fn.clearmatches()
+      vim.fn.matchadd("TrailingSpace", [[\s\+$]])
+    end
+  end,
+})
