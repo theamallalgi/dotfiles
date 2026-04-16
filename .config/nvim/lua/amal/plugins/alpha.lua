@@ -1,3 +1,5 @@
+math.randomseed(os.time())
+
 return {
 	"goolord/alpha-nvim",
 	event = "VimEnter",
@@ -60,19 +62,20 @@ return {
 		}
 
 		-- random quote generator
-		local function get_random_quote()
-			local file_path = "C:/Users/amall/AppData/Local/nvim/lua/amal/plugins/config/quotes.json"
-			local file = io.open(file_path, "r")
-			if not file then
-				return "\" on days like these kids like you should be playing nintendo games. \""
-			end
-			local content = file:read("*all")
-			file:close()
-			local quotes = vim.fn.json_decode(content).quotes
-			math.randomseed(os.time())
-			local random_index = math.random(1, #quotes)
-			return quotes[random_index]
-		end
+    local function get_random_quote()
+      local path = vim.fn.stdpath("config")
+        .. "/lua/amal/plugins/config/quotes.json"
+
+      local lines = vim.fn.readfile(path)
+      if not lines or #lines == 0 then
+        return '"fallback quote..."'
+      end
+
+      local content = table.concat(lines, "\n")
+      local quotes = vim.json.decode(content).quotes
+
+      return quotes[math.random(#quotes)]
+    end
 
 		dashboard.section.footer.val = { get_random_quote() }
 
