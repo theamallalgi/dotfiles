@@ -15,32 +15,29 @@
 - Code - [Nvim](https://neovim.io/) (and absolutely nothing else)
 - Font(s) - KodeMono Nerd Font, SF Family ([check here](https://github.com/theamallalgi/dotfiles/tree/main/misc/fonts))
 
-https://github.com/user-attachments/assets/3df7121a-f1e5-4080-b1e8-0075af3712aa
-
 ## The Desktop
 
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/s-desk-a.png?raw=true" title="" alt="current desktop" data-align="center">
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/s-desk-b.png?raw=true" title="" alt="current desktop" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/d-e-desk.png?raw=true" title="" alt="current desktop" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/d-f-cluster.png?raw=true" title="" alt="current desktop" data-align="center">
 
 <details>
     <summary>See more images of the desktop and layouts</summary>
 </br>
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/m-tiling-a.png?raw=true" title="" alt="current desktop" data-align="center">
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/m-floating-a.png?raw=true" title="" alt="current desktop" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/d-t-nvim.png?raw=true" title="" alt="current desktop" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/d-f-book.png?raw=true" title="" alt="current desktop" data-align="center">
 </details>
 
 ## Waybar and Such
 
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/b-waybar-a.png?raw=true" title="" alt="current desktop" data-align="center">
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/b-waybar-mute.png?raw=true" title="" alt="current desktop" data-align="center">
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/b-waybar-clock.png?raw=true" title="" alt="current desktop" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/b-b-n.png?raw=true" title="" alt="current desktop" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/b-b-i.png?raw=true" title="" alt="current desktop" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/b-b-c.png?raw=true" title="" alt="current desktop" data-align="center">
 
 <details>
       <summary>See more images of the waybar and panel config</summary>
 </br>
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/bw-power.png?raw=true" title="" alt="current desktop" data-align="center">
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/bw-network-a.png?raw=true" title="" alt="current desktop" data-align="center">
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/bw-network-b.png?raw=true" title="" alt="current desktop" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/b-p-network.png?raw=true" title="" alt="current desktop" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/b-p-power.png?raw=true" title="" alt="current desktop" data-align="center">
 </details>
 
 </br>
