@@ -2,26 +2,14 @@ return {
 	"folke/snacks.nvim",
 	priority = 1000,
 	lazy = false,
-	init = function()
-		-- load snacks global
-		Snacks = require("snacks")
-	end,
 	opts = {
 		bigfile = { enabled = true }, -- snacks.bigfile (faster when opening big files)
-		notify = { -- snacks.notify (better notify)
-			enabled = true,
-			opts = {
-				stages = "static",
-				render = "minimal",
-				title = function()
-					return ""
-				end,
-			},
-		},
 		notifier = { -- snacks.notifier (works best with notify)
 			enabled = true,
 			timeout = 1000,
-			render = "minimal",
+			render = "compact",
+			-- render = "minimal",
+      vim_notify = true,
 		},
 		styles = {
 			notification = {
