@@ -33,3 +33,9 @@
 *.bak
 /nvim/lazy-lock.json
 /.config/nvim/lazy-lock.json
+/.config/mpd/log
+/.config/mpd
+/.config/mpd/database
+/.config/mpd
+/.config/ncmpcpp/lyrics
+/.config/tmux/plugins
