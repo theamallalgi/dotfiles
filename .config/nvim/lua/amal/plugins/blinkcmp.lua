@@ -5,22 +5,15 @@ return {
 		version = "*",
 		event = "InsertEnter",
 		dependencies = {
-			"hrsh7th/nvim-cmp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-nvim-lsp",
-			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
-			"onsails/lspkind.nvim",
 			"FeiyouG/colorful-menu.nvim",
 		},
 		config = function()
-			local luasnip = require("luasnip")
 			require("luasnip.loaders.from_vscode").lazy_load()
 			-- Blink.cmp configuration
 			require("blink.cmp").setup({
 				fuzzy = {
-					implementation = "lua", -- Use Lua instead of Rust, Slower but no setup needed.
+					-- implementation = "lua", -- Use Lua instead of Rust, Slower but no setup needed.
 				},
 				snippets = { preset = "luasnip" },
 				sources = {

@@ -7,7 +7,7 @@ return {
 			mode = "tabs",
 			always_show_bufferline = false,
 			indicator = { style = "none" },
-			seperator_style = "slant",
+      separator_style = "slant",
 			offsets = {
 				{
 					filetype = "neo-tree",

@@ -41,6 +41,4 @@ require("lazy").setup({ { import = "amal.plugins" } }, {
       },
     },
   },
-  pills = true,
-  title = nil,
 })

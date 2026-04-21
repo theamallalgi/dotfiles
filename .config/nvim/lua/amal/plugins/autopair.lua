@@ -5,5 +5,4 @@ return {
 		local npairs = require("nvim-autopairs")
 		npairs.setup({})
 	end,
-	opts = {},
 }
