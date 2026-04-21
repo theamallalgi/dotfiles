@@ -31,7 +31,7 @@ return {
         { "<leader>c", group = "LSP (Trouble)" },
         { "<leader>t", group = "Test" },
         { "<leader>D", group = "Debugger" },
-        { "<leader>s", group = "Search" },
+        { "<leader>s", group = "Save Buffer" },
         { "<leader>x", group = "diagnostics/quickfix (Trouble)" },
         { "<leader>u", group = "Toggle Features" },
         { "<leader>W", group = "Workspace" },
