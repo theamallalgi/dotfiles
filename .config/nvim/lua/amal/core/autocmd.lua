@@ -3,7 +3,10 @@
 local api = vim.api
 
 -- don't auto comment new line
-api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = vim.api.nvim_create_augroup("NoAutoComment", { clear = true }),
+  command = "set formatoptions-=cro",
+})
 
 -- go to last loc when opening a buffer
 -- this means that when you open a file, you will be at the last position
@@ -51,25 +54,18 @@ api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 --  warning message when using the arrow keys
-api.nvim_create_autocmd("VimEnter", {
-	callback = function()
-		local warn = function()
-			vim.notify("Nuh uh uh! Use the hjkl keys buddy!", vim.log.levels.WARN)
-		end
-
-		local opts = { noremap = true, silent = true }
-
-		vim.keymap.set("n", "<Up>", warn, opts)
-		vim.keymap.set("n", "<Down>", warn, opts)
-		vim.keymap.set("n", "<Left>", warn, opts)
-		vim.keymap.set("n", "<Right>", warn, opts)
-
-		-- vim.keymap.set("i", "<Up>", warn, opts)
-		-- vim.keymap.set("i", "<Down>", warn, opts)
-		-- vim.keymap.set("i", "<Left>", warn, opts)
-		-- vim.keymap.set("i", "<Right>", warn, opts)
-	end,
-})
+local opts = { noremap = true, silent = true }
+local warn = function()
+  vim.notify("Nuh uh uh! Use the hjkl keys buddy!", vim.log.levels.WARN)
+end
+vim.keymap.set("n", "<Up>", warn, opts)
+vim.keymap.set("n", "<Down>", warn, opts)
+vim.keymap.set("n", "<Left>", warn, opts)
+vim.keymap.set("n", "<Right>", warn, opts)
+-- vim.keymap.set("i", "<Up>", warn, opts)
+-- vim.keymap.set("i", "<Down>", warn, opts)
+-- vim.keymap.set("i", "<Left>", warn, opts)
+-- vim.keymap.set("i", "<Right>", warn, opts)
 
 -- highlight developer note keywords like TODO, FIXME, etc.
 local tag_group = vim.api.nvim_create_augroup("CodeTagHighlights", { clear = true })
@@ -83,18 +79,27 @@ local keyword_highlights = {
 	FIXME = "DiagnosticVirtualTextError",
 	BUG = "DiagnosticVirtualTextError",
 	HACK = "DiagnosticVirtualTextWarn",
-	XXX = "DiagnosticVirtualTextHint",
+	XXX = "DiagnosticVirtualTextHint",vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    if vim.fn.expand("%") ~= "" and vim.bo.buftype == "" then
+      -- clear only previously set trailing space match
+      if vim.b.trailing_match_id then
+        pcall(vim.fn.matchdelete, vim.b.trailing_match_id)
+      end
+      vim.b.trailing_match_id = vim.fn.matchadd("TrailingSpace", [[\s\+$]])
+    end
+  end,
+})
 }
 
 -- apply match highlights on buffer events
-vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile", "InsertLeave", "TextChanged" }, {
-	group = tag_group,
-	callback = function()
-		for word, hl in pairs(keyword_highlights) do
-			local pattern = "\\<" .. word .. "\\>:"
-			vim.fn.matchadd(hl, pattern)
-		end
-	end,
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+  group = tag_group,
+  callback = function()
+    for word, hl in pairs(keyword_highlights) do
+      vim.fn.matchadd(hl, "\\<" .. word .. "\\>:")
+    end
+  end,
 })
 
 -- custom right click context menu
@@ -109,8 +114,22 @@ vim.api.nvim_set_hl(0, "TrailingSpace", { bg = "#201638" }) -- #08313f (pine) #2
 vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
     if vim.fn.expand("%") ~= "" and vim.bo.buftype == "" then
-      vim.fn.clearmatches()
-      vim.fn.matchadd("TrailingSpace", [[\s\+$]])
+      -- clear only previously set trailing space match
+      if vim.b.trailing_match_id then
+        pcall(vim.fn.matchdelete, vim.b.trailing_match_id)
+      end
+      vim.b.trailing_match_id = vim.fn.matchadd("TrailingSpace", [[\s\+$]])
     end
+  end,
+})
+
+-- strip trailing spaces on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function()
+    local view = vim.fn.winsaveview()
+    vim.cmd([[%s/\s\+$//e]])
+    vim.fn.winrestview(view)
+    -- vim.notify("Trailing whitespace stripped", vim.log.levels.INFO)
   end,
 })
