@@ -7,11 +7,11 @@ return {
 		{ "williamboman/mason.nvim", config = true },
 		{ "j-hui/fidget.nvim", opts = {} },
 		{ "b0o/schemastore.nvim" },
-		{ "hrsh7th/cmp-nvim-lsp" },
 		{ "rachartier/tiny-inline-diagnostic.nvim" },
 	},
 	config = function()
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
+    local servers = require("amal.plugins.lsp.servers")
 		require("mason").setup({
 			ui = {
 				-- border = "rounded",
@@ -22,25 +22,38 @@ return {
 				},
 			},
 		})
-		require("mason-tool-installer").setup({
-			ensure_installed = vim.tbl_keys(require("amal.plugins.lsp.servers")),
-		})
+    local tools = vim.list_extend(
+      vim.tbl_keys(servers),
+      {
+        "prettier",
+        "stylua",
+        "eslint_d",
+        "black",
+        "isort",
+        "ruff",
+        "shfmt",
+        "shellcheck",
+        "buf",
+        "golangci-lint",
+      }
+    )
+    require("mason-tool-installer").setup({
+      ensure_installed = tools,
+    })
 		require("mason-lspconfig").setup({
-			ensure_installed = vim.tbl_keys(require("amal.plugins.lsp.servers")),
 			handlers = {
 				function(server_name)
-					local server_config = {
-						capabilities = capabilities,
-						-- on_attach = require("plugins.lsp.on_attach").on_attach,
-						settings = require("amal.plugins.lsp.servers")[server_name],
-						filetypes = (require("amal.plugins.lsp.servers")[server_name] or {}).filetypes,
-					}
-					
+          local server_config = {
+            capabilities = capabilities,
+            settings = (servers[server_name] or {}).settings,
+            filetypes = (servers[server_name] or {}).filetypes,
+          }
+
 					-- Special handling for lua_ls
 					if server_name == "lua_ls" then
 						server_config.on_init = function(client)
 							local path = client.workspace_folders[1].name
-							if vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc") then
+							if vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc") then
 								return
 							end
 							client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {

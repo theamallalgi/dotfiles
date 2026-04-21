@@ -5,8 +5,13 @@ return {
     "nvim-treesitter/nvim-treesitter-textobjects",
   },
   opts = {
-    ensure_installed = { "lua", "javascript", "python" },
-    highlight = { enable = true },
+    ensure_installed = { "lua", "javascript", "python", "vim", "vimdoc" },
+    highlight = {
+      enable = true,
+      disable = function(lang)
+        return lang == "vim"
+      end,
+    },
     indent = { enable = true },
     textobjects = {
       select = {
@@ -24,4 +29,3 @@ return {
     },
   },
 }
-
