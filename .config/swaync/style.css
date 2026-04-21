@@ -1,6 +1,6 @@
 * {
   all: unset;
-  font-family: 'KodeMono Nerd Font', monospace;
+  font-family: "KodeMono Nerd Font", monospace;
   font-size: 16px;
 }
 
@@ -84,15 +84,26 @@
   color: #e4465d;
 }
 
-.notification.low .summary, .notification.low .body {
+.notification.low .summary,
+.notification.low .body {
   color: #64aae2;
 }
 
-.notification.normal .summary, .notification.normal .body {
+.notification.normal .summary,
+.notification.normal .body {
   color: #8543e4;
 }
 
-.notification.critical .summary, .notification.critical .body {
+.notification.critical .summary,
+.notification.critical .body {
   color: #e4384c;
 }
 
+.notification-action > button {
+  padding-left: 0;
+}
+
+.notification-action > button label {
+  margin-left: 0;
+  margin-right: auto;
+}
