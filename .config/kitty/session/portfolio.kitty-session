@@ -1,0 +1,30 @@
+
+new_tab code
+layout splits
+enabled_layouts splits,stack
+set_layout_state {"pairs": {"one": 1}, "opts": {"default_axis_is_horizontal": true}, "class": "Splits", "all_windows": {"active_group_idx": 0, "active_group_history": [1], "window_groups": [{"id": 1, "window_ids": [1]}]}}
+cd /home/amal/Desktop/portfolio/portfolio/app
+
+launch 'kitty-unserialize-data={"id": 1}'
+focus
+
+new_tab ops
+layout splits
+enabled_layouts splits,stack
+set_layout_state {"pairs": {"one": 2}, "opts": {"default_axis_is_horizontal": true}, "class": "Splits", "all_windows": {"active_group_idx": 0, "active_group_history": [2], "window_groups": [{"id": 2, "window_ids": [3]}]}}
+cd /home/amal/Desktop/portfolio/portfolio
+
+launch 'kitty-unserialize-data={"id": 3}'
+focus
+
+new_tab server
+layout splits
+enabled_layouts splits,stack
+set_layout_state {"pairs": {"one": 3}, "opts": {"default_axis_is_horizontal": true}, "class": "Splits", "all_windows": {"active_group_idx": 0, "active_group_history": [3], "window_groups": [{"id": 3, "window_ids": [4]}]}}
+cd /home/amal/Desktop/portfolio/portfolio
+launch --hold sh -c "npm run dev"
+
+focus
+
+focus_tab 0
+
