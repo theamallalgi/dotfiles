@@ -6,7 +6,7 @@ return {
 		event = "InsertEnter",
 		dependencies = {
 			"rafamadriz/friendly-snippets",
-			"FeiyouG/colorful-menu.nvim",
+			"xzbdmw/colorful-menu.nvim",
 		},
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load()
@@ -58,7 +58,7 @@ return {
 					["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
 					["<C-e>"] = { "hide", "fallback" },
 					["<C-y>"] = { "accept", "fallback" },
-					["<CR>"] = { "accept", "fallback" },
+					-- ["<CR>"] = { "accept", "fallback" },
 				},
 			})
 		end,
