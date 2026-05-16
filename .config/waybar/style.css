@@ -1,4 +1,4 @@
-@import "colors/zitchdog.css";
+@import "colors/zitchdog-grape.css";
 * {
   border: none;
   border-radius: 0;
@@ -52,6 +52,7 @@ tooltip label {
 #clock,
 #window,
 #custom-power,
+#custom-systoggle,
 #custom-notification {
   background: transparent;
   padding: 2px 10px;
@@ -107,4 +108,19 @@ tooltip label {
 #custom-power:hover {
   color: @purple;
   background: transparent;
+}
+
+#backlight {
+background: transparent;
+padding: 2px 10px;
+margin: 6px 0px 0px 0px;
+color: @fg;
+}
+
+#custom-systoggle {
+  color: @grey0;
+}
+
+#custom-systoggle:hover {
+  color: @fg;
 }

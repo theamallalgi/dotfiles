@@ -3,7 +3,6 @@
   "position": "top",
   "margin-top": 0,
   "modules-left": [
-    // "tray",
     "hyprland/workspaces"
     // "hyprland/window"
   ],
@@ -11,19 +10,49 @@
     "clock"
   ],
   "modules-right": [
+    "group/system",
     "pulseaudio",
-    "bluetooth",
+    // "bluetooth",
     "network",
     "battery",
     "custom/power"
   ],
+
+  "group/system": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 200,
+      "transition-left-to-right": false,
+      "click-to-reveal": true
+    },
+    "modules": [
+      "custom/systoggle",
+      "tray",
+      "backlight", // hidden until clicked
+      "bluetooth"
+    ]
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "<span text_transform='uppercase' font_size='110%'><span color='#828997'>BRT:</span> {percent}%</span>",
+    "tooltip-format": "Brightness Level at {percent}%",
+    "on-scroll-up": "brightnessctl set +1%",
+    "on-scroll-down": "brightnessctl set 1%-"
+  },
+
+  "custom/systoggle": {
+    "format": "<span font_size='130%'>󰁎</span>",
+    "tooltip-format": "Overflow"
+    // "tooltip": false
+  },
+
   "clock": {
-    "interval": 60,
-    // "format": "<span text_transform='uppercase'>{:%H:%M}</span>",
+    "interval": 1,
     "format": "<span text_transform='uppercase'><span font_size='110%'>{:%a %b %e %I:%M %p}</span></span>",
     "max-length": 55,
     "tooltip-format": "{calendar}",
-    "format-alt": "<span text_transform='uppercase'><span font_size='110%'>{:%a %b %e %H:%M}</span></span>"
+    "format-alt": "<span text_transform='uppercase'><span font_size='110%'>{:%a %b %e %H:%M:%S}</span></span>"
   },
   "hyprland/workspaces": {
     "active-only": false,
@@ -43,7 +72,7 @@
     }
   },
   "tray": {
-    "icon-size": 21,
+    "icon-size": 16,
     "spacing": 10
   },
   "pulseaudio": {
@@ -75,6 +104,7 @@
     "format-wifi": "<span text_transform='uppercase' font_size='110%'><span color='#828997'>N:</span> {essid}</span>",
     "format-ethernet": "<span text_transform='uppercase' font_size='110%'><span color='#828997'>N:</span> {ipaddr}/{cidr}</span>",
     "format-disconnected": "<span text_transform='uppercase'>No Connection</span>",
+    // "on-click": "alacritty --class tui-float -e impala",
     "on-click": "networkmanager_dmenu",
     "tooltip-format": "  {ifname} via {gwaddr}",
     "tooltip-format-wifi": "󰤨  {essid} ({signalStrength}%)",
@@ -128,12 +158,13 @@
   "bluetooth": {
     "format": "<span text_transform='uppercase' font_size='110%'><span color='#828997'>BLT:</span> {status}</span>",
     "format-connected": "<span text_transform='uppercase' font_size='110%'><span color='#828997'>BLT:</span> {device_alias}</span>",
-    "format-off": "",
+    "format-off": "<span text_transform='uppercase' font_size='110%'><span color='#828997'>BLT:</span> {status}</span>",
     "format-disabled": "",
     "tooltip-format": "{controller_alias}\t{controller_address}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "bzmenu -l rofi"
+    "on-click": "alacritty --class tui-float -e bluetui"
+    // "on-click": "bzmenu -l rofi"
   },
   "hyprland/window": {
     "format": "<span color='#828997'>{}</span>",
