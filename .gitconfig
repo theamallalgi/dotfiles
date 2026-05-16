@@ -1,3 +1,21 @@
 [user]
 	name = Amal Lalgi
 	email = amallalgi2487@gmail.com
+[delta]
+    syntax-theme = "Solarized (dark)"
+    plus-style = syntax "#091511"
+    plus-emph-style = syntax "#0d1e18"
+    minus-style = syntax "#240d12"
+    minus-emph-style = syntax "#3a1015"
+    line-numbers = true
+    line-numbers-minus-style = "#2c1e36"
+    line-numbers-plus-style = "#2c1e36"
+    line-numbers-zero-style = "#2c1e36"
+    line-numbers-left-format = "{nm:>4} "
+    line-numbers-right-format = "{np:>4} "
+    hunk-header-style = file line-number syntax
+    hunk-header-decoration-style = "#2c1e36" box
+    file-style = "#65aae3"
+    file-decoration-style = "#2c1e36" underline
+    side-by-side = false ; splits diff into two columns
+    wrap-max-lines = 0 ; only works when side-by-side is true
