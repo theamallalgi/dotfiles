@@ -2,13 +2,23 @@
 
 # Paths
 export PATH="$HOME/.local/bin:$PATH"
+export TMUX_CONF="$HOME/.config/tmux/tmux.conf"
+export KITTY_LISTEN_ON=unix:/tmp/mykitty
+
+# Function(s)
+mcd() { mkdir -p -- "$1" && cd -- "$1"; } # mcd: makes new dir and jumps inside
 
 # Aliases
+alias cic='setopt nocaseglob'                 # case-insensitive globbing
+alias mkdir='mkdir -pv'                       # creates directories and parents verbosely
+alias cp='cp -iv'                             # interactive + verbose copy
+alias mv='mv -iv'                             # interactive + verbose move
 alias cl="clear && colorscript -r"            # clear command with colorscripts
 alias c="clear && colorscript -e blocks1"     # color script reset (zwaves)
 alias watch="sass --style compressed --watch" # watches and compiles sass in real time
 alias sb="clear && source ~/.zshrc"           # clears and sources the zshrc file
 alias vi="nvim"                               # neovim
+alias vs="sudoedit"                           # opens the sudo editor (neovim)
 alias cat="bat"                               # better cat command
 alias py="python"                             # sets python
 alias pc="clear && py"                        # clears the terminal and opens python
@@ -19,6 +29,7 @@ alias rmcr="sed -i 's/\r//g'"                 # removes windows crlf in a file
 alias ac="ani-cli"                            # an alias for the ani-cli client
 alias exp="nautilus"                          # opens explorer (windows only), append with '.' or path
 alias cs="colorscript"                        # color script cli
+alias clip="wl-copy"                          # pipe this command to copy to clipboard (wl-clipboard)
 
 # Git Aliases
 alias gc="git clone"                                                                                 # clones a git repo
@@ -54,17 +65,18 @@ alias d="cd $ds && c"                 # cds to desktop and clears the window
 
 # Extentions and Misc
 alias bws='bw login && export BW_SESSION="$(bw unlock --raw)"'
+# bindkey -s '^L' 'clear\n' # fix tmux clear screen issue
 
 # ZSH-specific settings
-setopt AUTO_CD              # Change directory without cd command
-setopt GLOB_DOTS            # Include hidden files in globbing
-setopt EXTENDED_GLOB        # Extended globbing (similar to bash's globstar)
-setopt CORRECT              # Command correction (similar to bash's cdspell)
-setopt HIST_IGNORE_DUPS     # Don't record duplicate commands
-setopt HIST_FIND_NO_DUPS    # Don't show duplicates in search
-setopt SHARE_HISTORY        # Share history between sessions
-setopt APPEND_HISTORY       # Append to history file
-setopt INC_APPEND_HISTORY   # Add commands as they are typed
+setopt AUTO_CD            # Change directory without cd command
+setopt GLOB_DOTS          # Include hidden files in globbing
+setopt EXTENDED_GLOB      # Extended globbing (similar to bash's globstar)
+setopt CORRECT            # Command correction (similar to bash's cdspell)
+setopt HIST_IGNORE_DUPS   # Don't record duplicate commands
+setopt HIST_FIND_NO_DUPS  # Don't show duplicates in search
+setopt SHARE_HISTORY      # Share history between sessions
+setopt APPEND_HISTORY     # Append to history file
+setopt INC_APPEND_HISTORY # Add commands as they are typed
 
 # ZSH Completion System
 autoload -Uz compinit
@@ -72,7 +84,7 @@ compinit
 
 # Enable completion menu selection with highlighting
 zstyle ':completion:*' menu select
-zstyle ':completion:*' list-colors 'ma=48;5;235;38;5;99;1'  # Custom highlight: #272045 bg, #8543e4 fg, bold
+zstyle ':completion:*' list-colors 'ma=48;5;235;38;5;99;1' # Custom highlight: #272045 bg, #8543e4 fg, bold
 
 # Highlight current selection in completion menu
 zstyle ':completion:*:*:*:*:*' menu select
@@ -95,11 +107,16 @@ SAVEHIST=99999
 # bindkey -v  # Uncomment to enable vi mode
 # bindkey '^l' clear-screen  # Ctrl+L to clear screen (already default in zsh)
 
+# Set Neovim as the sudo editor
+export SUDO_EDITOR=nvim
+export VISUAL=nvim
+export EDITOR=nvim
+
 # Directory Path Trim (zsh uses PROMPT truncation differently - handled in prompt section)
 
 # Git Prompt Configuration (for vcs_info)
 autoload -Uz vcs_info
-precmd() { vcs_info }
+precmd() { vcs_info; }
 
 # Git status options (zsh uses vcs_info instead of __git_ps1)
 zstyle ':vcs_info:*' enable git
@@ -114,20 +131,19 @@ zstyle ':vcs_info:git:*' actionformats ' %F{cyan}(%b|%a%u%c)%f'
 setopt PROMPT_SUBST
 
 # Note: In zsh, %~ automatically trims path. %1~ shows only last directory (like PROMPT_DIRTRIM=1)
-PROMPT='%F{green}amal%f'           # green text (name)
-PROMPT="$PROMPT%F{magenta} ϟ %f"   # magenta text (symbol)
-PROMPT="$PROMPT%F{yellow}[ %f"     # yellow text (bracket)
-PROMPT="$PROMPT%F{red}%1~%f"       # red text (working directory, trimmed to 1 level)
-PROMPT="$PROMPT%F{yellow} ]%f"     # yellow text (bracket)
-PROMPT="$PROMPT\$vcs_info_msg_0_"  # git info (cyan)
-PROMPT="$PROMPT%(?.%F{green}.%F{red}) : %f"  # green : if success, red : if failure
-PROMPT="$PROMPT%F{green}"          # default green text
+PROMPT='%F{green}amal%f'                    # green text (name)
+PROMPT="$PROMPT%F{magenta} ϟ %f"            # magenta text (symbol)
+PROMPT="$PROMPT%F{yellow}[ %f"              # yellow text (bracket)
+PROMPT="$PROMPT%F{red}%1~%f"                # red text (working directory, trimmed to 1 level)
+PROMPT="$PROMPT%F{yellow} ]%f"              # yellow text (bracket)
+PROMPT="$PROMPT\$vcs_info_msg_0_"           # git info (cyan)
+PROMPT="$PROMPT%(?.%F{green}.%F{red}) : %f" # green : if success, red : if failure
+PROMPT="$PROMPT%F{green}"                   # default green text
 
 # Window title
-precmd() {
-    vcs_info
-    print -Pn "\e]0;Terminal\a"
-}
+# precmd() { print -Pn "\e]0;terminal\a" } # `terminal (shell)`
+# precmd() { print -Pn "\e]0;%~\a"; } # `path to current directory`
+precmd() { print -Pn "\e]0;%1~\a"; }
 
 # Setup cli tools
 eval "$(zoxide init zsh)" # zoxide
@@ -137,19 +153,34 @@ eval "$(fzf --zsh)"       # fzf key bindings and fuzzy completion for zsh
 export BAT_THEME="base16" # Setup Default Bat Theme
 
 # fzf fuzzy find
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git "
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"                                  # default fzf (folders and files)
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git" # fzf navigate to folders
+# export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git "
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"                                  # default fzf (folders and files)
+# export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git" # fzf navigate to folders
+export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git'"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
 # default fzf settings
-export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border=rounded --preview-window=border-rounded --info=right --cycle --prompt='▶ ' --color=bg+:#311d42,gutter:#272045,hl:#26f96b,fg:#b267e6,bg:-1,hl+:#26f96b,fg+:#b267e6,pointer:#b267e6,prompt:#f92672,border:#b267e6,query:#b267e6,info:#272045,spinner:#f9a826,scrollbar:#b267e6,separator:#272045,label:#b267e6"
+export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border=rounded --preview-window=border-rounded --info=right --cycle --prompt='➤ ' --color=bg+:#311d42,gutter:#272045,hl:#26f96b,fg:#b267e6,bg:-1,hl+:#26f96b,fg+:#b267e6,pointer:#b267e6,prompt:#f92672,border:#b267e6,query:#b267e6,info:#272045,spinner:#f9a826,scrollbar:#b267e6,separator:#272045,label:#b267e6"
 export FZF_CTRL_T_OPTS="--preview 'bat --theme='base16' --color=always -n --line-range :500 {}' --border-label=' fuzzy find '"
 export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | head -200' --border-label=' change directory '"
+
+# search through files using ripgrep with (ctrl + g)
+rgs() {
+	rg --color=always --line-number --no-heading --smart-case "${1:-.}" |
+		fzf --ansi \
+			--delimiter : \
+			--preview 'bat --theme=base16 --color=always -n --highlight-line {2} {1}' \
+			--preview-window 'right:60%:+{2}-5:border-rounded' \
+			--bind 'change:reload:rg --color=always --line-number --no-heading --smart-case {q} || true' \
+			--bind 'enter:become(nvim {1} +{2})'
+}
+bindkey -s '^g' 'rgs\n'
 
 # eza - next level ls (dir)
 alias ls="eza --no-filesize --no-permissions --all --color=always --icons=never --no-user"
 alias la="eza --long --group-directories-first --group --all --color=always --icons=never --no-user"
-alias lt="&& eza --no-filesize --tree --color=always --icons=never"
+alias lt="eza --no-filesize --tree --color=always --icons=never"
 alias ll="eza --no-filesize --color=always --icons=never --width 1"
 alias ld="eza --only-dirs"
 alias lf="eza --only-files"
