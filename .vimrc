@@ -516,3 +516,16 @@ augroup trailing_space
     autocmd!
     autocmd BufEnter * if &buftype == '' | call matchadd('TrailingSpace', '\s\+$') | endif
 augroup END
+
+" Highlight on yank
+highlight IncSearch guibg=#e4384c guifg=#331b17
+
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! call s:FlashYankedText()
+augroup END
+
+function! s:FlashYankedText() abort
+    let g:_yankMatchId = matchadd('IncSearch', ".\\%>'\\[\\_.*\\%<']..")
+    call timer_start(300, {-> matchdelete(g:_yankMatchId)})
+endfunction
