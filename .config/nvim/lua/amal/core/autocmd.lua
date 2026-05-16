@@ -102,11 +102,37 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
   end,
 })
 
+_G.toggle_diagnostics = function() -- diagnostics toggle
+  _G.diagnostics_enabled = not _G.diagnostics_enabled
+  vim.diagnostic.enable(_G.diagnostics_enabled)
+  require("lualine").refresh()
+end
+_G.gitsigns_enabled = false -- gitsigns toggle
+_G.toggle_gitsigns = function()
+  _G.gitsigns_enabled = not _G.gitsigns_enabled
+  local gitsigns = require("gitsigns")
+  if _G.gitsigns_enabled then
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      if vim.api.nvim_buf_is_loaded(buf) then
+        gitsigns.attach(buf)
+      end
+    end
+  else
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      if vim.api.nvim_buf_is_loaded(buf) then
+        gitsigns.detach(buf)
+      end
+    end
+  end
+  require("lualine").refresh()
+end
+
 -- custom right click context menu
 vim.cmd([[
   anoremenu PopUp.-sep2-                     <Nop>
   anoremenu PopUp.Toggle\ Word\ Wrap         <cmd>set wrap!<CR>
-  anoremenu PopUp.Toggle\ Diagnostics        <cmd>lua _G.diagnostics_enabled = not _G.diagnostics_enabled; vim.diagnostic.enable(_G.diagnostics_enabled); require('lualine').refresh()<CR>
+  anoremenu PopUp.Toggle\ Diagnostics        <cmd>lua toggle_diagnostics()<CR>
+  anoremenu PopUp.Toggle\ Gitsigns           <cmd>lua toggle_gitsigns()<CR>
 ]])
 
 -- leading space highlight
