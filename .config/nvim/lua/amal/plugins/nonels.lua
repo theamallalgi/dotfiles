@@ -26,12 +26,14 @@ return {
 				-- Formatters
 				-- formatting.black.with({ timeout = 5000 }),
 				-- formatting.isort.with({ timeout = 5000 }),
-				formatting.prettier,
+				formatting.prettierd,
 				formatting.stylua,
-				formatting.shfmt,
+				-- formatting.shfmt,
+        formatting.shfmt.with({ filetypes = { "sh", "zsh", "bash" } }),
 
 				-- Diagnostics and actions
-				diagnostics.golangci_lint,
+				-- diagnostics.golangci_lint,
+        diagnostics.golangci_lint.with({ filetypes = { "go" } }),
 				code_actions.refactoring,
 				shellcheck.diagnostics,
 				shellcheck.code_actions,

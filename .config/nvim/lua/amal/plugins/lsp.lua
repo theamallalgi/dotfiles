@@ -25,7 +25,7 @@ return {
     local tools = vim.list_extend(
       vim.tbl_keys(servers),
       {
-        "prettier",
+        "prettierd",
         "stylua",
         "eslint_d",
         "black",
@@ -85,13 +85,13 @@ return {
 							},
 						}
 					end
-					
+
 					require("lspconfig")[server_name].setup(server_config)
 				end,
 			},
 		})
 		require("tiny-inline-diagnostic").setup()
-		
+
 		vim.diagnostic.config({
 			title = false,
 			underline = true,

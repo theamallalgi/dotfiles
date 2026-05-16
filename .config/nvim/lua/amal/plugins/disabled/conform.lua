@@ -6,17 +6,18 @@ return {
 
 		conform.setup({
 			formatters_by_ft = {
-				javascript = { "prettier" },
-				typescript = { "prettier" },
-				javascriptreact = { "prettier" },
-				typescriptreact = { "prettier" },
-				css = { "prettier" },
-				html = { "prettier" },
-				json = { "prettier" },
-				yaml = { "prettier" },
-				liquid = { "prettier" },
+				javascript = { "prettierd" },
+				typescript = { "prettierd" },
+				javascriptreact = { "prettierd" },
+				typescriptreact = { "prettierd" },
+				css = { "prettierd" },
+				html = { "prettierd" },
+				json = { "prettierd" },
+				yaml = { "prettierd" },
+				liquid = { "prettierd" },
 				lua = { "stylua" },
 				sh = { "shfmt" },
+        zsh = { "bashls" },
 				-- python = function(bufnr)
 				-- if require("conform").get_formatter_info("ruff_format", bufnr).available then
 				-- return { "ruff_fix", "ruff_format", "ruff_organize_imports" }
