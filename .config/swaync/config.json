@@ -2,10 +2,10 @@
   "$schema": "/etc/xdg/swaync/configSchema.json",
   "positionX": "right",
   "positionY": "bottom",
-	"cssPriority": "user",
+  "cssPriority": "user",
 
   "control-center-width": 500,
-  "control-center-height": 880, 
+  "control-center-height": 880,
   "control-center-margin-top": 2,
   "control-center-margin-bottom": 2,
   "control-center-margin-right": 1,
@@ -19,7 +19,7 @@
   "timeout": 4,
   "timeout-low": 2,
   "timeout-critical": 6,
-  
+
   "fit-to-screen": false,
   "keyboard-shortcuts": true,
   "image-visibility": "never",
@@ -34,19 +34,14 @@
     }
   },
   "notification-visibility": {
-    "example-name": {
-      "state": "muted",
-      "urgency": "Low",
-      "app-name": "Spotify"
+    "notification-visibility": {
+      "hyprpm-ignore": {
+        "state": "ignored",
+        "app-name": "hyprpm"
+      }
     }
   },
-  "widgets": [
-    "buttons-grid",
-    "mpris",
-    "title",
-    "dnd",
-    "notifications"
-  ],
+  "widgets": ["buttons-grid", "mpris", "title", "dnd", "notifications"],
   "widget-config": {
     "title": {
       "text": "Notifications",
@@ -66,7 +61,7 @@
     },
     "volume": {
       "label": "󰕾",
-        "show-per-app": true
+      "show-per-app": true
     },
     "buttons-grid": {
       "actions": [
@@ -90,7 +85,6 @@
           "label": "󰏘",
           "command": "nwg-look"
         }
-        
       ]
     }
   }
