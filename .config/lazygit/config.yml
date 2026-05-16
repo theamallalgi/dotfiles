@@ -1,0 +1,139 @@
+gui:
+  theme:
+    activeBorderColor:
+      - '#8443e3'
+      - bold
+    inactiveBorderColor:
+      - '#2c1e36'
+    optionsTextColor:
+      - '#65aae3'
+    selectedLineBgColor:
+      - '#201638'
+    selectedRangeBgColor:
+      - '#331016'
+    cherryPickedCommitBgColor:
+      - '#0b1618'
+    cherryPickedCommitFgColor:
+      - '#46cda8'
+    unstagedChangesColor:
+      - '#e4374b'
+    defaultFgColor:
+      - '#8443e3'
+    searchingActiveBorderColor:
+      - '#18c6cd'
+  authorColors:
+    '*': '#6ebad7'
+    'Amal Lalgi': '#e49068'
+  branchColors:
+    'main': '#46cda8'
+    'master': '#46cda8'
+    'develop': '#65aae3'
+    'feat/*': '#e49068'
+    'fix/*': '#e4374b'
+    'chore/*': '#937b99'
+  nerdFontsVersion: '3'
+  border: single # single / double / block / bold / hidden / rounded (d)
+  mouseEvents: true
+  showCommandLog: false
+  showBottomLine: false
+  showPanelJumps: true
+  expandFocusedSidePanel: false
+  mainPanelSplitMode: flexible
+  language: auto
+  timeFormat: '02 Jan 06 15:04'
+  shortTimeFormat: '3:04 PM'
+  tabWidth: 2
+git:
+  commit:
+    signOff: false
+  merging:
+    manualCommit: false
+    args: ''
+  log:
+    order: topo-order
+    showGraph: when-maximised
+    showWholeGraph: false
+  allBranchesLogCmds:
+    - 'git log --graph --all --color=always --abbrev-commit --decorate --date=relative --pretty=medium'
+  pagers:
+    - colorArg: always
+      # useConfig: false
+      pager: "delta --paging=never 2>/dev/null || cat"
+  skipHookPrefix: WIP
+  autoFetch: true
+  autoRefresh: true
+  branchLogCmd: 'git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --'
+  overrideGpg: false
+  disableForcePushing: false
+keybinding:
+  universal:
+    quit: q
+    quit-alt1: <c-c>
+    return: <esc>
+    quitWithoutChangingDirectory: Q
+    togglePanel: <tab>
+    prevItem: <up>
+    nextItem: <down>
+    prevItem-alt: k
+    nextItem-alt: j
+    prevPage: ','
+    nextPage: .
+    scrollLeft: H
+    scrollRight: L
+    gotoTop: <disabled>
+    gotoBottom: '>'
+    prevBlock: <left>
+    nextBlock: <right>
+    prevBlock-alt: h
+    nextBlock-alt: l
+    jumpToBlock:
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+    nextMatch: 'n'
+    prevMatch: 'N'
+    startSearch: /
+    optionMenu-alt1: '?'
+    select: <space>
+    goInto: <enter>
+    openRecentRepos: <c-r>
+    confirm: <enter>
+    remove: d
+    new: 'n'
+    edit: e
+    openFile: o
+    scrollUpMain: <up>
+    scrollDownMain: <down>
+    scrollUpMain-alt1: K
+    scrollDownMain-alt1: J
+    executeShellCommand: ':'
+    createRebaseOptionsMenu: m
+    pushFiles: P
+    pullFiles: p
+    refresh: R
+    createPatchOptionsMenu: <c-p>
+    nextTab: ']'
+    prevTab: '['
+    nextScreenMode: +
+    prevScreenMode: _
+    undo: z
+    redo: <c-z>
+    filteringMenu: <c-s>
+    diffingMenu: W
+    diffingMenu-alt: <c-e>
+    copyToClipboard: <c-o>
+    openDiffTool: <c-t>
+    submitEditorText: <enter>
+    extrasMenu: '@'
+    toggleWhitespaceInDiffView: <c-w>
+    increaseContextInDiffView: '}'
+    decreaseContextInDiffView: '{'
+os:
+  edit: 'nvim {{filename}}'
+  editAtLine: 'nvim +{{line}} {{filename}}'
+  editAtLineAndWait: 'nvim +{{line}} {{filename}}'
+  open: 'xdg-open {{filename}} >/dev/null 2>&1 &'
+  openLink: 'xdg-open {{link}} >/dev/null 2>&1 &'
+promptToReturnFromSubprocess: true
