@@ -4,7 +4,7 @@
 
 ## This is my setup
 
-- DE - [Hyprland](https://hypr.land/) (w/ xfce on the side)
+- DE - [Hyprland](https://hypr.land/)
 - Terminal Emulator - [Kitty](https://github.com/kovidgoyal/kitty) (I love alacritty tho)
 - Files - [Nautilus](https://apps.gnome.org/Nautilus/) (Nothing beats the gnome look)
 - Status Bar & Notification Daemon - [Waybar](https://github.com/Alexays/Waybar) & [SwayNC](https://github.com/ErikReider/SwayNotificationCenter)
@@ -17,27 +17,36 @@
 
 ## The Desktop
 
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/d-e-desk.png?raw=true" title="" alt="current desktop" data-align="center">
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/d-f-cluster.png?raw=true" title="" alt="current desktop" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/idle.jpg?raw=true" title="" alt="The Desktop" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/m-tile-1.jpg?raw=true" title="" alt="Tiled Window Setup" data-align="center">
 
 <details>
     <summary>See more images of the desktop and layouts</summary>
 </br>
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/d-t-nvim.png?raw=true" title="" alt="current desktop" data-align="center">
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/d-f-book.png?raw=true" title="" alt="current desktop" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/m-tile-2.jpg?raw=true" title="" alt="Tiled Windows" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/m-tile-3.jpg?raw=true" title="" alt="More Tiled Windows" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/m-float-1.jpg?raw=true" title="" alt="Floating Windows" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/m-float-2.jpg?raw=true" title="" alt="More Floating Windows" data-align="center">
 </details>
+
+## Kitty Setup
+
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/t-kitty-1.jpg?raw=true" title="" alt="Kitty Terminal Setup with Splits Open" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/t-kitty-2.jpg?raw=true" title="" alt="Kitty Terminal Setup with Lazygit Open" data-align="center">
 
 ## Waybar and Such
 
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/b-b-n.png?raw=true" title="" alt="current desktop" data-align="center">
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/b-b-i.png?raw=true" title="" alt="current desktop" data-align="center">
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/b-b-c.png?raw=true" title="" alt="current desktop" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/w-idle.jpg?raw=true" title="" alt="Waybar Modules" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/w-idle-alt.jpg?raw=true" title="" alt="Waybar Modules" data-align="center">
+
 
 <details>
       <summary>See more images of the waybar and panel config</summary>
 </br>
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/b-p-network.png?raw=true" title="" alt="current desktop" data-align="center">
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/b-p-power.png?raw=true" title="" alt="current desktop" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/w-time-alt.jpg?raw=true" title="" alt="Waybar Modules" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/w-connection.jpg?raw=true" title="" alt="Waybar Muted and No Internet Connection State" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/w-charging.jpg?raw=true" title="" alt="Waybar Charging State" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/w-menu.jpg?raw=true" title="" alt="Waybar Panel or Menu" data-align="center">
 </details>
 
 </br>
