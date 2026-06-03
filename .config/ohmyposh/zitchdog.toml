@@ -5,7 +5,7 @@ version = 3
 final_space = true
 
 [secondary_prompt]
-  template = '<magenta>→</> : '
+  template = '<magenta> 󰘍</> : '
   foreground = 'green'
   background = 'transparent'
 
