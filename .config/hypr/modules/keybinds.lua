@@ -14,6 +14,7 @@ hl.bind(mainMod .. " + space",  exec("rofi -show drun || pkill rofi"))
 
 -- window management
 hl.bind(mainMod .. " + F",              hl.dsp.window.fullscreen({ mode = 0 }))
+hl.bind(mainMod .. " + SHIFT + F",      hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(mainMod .. " + Q",              hl.dsp.window.close())
 hl.bind(mainMod .. " + V",              hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + bracketleft",  hl.dsp.layout("togglesplit"))
@@ -73,7 +74,7 @@ hl.bind(mainMod .. " + A", exec("networkmanager_dmenu"))
 hl.bind(mainMod .. " + P", exec("~/.config/waybar/scripts/powermenu.sh"))
 
 -- system
-hl.bind(mainMod .. " + M", exec("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"))
+-- hl.bind(mainMod .. " + M", exec("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"))
 
 -- audio
 hl.bind("XF86AudioRaiseVolume", exec("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),  { locked = true, repeating = true })
