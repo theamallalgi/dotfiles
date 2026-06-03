@@ -3,6 +3,7 @@
 # Paths
 export PATH="$HOME/.local/bin:$PATH"
 export TMUX_CONF="$HOME/.config/tmux/tmux.conf"
+export RIPGREP_CONFIG_PATH="$HOME/.config/rg/config"
 export KITTY_LISTEN_ON=unix:/tmp/mykitty
 
 # Function(s)
@@ -40,6 +41,9 @@ alias gp="git push"                                                             
 alias gP="git pull"                                                                                  # pulls from the repo
 alias gg="lazygit"                                                                                   # opens lazygit
 alias gl="git log --all --graph --pretty=format:'%C(magenta)%h %C(white)%an  %ar%C(auto)  %D%n%s%n'" # fancier git log
+
+# Package Manager Aliases
+alias pac="sudo pacman"
 
 # Custom Location variables
 export ad="$HOME/AppData"
@@ -184,6 +188,12 @@ alias lt="eza --no-filesize --tree --color=always --icons=never"
 alias ll="eza --no-filesize --color=always --icons=never --width 1"
 alias ld="eza --only-dirs"
 alias lf="eza --only-files"
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets) # highlight main and bracket matching
+
+# plugins
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh # autosuggestions (completions)
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # syntax highlighting
 
 # NVM Configuration (commented out - uncomment if needed)
 # export NVM_DIR="$HOME/.nvm"
