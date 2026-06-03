@@ -1,0 +1,30 @@
+# ~/.config/rg/config - ripgrep config file
+
+# Custom Colors
+--color=auto
+# Line and column number gutter
+--colors=line:fg:227,144,105
+--colors=line:style:nointense
+--colors=column:fg:227,144,105
+--colors=column:style:nointense
+# Path and file name module
+--colors=path:fg:192,201,195
+--colors=path:bg:5,17,119
+--colors=path:style:bold
+# Highlight matches
+--colors=match:fg:70,205,168
+--colors=match:bg:11,22,24
+--colors=match:bg:19,58,1
+--colors=match:fg:165,238,1
+--colors=match:style:bold
+
+# Other Configuration
+--column
+--line-number
+--smart-case
+--glob=!.git
+--follow
+--max-columns=150
+--max-columns-preview
+--type-add=conf:*.conf
+--hyperlink-format=kitty
