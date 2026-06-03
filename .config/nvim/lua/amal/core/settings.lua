@@ -48,6 +48,7 @@ vim.opt.autoread = true -- updates vim after file update outside
 vim.opt.number = true -- sets line numbers
 vim.opt.relativenumber = true -- sets relative line numbers
 vim.opt.wrap = false -- turns off word wrap
+vim.opt_local.linebreak = true -- wrap at word boundaries instead of mid-word
 vim.opt.fileformat = "unix" -- turns file format to unix style
 vim.opt.showmode = false -- disables the ~ symbol (end of buffer indicator)
 vim.o.termguicolors = true -- sets proper terminal colors
