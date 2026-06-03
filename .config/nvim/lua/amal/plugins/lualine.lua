@@ -88,7 +88,7 @@ return {
 				lualine_b = {},
 				lualine_c = {
 					"fancy_branch",
-					{ "filename", path = 0, symbols = { modified = "󰫢 " }, separator = "" },
+					{ "filename", path = 1, symbols = { modified = "󰫢 " }, separator = "" },
 					{
 						"diagnostics",
 						sources = { "nvim_diagnostic" },
