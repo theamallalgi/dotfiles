@@ -3,7 +3,7 @@
 # Paths
 export PATH="$HOME/.local/bin:$PATH"
 
-# Aliases
+# Aliases & Improvements
 alias cl="clear && colorscript -r"            # clear command with colorscripts
 alias c="clear && colorscript -e blocks1"     # color script reset (zwaves)
 alias watch="sass --style compressed --watch" # watches and compiles sass in real time
@@ -142,4 +142,4 @@ eval "$(oh-my-posh init bash --config $HOME/.config/ohmyposh/zitchdog.toml)" # o
 
 # Startup
 # colorscript -e blocks1 # displays a random colorscript on startup
-zsh # opens zsh on log in
+# zsh # opens zsh on log in
