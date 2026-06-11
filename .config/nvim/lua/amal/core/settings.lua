@@ -70,3 +70,7 @@ vim.g.floaterm_width = 0.7
 vim.g.floaterm_height = 0.8
 vim.g.floaterm_position = "center"
 vim.g.floaterm_title = ""
+
+-- builtin plugins
+-- vim.cmd("packadd nvim.undotree")
+-- vim.keymap.set("n", "<leader>u", require("undotree").open)

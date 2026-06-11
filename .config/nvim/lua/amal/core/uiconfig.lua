@@ -25,3 +25,11 @@ vim.api.nvim_set_hl(0, "GitSignsDeleteLn", { bg = "#240d12", fg = "NONE", })
 vim.api.nvim_set_hl(0, "GitSignsAddInline", { bg = "#091511", fg = "NONE", })
 vim.api.nvim_set_hl(0, "GitSignsChangeInline", { bg = "#121429", fg = "NONE", })
 vim.api.nvim_set_hl(0, "GitSignsDeleteInline", { bg = "#240d12", fg = "NONE", })
+
+-- undotree
+vim.api.nvim_set_hl(0, "UndotreeDiffAdd",    { bg = "#00210F", fg = "NONE" })
+vim.api.nvim_set_hl(0, "UndotreeDiffChange", { bg = "#0D0F1F", fg = "NONE" })
+vim.api.nvim_set_hl(0, "UndotreeDiffDelete", { bg = "#210500", fg = "NONE" })
+-- vim.api.nvim_set_hl(0, "UndotreeDiffAdd",    { bg = "#091511", fg = "NONE" })
+-- vim.api.nvim_set_hl(0, "UndotreeDiffChange", { bg = "#0d1e18", fg = "NONE" })
+-- vim.api.nvim_set_hl(0, "UndotreeDiffDelete", { bg = "#240d12", fg = "NONE" })
