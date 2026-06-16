@@ -43,14 +43,14 @@
 <img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/w-idle.jpg?raw=true" title="" alt="Waybar Modules" data-align="center">
 <img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/w-idle-alt.jpg?raw=true" title="" alt="Waybar Modules" data-align="center">
 
-
 <details>
       <summary>See more images of the waybar and panel config</summary>
 </br>
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/w-time-alt.jpg?raw=true" title="" alt="Waybar Modules" data-align="center">
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/w-connection.jpg?raw=true" title="" alt="Waybar Muted and No Internet Connection State" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/w-muted.jpg?raw=true" title="" alt="Waybar Muted" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/w-connection.jpg?raw=true" title="" alt="No Internet Connection State" data-align="center">
 <img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/w-charging.jpg?raw=true" title="" alt="Waybar Charging State" data-align="center">
 <img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/w-menu.jpg?raw=true" title="" alt="Waybar Panel or Menu" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/notification.jpg?raw=true" title="" alt="Notifications" data-align="center">
 </details>
 
 </br>
