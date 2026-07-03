@@ -42,6 +42,7 @@ hl.window_rule({ match = { class = "^(org.pulseaudio.pavucontrol)$" }, float = t
 hl.window_rule({ match = { class = "^(blueman-manager)$" }, float = true }) -- float blueman-manager (bluetooth manager)
 hl.window_rule({ match = { class = "^(nwg-look)$" }, float = true }) -- float nwg-look (GTK settings app)
 hl.window_rule({ match = { class = "^(org.gnome.NautilusPreviewer)$" }, float = true }) -- float the preview window (gnome sushi)
+hl.window_rule({ match = { class = "^(org.gnome.Papers)$" }, float = true }) -- float the document viewer (gnome papers)
 hl.window_rule({ match = { class = "^(mpv)$" }, float = true }) -- float mpv player
 hl.window_rule({ match = { class = "^(qalculate-gtk)$" }, float = true }) -- float qalculate (calculator app)
 hl.window_rule({ match = { class = "^(org.gnome.FileRoller)$" }, float = true }) -- float file-roller (file unpacker app)
@@ -61,12 +62,12 @@ hl.window_rule({ -- floats sign in / log in and other dialogs on helium browser
   max_size = { 960, 720 },
 })
 
--- hl.window_rule({ -- floats the bitwarden popup
--- 	match = { initial_title = "_crx_nngceckbapebfimnlniiiahkandclblb" },
--- 	float = true,
--- 	center = true,
---   max_size = { 960, 820 },
--- })
+hl.window_rule({ -- floats the bitwarden popup
+	match = { initial_title = "_crx_nngceckbapebfimnlniiiahkandclblb" },
+	float = true,
+	center = true,
+  max_size = { 960, 820 },
+})
 
 -- hyprland-run windowrule
 hl.window_rule({
