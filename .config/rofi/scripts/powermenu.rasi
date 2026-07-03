@@ -6,10 +6,10 @@
 configuration {
     font:                           "JetBrains Nerd Font Mono 12";
     show-icons:                     false;
-    icon-theme: 		    "Tela Green";
+    icon-theme: 		                "Tela Green";
     scroll-method:                  0;
     disable-history:                false;
-    sidebar-mode: 		    false;
+    sidebar-mode: 		              false;
 }
 
 @import "~/.config/rofi/colors/arc.rasi"

@@ -1,0 +1,113 @@
+* {
+    font:                "KodeMono Nerd Font Bold 12";
+    background-color:    #02133b;
+    text-color:          #c0c9c3;
+    border-color:        #273d70;
+    spacing:             0;
+}
+window {
+    background-color:    #02133b;
+    padding:             0px;
+    width:               400px;
+    location:            northeast;
+    anchor:              northeast;
+    x-offset:            -9px;
+    y-offset:            9px;
+}
+inputbar {
+    background-color:    #021542;
+    padding:             10px 12px;
+    margin:              0 0 5px 0;
+    border:              3px solid;
+    border-color:        #273d70;
+}
+entry {
+    background-color:    #021542;
+    text-color:          #abb2bf;
+    placeholder-color:   #273d70;
+    placeholder:         "...";
+    // placeholder:         "Start typing (Case-Sensitive)";
+}
+prompt {
+    background-color:    #021542;
+    text-color:          #828997;
+    padding:             0px 6px 0px 0px;
+}
+case-indicator {
+    background-color:    #021542;
+    text-color:          #abb2bf;
+}
+listview {
+    background-color:    #02133b;
+    margin:              0px;
+    lines:               10;
+    border:              3px solid;
+    border-color:        #273d70;
+}
+element {
+    padding:             8px 12px 8px 28px;
+    spacing:             8px;
+}
+
+/* normal */
+element normal.normal {
+    background-color:    #02133b;
+    text-color:          #828997;
+}
+element alternate.normal {
+    background-color:    #021542;
+    text-color:          #828997;
+}
+
+/* active - inverted (purple bg, dark text) */
+element normal.active {
+    background-color:    #142826;
+    text-color:          #0ba76b;
+    border:              0px 0px 0px 16px;
+    border-color:        #0ba76b;
+}
+element alternate.active {
+    background-color:    #142826;
+    text-color:          #0ba76b;
+    border:              0px 0px 0px 16px;
+    border-color:        #0ba76b;
+}
+
+/* urgent - red fg */
+element normal.urgent {
+    background-color:    #02133b;
+    text-color:          #e44343;
+}
+element alternate.urgent {
+    background-color:    #021542;
+    text-color:          #e44343;
+}
+
+/* selected states */
+element selected.normal {
+    background-color:    transparent;
+    text-color:          #afbfbf;
+    border:              3px 0px 3px 16px;
+}
+element selected.active {
+    background-color:    #331b17;
+    text-color:          #e4465d;
+    border:              3px 3px 3px 16px;
+    border-color:        #e4465d;
+}
+element selected.urgent {
+    background-color:    #331016;
+    text-color:          #e39069;
+    border:              3px 0px 3px 16px;
+    border-color:        #e44343;
+}
+
+element-text {
+    background-color:    inherit;
+    text-color:          inherit;
+    vertical-align:      0.5;
+}
+element-icon {
+    background-color:    inherit;
+    size:                18px;
+}

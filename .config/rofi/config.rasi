@@ -1,7 +1,7 @@
 configuration {
     modi:       "drun,run,window";
-    show-icons: true;
+    show-icons: false;
 }
 
-@theme "~/.config/rofi/colors/minimal.rasi"
+@theme "~/.config/rofi/colors/ibluemyself.rasi"
 
