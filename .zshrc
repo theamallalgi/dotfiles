@@ -6,20 +6,19 @@ export TMUX_CONF="$HOME/.config/tmux/tmux.conf"
 export RIPGREP_CONFIG_PATH="$HOME/.config/rg/config"
 export KITTY_LISTEN_ON=unix:/tmp/mykitty
 
-# Function(s)
-mcd() { mkdir -p -- "$1" && cd -- "$1"; } # mcd: makes new dir and jumps inside
-
 # Aliases
 alias cic='setopt nocaseglob'                 # case-insensitive globbing
 alias mkdir='mkdir -pv'                       # creates directories and parents verbosely
 alias cp='cp -iv'                             # interactive + verbose copy
 alias mv='mv -iv'                             # interactive + verbose move
 alias cl="clear && colorscript -r"            # clear command with colorscripts
-alias c="clear && colorscript -e blocks1"     # color script reset (zwaves)
+# alias c="clear && colorscript -e blocks1"   # color script reset (zwaves)
+alias c="clear && colorBar"                   # color script reset (colorBar - custom)
 alias watch="sass --style compressed --watch" # watches and compiles sass in real time
 alias sb="clear && source ~/.zshrc"           # clears and sources the zshrc file
 alias vi="nvim"                               # neovim
 alias vs="sudoedit"                           # opens the sudo editor (neovim)
+alias mx="tmux"                               # alias for the terminal multiplexer (tmux)
 alias cat="bat"                               # better cat command
 alias py="python"                             # sets python
 alias pc="clear && py"                        # clears the terminal and opens python
@@ -165,7 +164,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
 # default fzf settings
-export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border=rounded --preview-window=border-rounded --info=right --cycle --prompt='➤ ' --color=bg+:#311d42,gutter:#272045,hl:#26f96b,fg:#b267e6,bg:-1,hl+:#26f96b,fg+:#b267e6,pointer:#b267e6,prompt:#f92672,border:#b267e6,query:#b267e6,info:#272045,spinner:#f9a826,scrollbar:#b267e6,separator:#272045,label:#b267e6"
+export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border=sharp --preview-window=border-sharp --info=right --cycle --prompt='➤ ' --color=bg+:#201638,preview-border:#201638,gutter:#201638,hl:#46cda8,fg:#8443e3,bg:-1,hl+:#46cda8,fg+:#8443e3,pointer:#8443e3,prompt:#e4374b,border:#542a91,query:#8443e3,info:#e49068,spinner:#e49068,scrollbar:#542a91,separator:#272045,label:#8443e3"
 export FZF_CTRL_T_OPTS="--preview 'bat --theme='base16' --color=always -n --line-range :500 {}' --border-label=' fuzzy find '"
 export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | head -200' --border-label=' change directory '"
 
@@ -192,7 +191,7 @@ alias lf="eza --only-files"
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets) # highlight main and bracket matching
 
 # plugins
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh # autosuggestions (completions)
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh         # autosuggestions (completions)
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # syntax highlighting
 
 # NVM Configuration (commented out - uncomment if needed)
@@ -200,8 +199,41 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # syntax highl
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/nvm.sh" # loads nvm bash_completion (zsh uses different completion)
 
+# Function(s)
+mcd() { mkdir -p -- "$1" && cd -- "$1"; } # mcd: makes new dir and jumps inside
+
+colorBar() { # call `colorBar`: output a color-strip
+	local colors=(
+		"\e[48;5;135m"
+		"\e[48;5;63m"
+		"\e[48;5;172m"
+		"\e[48;5;197m"
+		"\e[48;5;36m"
+		"\e[48;5;33m"
+	)
+	local reset="\e[0m"
+	local bar=""
+	local segment="  "
+	for color in "${colors[@]}"; do
+		bar+="${color}${segment}"
+	done
+	echo -e "${bar}${reset}"
+	echo ''
+}
+
+p() { # call `p command; p ls`: add padding before and after output
+	# NOTE: does NOT work with aliases, keep it that way, cuz eval is a seq-risk
+	echo ''
+	"$@"
+	echo ''
+}
+
+up() { cd $(printf '%0.s../' $(seq 1 $1)); } # call `up n; up 3`; go back n number of folders
+
 # Prompt Setup (oh-my-posh or starship)
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zitchdog.toml)" # oh my posh
+# eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zitchdog-stardust.toml)" # oh my posh
+# eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/blue.toml)" # oh my posh
 # eval "$(starship init zsh)" # Initialize starship
 
 # Note: If using oh-my-posh or starship, they will override the custom PROMPT set above
@@ -209,3 +241,4 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zitchdog.toml)" # oh
 
 # Startup
 # colorscript -e blocks1 # displays a random colorscript on startup
+colorBar # display the colorstrip on startup
