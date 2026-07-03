@@ -10,7 +10,7 @@ fi
 current_profile=$(powerprofilesctl get)
 profile_label="POWER PROFILE: ${current_profile^^}"
 
-chosen=$(printf "SHUTDOWN\nRESTART\nSLEEP\nLOG OUT\nLOCK\nHIBERNATE\nREBOOT TO BIOS\nREBOOT TO WINDOWS 11\n$samba_label\n$profile_label" | rofi -dmenu -i -p "Power" -theme ~/.config/rofi/colors/minimal-grey.rasi)
+chosen=$(printf "SHUTDOWN\nRESTART\nSLEEP\nLOG OUT\nLOCK\nHIBERNATE\nREBOOT TO BIOS\nREBOOT TO WINDOWS 11\n$samba_label\n$profile_label" | rofi -dmenu -i -p "Power" -theme ~/.config/rofi/colors/ibluemyself.rasi)
 
 case "$chosen" in
     "SHUTDOWN")              systemctl poweroff ;;
@@ -24,7 +24,7 @@ case "$chosen" in
     "TURN ON SAMBA")         sudo systemctl start nmb.service smb.service ;;
     "TURN OFF SAMBA")        sudo systemctl stop nmb.service smb.service ;;
     "$profile_label")
-        next=$(printf "balanced\nperformance\npower-saver" | rofi -dmenu -i -p "Profile" -theme ~/.config/rofi/colors/minimal-grey.rasi)
+        next=$(printf "balanced\nperformance\npower-saver" | rofi -dmenu -i -p "Profile" -theme ~/.config/rofi/colors/ibluemyself.rasi)
         [ -n "$next" ] && powerprofilesctl set "$next"
         ;;
 esac

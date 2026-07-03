@@ -2,7 +2,7 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: "KodeMono Nerd Font", "SF Pro Text", "Adwaita Sans", "JetBrainsMono Nerd Font Propo", sans-serif;
+  font-family: "KodeMono Nerd Font", "BerkeleyMono Nerd Font", "SF Pro Text", "Adwaita Sans", "JetBrainsMono Nerd Font Propo", sans-serif;
   font-size: 14px;
   min-height: 0;
   font-weight: bold;
@@ -11,6 +11,7 @@
 }
 window#waybar {
   background: transparent;
+  /* background: #000000; */
 }
 tooltip {
   background: @bg0;
