@@ -1,0 +1,60 @@
+"$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json"
+version = 2
+final_space = true
+console_title_template = "{{ .Shell }}"
+
+[[blocks]]
+type = "prompt"
+alignment = "left"
+newline = false
+
+  [[blocks.segments]]
+  type = "text"
+  style = "plain"
+  foreground = "#ffffff"
+  template = "USR"
+
+  [[blocks.segments]]
+  type = "text"
+  style = "plain"
+  foreground = "#a0b4c0"
+  template = "@"
+
+  [[blocks.segments]]
+  type = "text"
+  style = "plain"
+  foreground = "#ffffff"
+  template = "MTHR"
+
+  [[blocks.segments]]
+  type = "text"
+  style = "plain"
+  foreground = "#a0b4c0"
+  template = " ["
+
+  [[blocks.segments]]
+  type = "path"
+  style = "plain"
+  foreground = "#e0ecf0"
+  template = "{{ .Path }}"
+
+    [blocks.segments.properties]
+    style = "folder"
+
+  [[blocks.segments]]
+  type = "text"
+  style = "plain"
+  foreground = "#a0b4c0"
+  template = "] "
+
+  [[blocks.segments]]
+  type = "exit"
+  style = "plain"
+  foreground = "#00ff00"
+  foreground_templates = [
+    "{{ if gt .Code 0 }}#ff0000{{ end }}"
+  ]
+  template = ":"
+
+    [blocks.segments.properties]
+    always_enabled = true
