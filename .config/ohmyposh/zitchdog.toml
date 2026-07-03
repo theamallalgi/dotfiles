@@ -25,7 +25,7 @@ final_space = true
       cache_duration = 'none'
 
   [[blocks.segments]]
-    template = '<yellow>[</> <red>{{ .Path }}</> <yellow>]</>'
+    template = '<yellow><b>[</> <red>{{ .Path }}</> <yellow>]</b></>'
     foreground = 'blue'
     background = 'transparent'
     type = 'path'
@@ -67,7 +67,7 @@ final_space = true
   alignment = 'left'
 
   [[blocks.segments]]
-    template = ' :'
+    template = ' <b>:</b>'
     type = 'text'
     style = 'plain'
     foreground_templates = [
