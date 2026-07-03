@@ -1,11 +1,11 @@
 # Oh my Posh - Zitchdog Prompt
 
-console_title_template = 'Terminal ({{ .Shell }})'
+# console_title_template = 'Terminal ({{ .Shell }})'
 version = 3
 final_space = true
 
 [secondary_prompt]
-  template = '<magenta>→</> : '
+  template = '<magenta> 󰘍</> : '
   foreground = 'green'
   background = 'transparent'
 
@@ -14,38 +14,17 @@ final_space = true
   alignment = 'left'
 
   [[blocks.segments]]
-    template = '<green>▌</>'
+    template = '<white>󰫢 </> '
     type = 'text'
     style = 'plain'
-    foreground = 'green'
-    background = 'transparent'
+    foreground = 'white'
 
     [blocks.segments.properties]
       cache_duration = 'none'
 
   [[blocks.segments]]
-    template = '<yellow>▌</>'
-    type = 'text'
-    style = 'plain'
-    foreground = 'yellow'
-    background = 'transparent'
-
-    [blocks.segments.properties]
-      cache_duration = 'none'
-
-  [[blocks.segments]]
-    template = '<red>▌</>'
-    type = 'text'
-    style = 'plain'
-    foreground = 'red'
-    background = 'transparent'
-
-    [blocks.segments.properties]
-      cache_duration = 'none'
-
-  [[blocks.segments]]
-    template = '<red>{{ .Path }}</>'
-    foreground = 'red'
+    template = '<yellow>[ </><red>{{ .Path }}</><yellow> ]</>'
+    foreground = 'blue'
     background = 'transparent'
     type = 'path'
     style = 'plain'
@@ -55,7 +34,7 @@ final_space = true
       style = 'folder'
 
   [[blocks.segments]]
-    template = ' ▌{{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }} *{{ end }}{{ if .Working.Untracked }}%{{ end }}{{ if .Working.Deleted }}-{{ end }}{{ if .Working.Added }}+{{ end }}{{ if gt .Behind 0 }} ↓{{ end }}{{ if gt .Ahead 0 }} ↑{{ end }}'
+    template = ' ({{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }} *{{ end }}{{ if .Working.Untracked }}%{{ end }}{{ if .Working.Deleted }}-{{ end }}{{ if .Working.Added }}+{{ end }}{{ if gt .Behind 0 }} ↓{{ end }}{{ if gt .Ahead 0 }} ↑{{ end }})'
     foreground = 'cyan'
     background = 'transparent'
     type = 'git'
@@ -72,7 +51,7 @@ final_space = true
   overflow = 'hidden'
 
   [[blocks.segments]]
-    template = '<yellow> ▌</><red>{{ .FormattedMs }}</><yellow></>'
+    template = '<yellow>{ </><red>{{ .FormattedMs }}</><yellow> }</>'
     background = 'transparent'
     type = 'executiontime'
     style = 'plain'
@@ -86,7 +65,7 @@ final_space = true
   alignment = 'left'
 
   [[blocks.segments]]
-    template = ' ▌'
+    template = ' ::'
     type = 'text'
     style = 'plain'
     foreground_templates = [
@@ -96,3 +75,4 @@ final_space = true
 
     [blocks.segments.properties]
       cache_duration = 'none'
+
