@@ -49,10 +49,10 @@
 
   "clock": {
     "interval": 1,
-    "format": "<span text_transform='uppercase'><span font_size='110%'>{:%a %b %e %I:%M %p}</span></span>",
+    "format": "<span text_transform='uppercase'><span font_size='110%'>{:%a %b %d %I:%M %p}</span></span>",
     "max-length": 55,
     "tooltip-format": "{calendar}",
-    "format-alt": "<span text_transform='uppercase'><span font_size='110%'>{:%a %b %e %H:%M:%S}</span></span>"
+    "format-alt": "<span text_transform='uppercase'><span font_size='110%'>{:%a %b %d %H:%M:%S}</span></span>"
   },
   "hyprland/workspaces": {
     "active-only": false,
