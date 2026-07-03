@@ -29,7 +29,7 @@ return {
 		dashboard.section.buttons.val = {
 			dashboard.button("n", "󰓎  →  create new file", "<cmd>ene<CR>"),
 			dashboard.button("f", "󰓎  →  find a file", "<cmd>Telescope find_files<CR>"),
-			dashboard.button("r", "󰓎  →  recent files", ":Telescope oldfiles<CR>"),
+			dashboard.button("o", "󰓎  →  recent files", ":Telescope oldfiles<CR>"),
 			dashboard.button("e", "󰓎  →  toggle explorer", ":Neotree filesystem toggle<CR>"),
 			dashboard.button("l", "󰓎  →  lazy plugins", "<cmd>Lazy<CR>"),
 			dashboard.button("c", "󰓎  →  config files", "<cmd>Telescope find_files cwd=$nv<CR>"),
