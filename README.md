@@ -56,4 +56,4 @@
 </br>
 
 > [!NOTE]
-> I don't listen to music, the media player given in the config is `ncmpcpp` with `mpd`, I don't use it, just thought it looked cool.
+> Will be migrating from Arch to Fedora soon.
