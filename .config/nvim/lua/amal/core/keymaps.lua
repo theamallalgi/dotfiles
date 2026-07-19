@@ -85,8 +85,11 @@ set("c", "<Down>", "<C-n>", { noremap = true })
 set("c", "<Up>", "<C-p>", { noremap = true })
 set("c", "<C-y>", "<C-z>", { noremap = true })
 
--- format
+-- lsp, format, definitions etc.
 set("n", "<leader>fs", vim.lsp.buf.format, { desc = "Format File" })
+set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action(s)" })
+set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+set("i", "<C-h>", vim.lsp.buf.signature_help, { desc = "Signature Help (Insert)" })
 
 -- terminal config
 set("n", "<leader>tr", "<cmd>FloatermNew<CR>", { desc = "New Terminal Instance" })
@@ -100,4 +103,4 @@ vim.keymap.set("n", "<Leader>ww", function()
 end, { desc = "Toggle wrap" })
 
 -- make file excecutable
-set("n", "<leader>mx", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make current file executable (chmod +x)"})
+set("n", "<leader>mx", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make current file executable (chmod +x)" })
