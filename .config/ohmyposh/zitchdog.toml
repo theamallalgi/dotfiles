@@ -14,8 +14,8 @@ final_space = true
   alignment = 'left'
 
   [[blocks.segments]]
-    # template = '<#8443e3> 󰫢  </>'
-    template = '<#8443e3>󰫢 </> '
+    template = '<#8443e3>󰫢  </>'
+    # template = '<#8443e3>#</> '
     type = 'text'
     style = 'plain'
     foreground = '#8443e3'
@@ -25,7 +25,7 @@ final_space = true
       cache_duration = 'none'
 
   [[blocks.segments]]
-    template = '<yellow><b>[</> <red>{{ .Path }}</> <yellow>]</b></>'
+    template = '<yellow><b>[ </><red>{{ .Path }}</><yellow> ]</b></>'
     foreground = 'blue'
     background = 'transparent'
     type = 'path'
@@ -77,3 +77,11 @@ final_space = true
 
     [blocks.segments.properties]
       cache_duration = 'none'
+
+# [transient_prompt]
+#   template = "<yellow>[ </><red>{{ .Folder }}</><yellow> ]</> : "
+#   foreground_templates = [
+#     '{{ if gt .Code 0 }}red{{ end }}',
+#     '{{ if eq .Code 0 }}green{{ end }}'
+#   ]
+#   background = 'transparent'
