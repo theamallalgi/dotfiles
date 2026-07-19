@@ -98,6 +98,7 @@ hl.bind("XF86MonBrightnessDown", exec("brightnessctl -e4 -n2 set 5%-"), { locked
 -- screenshots
 hl.bind("Print", exec("grimblast copysave screen ~/Pictures/Screenshots/$(date +%d-%m-%y-%H%M%S).png"))
 hl.bind("CTRL + Print", exec("grimblast copysave area ~/Pictures/Screenshots/$(date +%d-%m-%y-%H%M%S).png"))
+hl.bind("ALT + Print", exec("~/scripts/ocrsnip.sh"))
 
 -- hyprscrolling
 hl.bind(mainMod .. " + period", hl.dsp.layout("move +col"))
@@ -110,3 +111,4 @@ hl.bind(mainMod .. " + SHIFT + down", hl.dsp.layout("movewindowto d"))
 -- other
 hl.bind(mainMod .. " + equal", exec("qalculate-gtk"))
 hl.bind(mainMod .. " + SHIFT + E", exec("eyedropper"))
+hl.bind(mainMod .. " + N", exec("subl"))
