@@ -21,7 +21,7 @@ return {
 				},
 				completion = {
 					menu = {
-						border = "single",
+						border = "none",
 						scrolloff = 1,
 						scrollbar = false,
 						draw = {
