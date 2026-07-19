@@ -41,6 +41,12 @@ vim.g.netrw_mouse = 2 -- mouse config for netrw
 -- vim.cmd("set spelllang=en")
 vim.opt.spelllang = { "en_us" }
 
+-- undo and history
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+
 -- misc config
 vim.o.guifont = "JetBrainsMono Nerd Font:h11" -- sets the default font and height
 vim.opt.autoread = true -- updates vim after file update outside
@@ -54,22 +60,23 @@ vim.opt.showmode = false -- disables the ~ symbol (end of buffer indicator)
 vim.o.termguicolors = true -- sets proper terminal colors
 vim.o.completeopt = "menuone,noselect" -- have a better completion experience
 vim.opt.cursorline = true -- sets the cursor line
+-- vim.opt.guicursor = "" -- fat cursor
 vim.opt.ignorecase = true -- ignore case in search patterns
 vim.opt.smartcase = true  -- makes search case-sensitive when you use uppercase
 vim.opt.numberwidth = 4 -- set number column width to 4 {default 4}
 vim.opt.sidescrolloff = 8 -- Makes sure there are always eight lines of context
 vim.opt.fillchars = { eob = " " } -- change the character at the end of buffer
-vim.opt.signcolumn = "yes" -- fixes sign column jump when diagnostics appear
+vim.opt.signcolumn = "auto" -- `yes` fixes sign column jump when diagnostics appear
 
 -- timeout and update config
 vim.opt.timeoutlen = 1000 -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.updatetime = 100 -- faster completion (4000ms default)
 
--- terminal config
-vim.g.floaterm_width = 0.7
-vim.g.floaterm_height = 0.8
-vim.g.floaterm_position = "center"
-vim.g.floaterm_title = ""
+-- terminal config -- wtf was i even thinking?!
+-- vim.g.floaterm_width = 0.7
+-- vim.g.floaterm_height = 0.8
+-- vim.g.floaterm_position = "center"
+-- vim.g.floaterm_title = ""
 
 -- builtin plugins
 -- vim.cmd("packadd nvim.undotree")

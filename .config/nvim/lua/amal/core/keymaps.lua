@@ -4,7 +4,7 @@ local set = vim.keymap.set
 local silent = { noremap = true, silent = true }
 
 -- general
-set("n", "<Leader>s", "<cmd>write!<CR>", silent) -- saves the file with (space-s)
+set("n", "<Leader>s", "<cmd>write!<CR>", silent) -- saves the file with (space+s)
 set("n", "Q", "<C-W>q") -- quits the window/screen with (shift+q) or (Q)
 set("n", "<Leader>q", "<cmd>wq<cr>") -- saves and quits the tab with (shift+q) or (Q)
 set("n", "<Leader>h", "<cmd>noh<CR>", silent) -- clears search highlights (space+h)
@@ -12,6 +12,8 @@ set("n", "<leader>/", "<cmd>normal gcc<CR><DOWN>", silent) -- comments the line 
 set("v", "<leader>/", "<cmd>normal gcc<CR><DOWN>", silent) -- comments the line with (space+/) or uncomments it
 set("n", "<C-a>", "ggVG", silent) -- selects the entire document
 set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>") -- clear search with <esc>
+set("n", "J", "mzJ`z") -- keep cursor still when line appending
+set("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- replace current word
 
 -- paste over currently selected text without yanking it
 set("v", "p", '"_dp')
@@ -41,12 +43,12 @@ set("n", "<C-k>", "<C-w>k", silent)
 set("n", "<C-l>", "<C-w>l", silent)
 
 -- move lines
-set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
-set("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move Up" })
-set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
-set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
-set("v", "<A-j>", "<cmd>m '>+1<cr>gv=gv", { desc = "Move Down" })
-set("v", "<A-k>", "<cmd>m '<-2<cr>gv=gv", { desc = "Move Up" })
+set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move Down in Normal Mode" })
+set("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move Up in Normal Mode" })
+set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down in Insert Mode" })
+set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up in Insert Mode" })
+set("v", "J", ":m '>+1<cr>gv=gv", { desc = "Move Down in Visual Mode" })
+set("v", "K", ":m '<-2<cr>gv=gv", { desc = "Move Up in Visual Mode" })
 
 -- tabs and buffers
 set("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
@@ -63,6 +65,10 @@ set("n", "<C-Up>", "<cmd>resize -2<cr>", silent)
 set("n", "<C-Down>", "<cmd>resize +2<cr>", silent)
 set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", silent)
 set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", silent)
+set("n", "<C-d>", "<C-d>zz") -- still cursor while scrolling
+set("n", "<C-u>", "<C-u>zz") -- still cursor while scrolling
+set("n", "n", "nzzzv") -- still cursor while searching
+set("n", "N", "Nzzzv") -- still cursor while searching
 
 -- telescope keymaps
 -- set("n", "<Leader>b", "<cmd>Telescope Buffers<CR>", silent) -- change the buffers with (ctrl+tab)
@@ -92,3 +98,6 @@ set("n", "<leader>t]", "<cmd>FloatermNext<CR>", { desc = "Next Terminal Instance
 vim.keymap.set("n", "<Leader>ww", function()
 	vim.wo.wrap = not vim.wo.wrap
 end, { desc = "Toggle wrap" })
+
+-- make file excecutable
+set("n", "<leader>mx", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make current file executable (chmod +x)"})

@@ -5,12 +5,12 @@ return {
 		"theamallalgi/zitchdog",
 		lazy = false,
 		priority = 1000,
-    branch = 'dev',
+    branch = 'main',
 		config = function()
 			require("zitchdog").load({
-				variant = "grape", -- grape (default)/pine/night
-				-- transparent_bg = true, -- a boolean to toggle transparent background
-				-- italic_comments = false, -- a boolean to toggle italic comments
+				variant = "grape", -- grape(d)/pine/dune?
+				-- transparent_bg = true, -- a boolean to toggle transparent background (d:false)
+				-- italic_comments = true, -- a boolean to toggle italic comments (d: false)
 				-- colors = {}, -- a table of colors to override the default palette
 			})
 		end,
