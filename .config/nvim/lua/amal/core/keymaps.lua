@@ -10,7 +10,7 @@ set("n", "<Leader>q", "<cmd>wq<cr>") -- saves and quits the tab with (shift+q) o
 set("n", "<Leader>h", "<cmd>noh<CR>", silent) -- clears search highlights (space+h)
 set("n", "<leader>/", "<cmd>normal gcc<CR><DOWN>", silent) -- comments the line with (space+/) or uncomments it
 set("v", "<leader>/", "<cmd>normal gcc<CR><DOWN>", silent) -- comments the line with (space+/) or uncomments it
-set("n", "<C-a>", "ggVG", silent) -- selects the entire document
+set("n", "<Leader>a", "ggVG", silent) -- selects the entire document
 set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>") -- clear search with <esc>
 set("n", "J", "mzJ`z") -- keep cursor still when line appending
 set("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- replace current word
