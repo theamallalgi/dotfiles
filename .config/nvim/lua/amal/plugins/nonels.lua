@@ -22,22 +22,20 @@ return {
 			end
 
 			-- Collect all sources cleanly
-			local sources = {
-				-- Formatters
-				-- formatting.black.with({ timeout = 5000 }),
-				-- formatting.isort.with({ timeout = 5000 }),
-				formatting.prettierd,
-				formatting.stylua,
-				-- formatting.shfmt,
-        formatting.shfmt.with({ filetypes = { "sh", "zsh", "bash" } }),
+      sources = {
+        formatting.prettierd,
+        formatting.stylua,
+        formatting.shfmt.with({
+          filetypes = { "sh", "bash", "zsh" },
+        }),
 
-				-- Diagnostics and actions
-				-- diagnostics.golangci_lint,
-        diagnostics.golangci_lint.with({ filetypes = { "go" } }),
-				code_actions.refactoring,
-				shellcheck.diagnostics,
-				shellcheck.code_actions,
-			}
+        diagnostics.golangci_lint.with({
+          filetypes = { "go" },
+        }),
+
+        shellcheck.diagnostics,
+        shellcheck.code_actions,
+      }
 
 			if ruff_diag then
 				table.insert(sources, ruff_diag)
