@@ -76,7 +76,7 @@ return {
 		end, { desc = "Recent files in cwd" })
 		keymap.set("n", "<Leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 		keymap.set("n", "<Leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "String under cursor in cwd" })
-		keymap.set("n", "<Leader>b", builtin.buffers, {})
+		keymap.set("n", "<Leader>b", builtin.buffers, { desc = "Buffers in Telescope"} )
 
 		keymap.set("n", "<Leader>fb", function()
 			telescope.extensions.file_browser.file_browser({
