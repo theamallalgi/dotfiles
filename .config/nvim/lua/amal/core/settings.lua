@@ -1,8 +1,8 @@
 -- settings.lua
 
 -- global variables
-_G.diagnostics_enabled = false -- disable diagnostics by default (1)
-vim.diagnostic.enable(false) -- disable diagnostics by default (2)
+_G.diagnostics_enabled = true -- diagnostics enabled by default
+vim.diagnostic.enable(true)   -- keep native diagnostic state in sync with the flag
 
 -- indentation config
 vim.opt.autoindent = true
