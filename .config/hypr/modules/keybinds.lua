@@ -120,8 +120,8 @@ hl.bind(mainMod .. " + period", hl.dsp.layout("move +col"))
 hl.bind(mainMod .. " + comma", hl.dsp.layout("move -col"))
 hl.bind(mainMod .. " + SHIFT + period", hl.dsp.layout("movewindowto r"))
 hl.bind(mainMod .. " + SHIFT + comma", hl.dsp.layout("movewindowto l"))
-hl.bind(mainMod .. " + SHIFT + up", hl.dsp.layout("movewindowto u"))
-hl.bind(mainMod .. " + SHIFT + down", hl.dsp.layout("movewindowto d"))
+-- hl.bind(mainMod .. " + SHIFT + up", hl.dsp.layout("movewindowto u"))
+-- hl.bind(mainMod .. " + SHIFT + down", hl.dsp.layout("movewindowto d"))
 
 -- other
 hl.bind(mainMod .. " + equal", exec("qalculate-gtk"))
