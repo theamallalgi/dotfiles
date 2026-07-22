@@ -29,20 +29,24 @@ hl.bind(mainMod .. " + SHIFT + P", hl.dsp.window.pseudo())
 -- hl.bind(mainMod .. " + bracketright", function() hl.exec_cmd("hyprctl dispatch setlayout scrolling") end)
 
 -- focus movement
-hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
 hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
+-- hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
+-- hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
+-- hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
+-- hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
 
 -- swap windows
-hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.swap({ direction = "left" }))
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.swap({ direction = "right" }))
-hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.swap({ direction = "up" }))
-hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.swap({ direction = "down" }))
+hl.bind(mainMod .. " + left", hl.dsp.window.swap({ direction = "left" }))
+hl.bind(mainMod .. " + right", hl.dsp.window.swap({ direction = "right" }))
+hl.bind(mainMod .. " + up", hl.dsp.window.swap({ direction = "up" }))
+hl.bind(mainMod .. " + down", hl.dsp.window.swap({ direction = "down" }))
+-- hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.swap({ direction = "left" }))
+-- hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.swap({ direction = "right" }))
+-- hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.swap({ direction = "up" }))
+-- hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.swap({ direction = "down" }))
 
 -- workspaces
 -- Switch workspaces with mainMod + [0-9]
@@ -52,6 +56,16 @@ for i = 1, 10 do
 	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
 	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
+
+-- switch workspaces 1-4
+hl.bind(mainMod .. " + SHIFT + H", hl.dsp.focus({ workspace = 1 }))
+hl.bind(mainMod .. " + SHIFT + J", hl.dsp.focus({ workspace = 2 }))
+hl.bind(mainMod .. " + SHIFT + K", hl.dsp.focus({ workspace = 3 }))
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.focus({ workspace = 4 }))
+
+-- move current window to next/previous workspace
+hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.move({ workspace = "-1" }))
+hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ workspace = "+1" }))
 
 -- special workspace (scratchpad)
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
