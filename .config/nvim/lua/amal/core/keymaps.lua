@@ -7,10 +7,10 @@ local silent = { noremap = true, silent = true }
 set("n", "<Leader>s", "<cmd>write!<CR>", silent) -- saves the file with (space+s)
 set("n", "Q", "<C-W>q") -- quits the window/screen with (shift+q) or (Q)
 set("n", "<Leader>q", "<cmd>wq<cr>") -- saves and quits the tab with (shift+q) or (Q)
-set("n", "<Leader>h", "<cmd>noh<CR>", silent) -- clears search highlights (space+h)
 set("n", "<leader>/", "<cmd>normal gcc<CR><DOWN>", silent) -- comments the line with (space+/) or uncomments it
 set("v", "<leader>/", "<cmd>normal gcc<CR><DOWN>", silent) -- comments the line with (space+/) or uncomments it
 set("n", "<Leader>a", "ggVG", { desc = "Select whole document",  noremap = true, silent = true  }) -- selects the entire document
+-- set("n", "<Leader>h", "<cmd>noh<CR>", silent) -- clears search highlights (space+h), dumb me, wtf is ESC for?
 set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>") -- clear search with <esc>
 set("n", "J", "mzJ`z") -- keep cursor still when line appending
 set("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- replace current word
