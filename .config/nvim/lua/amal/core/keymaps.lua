@@ -37,10 +37,10 @@ set("v", "<Tab>", ">gv") -- tab spaces with (tab)
 set("v", "<S-Tab>", "<gv") -- negative tab spaces with (shit-tab)
 
 -- move to window using the <ctrl> hjkl keys
-set("n", "<C-h>", "<C-w>h", silent)
-set("n", "<C-j>", "<C-w>j", silent)
-set("n", "<C-k>", "<C-w>k", silent)
-set("n", "<C-l>", "<C-w>l", silent)
+-- set("n", "<C-h>", "<C-w>h", silent)
+-- set("n", "<C-j>", "<C-w>j", silent)
+-- set("n", "<C-k>", "<C-w>k", silent)
+-- set("n", "<C-l>", "<C-w>l", silent)
 
 -- move lines
 set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move Down in Normal Mode" })
