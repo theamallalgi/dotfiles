@@ -16,10 +16,14 @@ return {
     set("n", "<C-p>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, silent)
 
     -- navigate to harpooned files
-    set("n", "<C-e>", function() harpoon:list():select(1) end, silent)
-    set("n", "<C-r>", function() harpoon:list():select(2) end, silent)
-    set("n", "<C-t>", function() harpoon:list():select(3) end, silent)
-    set("n", "<C-y>", function() harpoon:list():select(4) end, silent)
+    -- set("n", "<C-e>", function() harpoon:list():select(1) end, silent)
+    -- set("n", "<C-r>", function() harpoon:list():select(2) end, silent)
+    -- set("n", "<C-t>", function() harpoon:list():select(3) end, silent)
+    -- set("n", "<C-y>", function() harpoon:list():select(4) end, silent)
+    set("n", "<C-h>", function() harpoon:list():select(1) end, silent)
+    set("n", "<C-j>", function() harpoon:list():select(2) end, silent)
+    set("n", "<C-k>", function() harpoon:list():select(3) end, silent)
+    set("n", "<C-l>", function() harpoon:list():select(4) end, silent)
 
     -- next / prev in list
     set("n", "<C-S-P>", function() harpoon:list():prev() end, silent)
