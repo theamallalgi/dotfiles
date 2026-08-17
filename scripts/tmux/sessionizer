@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+configFile="$HOME/dotfiles/scripts/tmux/projects"
+
+selectedLine=$(cut -d'|' -f1 "$configFile" | fzf --prompt="project: ")
+[[ -z "$selectedLine" ]] && exit 0
+
+projectLine=$(grep -E "^${selectedLine}\|" "$configFile")
+
+IFS='|' read -r -a fields <<<"$projectLine"
+
+sessionName="${fields[0]}"
+projectPath="${fields[1]}"
+windowDefs=("${fields[@]:2}")
+
+sessionName=$(echo "$sessionName" | tr '.' '_')
+
+sessionExists=false
+if tmux has-session -t "$sessionName" 2>/dev/null; then
+	sessionExists=true
+fi
+
+if ! $sessionExists; then
+	firstWindow=true
+	for windowDef in "${windowDefs[@]}"; do
+		windowName="${windowDef%%=*}"
+		windowRest="${windowDef#*=}"
+
+		windowDir="${windowRest%%::*}"
+		windowCmd=""
+		if [[ "$windowRest" == *"::"* ]]; then
+			windowCmd="${windowRest#*::}"
+		fi
+
+		if $firstWindow; then
+			tmux new-session -d -s "$sessionName" -n "$windowName" -c "$windowDir"
+			firstWindow=false
+		else
+			tmux new-window -t "$sessionName" -n "$windowName" -c "$windowDir"
+		fi
+
+		if [[ -n "$windowCmd" ]]; then
+			tmux send-keys -t "${sessionName}:${windowName}" "$windowCmd" C-m
+		fi
+	done
+
+	tmux select-window -t "${sessionName}:1"
+fi
+
+if [[ -z "${TMUX:-}" ]]; then
+	tmux attach -t "$sessionName"
+else
+	tmux switch-client -t "$sessionName"
+fi
