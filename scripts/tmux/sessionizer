@@ -1,8 +1,16 @@
 #!/usr/bin/env bash
 
+# ~/dotfiles/scripts/tmux/sessionizer -- handle tmux templates
+# NOTE: make sure to check the `configFile` variable
+
 set -euo pipefail
 
 configFile="$HOME/dotfiles/scripts/tmux/projects.ini"
+
+if [[ ! -f "$configFile" ]]; then
+	echo "error: config file not found at $configFile" >&2
+	exit 1
+fi
 
 sectionNames=$(grep -oP '^\[\K[^\]]+' "$configFile")
 selectedProject=$(echo "$sectionNames" | fzf --prompt="project: ")
@@ -16,15 +24,42 @@ if tmux has-session -t "$sessionName" 2>/dev/null; then
 fi
 
 if ! $sessionExists; then
-	mapfile -t windowLines < <(awk -v proj="$selectedProject" '
+	mapfile -t rawLines < <(awk -v proj="$selectedProject" '
 		/^\[.*\]$/ {
 			inSection = ($0 == "[" proj "]")
 			next
 		}
-		inSection && NF {
+		inSection && NF && !/^[;#]/ {
 			print
 		}
 	' "$configFile")
+
+	if [[ ${#rawLines[@]} -eq 0 ]]; then
+		echo "error: section [$selectedProject] has no keys" >&2
+		exit 1
+	fi
+
+	pathLine=""
+	windowLines=()
+	for line in "${rawLines[@]}"; do
+		key="${line%%=*}"
+		key="${key// /}"
+		if [[ "$key" == "path" ]]; then
+			pathLine="$line"
+		else
+			windowLines+=("$line")
+		fi
+	done
+
+	if [[ ${#windowLines[@]} -eq 0 ]]; then
+		if [[ -z "$pathLine" ]]; then
+			echo "error: section [$selectedProject] has no path and no windows" >&2
+			exit 1
+		fi
+		pathDir="${pathLine#*=}"
+		pathDir="${pathDir# }"
+		windowLines=("ops = $pathDir")
+	fi
 
 	firstWindow=true
 	for line in "${windowLines[@]}"; do
@@ -44,11 +79,7 @@ if ! $sessionExists; then
 		fi
 
 		if $firstWindow; then
-			if [[ "$windowName" == "path" ]]; then
-				tmux new-session -d -s "$sessionName" -n "main" -c "$windowDir"
-			else
-				tmux new-session -d -s "$sessionName" -n "$windowName" -c "$windowDir"
-			fi
+			tmux new-session -d -s "$sessionName" -n "$windowName" -c "$windowDir"
 			firstWindow=false
 		else
 			tmux new-window -t "$sessionName" -n "$windowName" -c "$windowDir"
