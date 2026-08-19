@@ -2,20 +2,13 @@
 
 set -euo pipefail
 
-configFile="$HOME/dotfiles/scripts/tmux/projects"
+configFile="$HOME/dotfiles/scripts/tmux/projects.ini"
 
-selectedLine=$(cut -d'|' -f1 "$configFile" | fzf --prompt="project: ")
-[[ -z "$selectedLine" ]] && exit 0
+sectionNames=$(grep -oP '^\[\K[^\]]+' "$configFile")
+selectedProject=$(echo "$sectionNames" | fzf --prompt="project: ")
+[[ -z "$selectedProject" ]] && exit 0
 
-projectLine=$(grep -E "^${selectedLine}\|" "$configFile")
-
-IFS='|' read -r -a fields <<<"$projectLine"
-
-sessionName="${fields[0]}"
-projectPath="${fields[1]}"
-windowDefs=("${fields[@]:2}")
-
-sessionName=$(echo "$sessionName" | tr '.' '_')
+sessionName=$(echo "$selectedProject" | tr '.' '_')
 
 sessionExists=false
 if tmux has-session -t "$sessionName" 2>/dev/null; then
@@ -23,19 +16,39 @@ if tmux has-session -t "$sessionName" 2>/dev/null; then
 fi
 
 if ! $sessionExists; then
+	mapfile -t windowLines < <(awk -v proj="$selectedProject" '
+		/^\[.*\]$/ {
+			inSection = ($0 == "[" proj "]")
+			next
+		}
+		inSection && NF {
+			print
+		}
+	' "$configFile")
+
 	firstWindow=true
-	for windowDef in "${windowDefs[@]}"; do
-		windowName="${windowDef%%=*}"
-		windowRest="${windowDef#*=}"
+	for line in "${windowLines[@]}"; do
+		windowName="${line%%=*}"
+		windowName="${windowName// /}"
+
+		windowRest="${line#*=}"
+		windowRest="${windowRest# }"
 
 		windowDir="${windowRest%%::*}"
+		windowDir="${windowDir% }"
+
 		windowCmd=""
 		if [[ "$windowRest" == *"::"* ]]; then
 			windowCmd="${windowRest#*::}"
+			windowCmd="${windowCmd# }"
 		fi
 
 		if $firstWindow; then
-			tmux new-session -d -s "$sessionName" -n "$windowName" -c "$windowDir"
+			if [[ "$windowName" == "path" ]]; then
+				tmux new-session -d -s "$sessionName" -n "main" -c "$windowDir"
+			else
+				tmux new-session -d -s "$sessionName" -n "$windowName" -c "$windowDir"
+			fi
 			firstWindow=false
 		else
 			tmux new-window -t "$sessionName" -n "$windowName" -c "$windowDir"
