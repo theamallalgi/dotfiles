@@ -13,7 +13,13 @@ if [[ ! -f "$configFile" ]]; then
 fi
 
 sectionNames=$(grep -oP '^\[\K[^\]]+' "$configFile")
-selectedProject=$(echo "$sectionNames" | fzf --prompt="project: ")
+
+if [[ -n "${TMUX:-}" ]]; then
+	selectedProject=$(echo "$sectionNames" | fzf-tmux -p 40%,50% --prompt="project: ")
+else
+	selectedProject=$(echo "$sectionNames" | fzf --prompt="project: ")
+fi
+
 [[ -z "$selectedProject" ]] && exit 0
 
 sessionName=$(echo "$selectedProject" | tr '.' '_')
