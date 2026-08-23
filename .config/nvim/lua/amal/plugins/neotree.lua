@@ -10,7 +10,7 @@ return {
 				local f = vim.fn.expand("%:p")
 				if vim.fn.isdirectory(f) ~= 0 then
 					vim.cmd("Neotree dir=" .. f)
-          vim.cmd("bwipeout #")
+					vim.cmd("bwipeout #")
 					vim.api.nvim_clear_autocmds({ group = "NeoTreeInit" })
 				end
 			end,

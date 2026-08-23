@@ -4,7 +4,7 @@ return {
 
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
-    -- "nvim-treesitter/nvim-treesitter-context",
+		-- "nvim-treesitter/nvim-treesitter-context",
 	},
 
 	opts = {
@@ -16,6 +16,9 @@ return {
 			"vimdoc",
 			"cpp",
 			"c",
+			"markdown",
+			"markdown_inline",
+			"tsx",
 		},
 
 		auto_install = true,
@@ -44,14 +47,18 @@ return {
 	config = function(_, opts)
 		require("nvim-treesitter").setup(opts)
 
-    -- require("treesitter-context").setup({
-      -- enable = true,
-      -- max_lines = 1,          -- Maximum context lines shown
-      -- multiline_threshold = 5,
-      -- trim_scope = "outer",
-      -- mode = "cursor",        -- or "topline"
-      -- separator = nil,        -- or "-"
-    -- })
+    -- mdx
+    vim.filetype.add({ extension = { mdx = "mdx" } })
+    vim.treesitter.language.register("markdown", "mdx")
+
+		-- require("treesitter-context").setup({
+		-- enable = true,
+		-- max_lines = 1,          -- Maximum context lines shown
+		-- multiline_threshold = 5,
+		-- trim_scope = "outer",
+		-- mode = "cursor",        -- or "topline"
+		-- separator = nil,        -- or "-"
+		-- })
 
 		require("nvim-treesitter-textobjects").setup({
 			select = {
