@@ -9,11 +9,10 @@ export KITTY_LISTEN_ON=unix:/tmp/mykitty             # kitty terminal remote con
 export SUDO_EDITOR=nvim                              # set neovim as the sudo editor
 export VISUAL=nvim                                   # visual editor (used by tools that open a full-screen editor)
 export EDITOR=nvim                                   # default editor (used by tools that just need a line/file editor)
-export BAT_THEME="base16"                            # setup default bat theme
+export BAT_THEME="Solarized (dark)"                            # setup default bat theme
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"  # use bat pager to color less/man pages
 
 # Custom Location Variables
-export nv="$ad/Local/nvim/"
 export ds="$HOME/Desktop/"
 export dot="$HOME/dotfiles/"
 export bs="$HOME/.zshrc"
@@ -34,11 +33,27 @@ setopt PROMPT_SUBST       # enable prompt substitution
 # History Configuration
 HISTFILE=~/.zsh_history
 HISTSIZE=99999
+# shellcheck disable=SC2034
 SAVEHIST=99999
 
 # NOTE: vi mode in zsh, you end up asking for more and install bloat.
-# bindkey -v  # enable vi mode (don't)
+bindkey -v  # enable vi mode (don't)
 # bindkey -e # enable emacs mode (default)
+
+function zle-keymap-select { # change cursor color on vi mode change
+  if [[ $KEYMAP == vicmd ]]; then
+    printf '\e]12;#e49068\a'
+  else
+    printf '\e]12;#f6ceff\a'
+  fi
+}
+
+function zle-line-init {
+  printf '\e]12;#f6ceff\a'
+}
+
+zle -N zle-keymap-select
+zle -N zle-line-init
 
 # Completion System
 autoload -Uz compinit
@@ -74,24 +89,24 @@ alias rmcr="sed -i 's/\r//g'"                 # removes windows crlf in a file
 alias ac="ani-cli"                            # an alias for the ani-cli client
 alias exp="nautilus"                          # opens explorer (windows only), append with '.' or path
 alias cs="colorscript"                        # color script cli
-alias cht="$dot/scripts/cht.sh"               # cht.sh script; example - cht golang:slice
+alias cht='$dot/scripts/cht.sh'               # cht.sh script; example - cht golang:slice
 # alias help="run-help"                       # set bash like help command
 
 # eza - next level ls (dir)
 alias ls="eza --no-filesize --no-permissions --all --color=always --icons=never --no-user --group-directories-first"
 alias la="eza -lagm@ --all --icons=never --no-user --group-directories-first"
-alias lt="eza --no-filesize --tree --color=always --icons=never"
-alias ll="eza --no-filesize --color=always --icons=never --width 1"
+alias lt="eza --no-filesize --tree --color=always --icons=never --group-directories-first"
+alias ll="eza --no-filesize --color=always --icons=never --group-directories-first --width 1"
 alias ld="eza --only-dirs"
 alias lf="eza --only-files"
 
 # Git Aliases
-alias gc="git clone"                                                                                 # clones a git repo
-alias gw="git commit -m"                                                                             # commits a change
-alias ga="git add"                                                                                   # prepare files for staging
-alias gs="git status"                                                                                # shows the local status
-alias gp="git push"                                                                                  # pushes the staged changes
-alias gP="git pull"                                                                                  # pulls from the repo
+# alias gc="git clone"                                                                                 # clones a git repo
+# alias gw="git commit -m"                                                                             # commits a change
+# alias ga="git add"                                                                                   # prepare files for staging
+# alias gs="git status"                                                                                # shows the local status
+# alias gp="git push"                                                                                  # pushes the staged changes
+# alias gP="git pull"                                                                                  # pulls from the repo
 alias gg="lazygit"                                                                                   # opens lazygit
 alias gl="git log --all --graph --pretty=format:'%C(magenta)%h %C(white)%an  %ar%C(auto)  %D%n%s%n'" # fancier git log
 
@@ -103,13 +118,17 @@ alias -g NE='2>/dev/null'      # redirect stderr to /dev/null
 alias -g NO='>/dev/null'       # redirect stdout to /dev/null
 alias -g NUL='>/dev/null 2>&1' # redirect both stdout and stderr to /dev/null
 
+# misc aliases
+alias vt="NVIM_APPNAME=nvim-test nvim"
+
 # Fuzzy Finder Aliases
 # alias fc='cd $(fzf --preview='bat')'
 # alias vif='vi $(fzf --preview='bat')'
 # alias vimf='vim $(fzf --preview='bat')'
 
-# Key Bindings
+# Keybindings
 bindkey ' ' magic-space     # expands history expressions like !! or !$ when you press space
+bindkey -s '^f' 'tmux new-session -A -s sessionizer ~/dotfiles/scripts/tmux/sessionizer\n'
 # bindkey -s '^L' 'clear\n' # fix tmux clear screen issue
 
 autoload -Uz edit-command-line   # open the current command in your $EDITOR
@@ -124,7 +143,8 @@ autoload -Uz zmv            # use advanced batch rename/move
 
 bindkey -s '^g' 'rgs\n' # search through files using ripgrep with (ctrl + g), see rgs() below
 
-function help(){ bash -c "help $@" } # enable and setup bash help command
+# function help() { bash -c "help $@"; } # enable and setup bash help command
+function help() { bash -c 'help "$@"' _ "$@"; }
 
 # Hooks
 # INFO: chpwd hooks run automatically every time the working directory changes.
@@ -132,15 +152,14 @@ function help(){ bash -c "help $@" } # enable and setup bash help command
 # functions listen on the same event without overwriting each other, so
 # each one below can be added, removed, or reordered independently.
 function auto_venv() { # auto-activate python virtual environments
-	# if already in a virtualenv, do nothing
 	if [[ -n "$VIRTUAL_ENV" && "$PWD" != *"${VIRTUAL_ENV:h}"* ]]; then
 		deactivate
-		return
 	fi
 	[[ -n "$VIRTUAL_ENV" ]] && return
 	local dir="$PWD"
 	while [[ "$dir" != "/" ]]; do
 		if [[ -f "$dir/.venv/bin/activate" ]]; then
+      # shellcheck source=/dev/null
 			source "$dir/.venv/bin/activate"
 			return
 		fi
@@ -207,7 +226,7 @@ PROMPT="$PROMPT%(?.%F{green}.%F{red}) : %f" # green : if success, red : if failu
 PROMPT="$PROMPT%F{green}"                   # default green text
 
 # NOTE: if using oh-my-posh or starship, they will override the custom PROMPT set above.
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zitchdog.toml)"   # oh my posh
+eval "$(oh-my-posh init zsh --config "$HOME/.config/ohmyposh/zitchdog.toml")"   # oh my posh
 # eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/blue.toml)"     # oh my posh
 # eval "$(starship init zsh)"                                                 # initialize starship
 
@@ -222,7 +241,7 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export GROFF_NO_SGR=1
 
 # Functions
-mcd() { mkdir -p -- "$1" && cd -- "$1"; } # mcd: makes new dir and jumps inside
+mcd() { mkdir -p -- "$1" && cd -- "$1" || return; } # mcd: makes new dir and jumps inside
 
 colorBar() { # INFO: call `colorBar`: output a color-strip
 	local colors=(
@@ -250,16 +269,18 @@ p() { # INFO: call `p command; p ls`: add padding before and after output
 	echo ''
 }
 
-up() { cd $(printf '%0.s../' $(seq 1 $1)); } # call `up n; up 3`; go back n number of folders
+function up() { cd "$(printf '%0.s../' $(seq 1 "$1"))" || return; } # call `up n; up 3`; go back n number of folders
+# up() { cd $(printf '%0.s../' $(seq 1 $1)); }
 
 rgs() { # search through files using ripgrep with (ctrl + g)
 	rg --color=always --line-number --no-heading --smart-case "${1:-.}" |
 		fzf --ansi \
 			--delimiter : \
-			--preview 'bat --theme=base16 --color=always -n --highlight-line {2} {1}' \
+			--preview 'bat --color=always -n --highlight-line {2} {1}' \
 			--preview-window 'right:60%:+{2}-5:border-rounded' \
 			--bind 'change:reload:rg --color=always --line-number --no-heading --smart-case {q} || true' \
 			--bind 'enter:become(nvim {1} +{2})'
+			# --preview 'bat --theme=base16 --color=always -n --highlight-line {2} {1}' \
 }
 
 # add empty line before prompt(s)
@@ -275,8 +296,11 @@ rgs() { # search through files using ripgrep with (ctrl + g)
 # add-zsh-hook precmd _omp_blank_line
 
 # Plugins
+# shellcheck source=/dev/null
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh         # autosuggestions (completions)
+# shellcheck source=/dev/null
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # syntax highlighting
+# shellcheck disable=SC2034
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)                        # highlight main and bracket matching
 
 # NOTE: Instructions to install plugins from above:
@@ -290,7 +314,7 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border=sharp --preview-window=border-sharp --info=right --cycle --prompt='➤ ' --color=bg+:#201638,preview-border:#201638,gutter:#201638,hl:#46cda8,fg:#8443e3,bg:-1,hl+:#46cda8,fg+:#8443e3,pointer:#8443e3,prompt:#e4374b,border:#542a91,query:#8443e3,info:#e49068,spinner:#e49068,scrollbar:#542a91,separator:#272045,label:#8443e3"
-export FZF_CTRL_T_OPTS="--preview 'bat --theme='base16' --color=always -n --line-range :500 {}' --border-label=' fuzzy find '"
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}' --border-label=' fuzzy find '"
 export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | head -200' --border-label=' change directory '"
 
 # Initialize Tools
