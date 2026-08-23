@@ -17,6 +17,7 @@ return {
 				diagnostics = {
 					globals = {
 						"vim",
+						"hl",
 						"Snacks",
 					},
 				},
@@ -51,7 +52,8 @@ return {
 
 	ruff = {},
 
-	ts_ls = {},
+	-- ts_ls = {},
+	tsgo = {},
 
 	rust_analyzer = {},
 
@@ -102,6 +104,13 @@ return {
 	-- clangd = {
 	-- 	cmd = { "clangd", "--background-index", "--clang-tidy" },
 	-- },
+
+	tinymist = {
+		settings = {
+			formatterMode = "typestyle",
+			exportPdf = "never",
+		},
+	},
 
 	texlab = {
 		settings = {

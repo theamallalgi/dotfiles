@@ -54,12 +54,7 @@ return {
 			end
 
 			null_ls.setup({
-				root_dir = require("null-ls.utils").root_pattern(
-					".null-ls-root",
-					"pyproject.toml",
-					"setup.cfg",
-					".git"
-				),
+				root_dir = require("null-ls.utils").root_pattern(".null-ls-root", "pyproject.toml", "setup.cfg", ".git"),
 				sources = sources,
 			})
 		end,

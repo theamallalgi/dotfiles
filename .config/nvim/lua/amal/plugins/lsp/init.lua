@@ -19,9 +19,9 @@ return {
 		require("mason").setup({
 			ui = {
 				icons = {
-					package_installed = "󰄬",
-					package_pending = "󰁔",
-					package_uninstalled = "󰅖",
+					package_installed = "󰗠 ",
+					package_pending = " ",
+					package_uninstalled = " ",
 				},
 			},
 		})
@@ -30,21 +30,23 @@ return {
 			ensure_installed = vim.list_extend(vim.tbl_keys(servers), {
 				"stylua",
 				"prettierd",
-				"eslint_d",
+				"eslint_d", -- tsgo is faster?
+				-- "tsgo",
 				"black",
 				"isort",
 				"ruff",
 				"shfmt",
 				"shellcheck",
 				"buf",
-        -- "rustfmt", -- install via rustup
+				-- "rustfmt", -- install via rustup
 				-- "golangci-lint",
-        -- "gofumpt",
-        -- "goimports",
-        -- "clang-format",
-        -- "cppcheck",
-        "texlab",
-        "latexindent",
+				-- "gofumpt",
+				-- "goimports",
+				-- "clang-format",
+				-- "cppcheck",
+				"tinymist",
+				"texlab",
+				"latexindent",
 			}),
 		})
 
