@@ -62,20 +62,19 @@ return {
 		}
 
 		-- random quote generator
-    local function get_random_quote()
-      local path = vim.fn.stdpath("config")
-        .. "/lua/amal/plugins/config/quotes.json"
+		local function get_random_quote()
+			local path = vim.fn.stdpath("config") .. "/lua/amal/plugins/config/quotes.json"
 
-      local lines = vim.fn.readfile(path)
-      if not lines or #lines == 0 then
-        return '"fallback quote..."'
-      end
+			local lines = vim.fn.readfile(path)
+			if not lines or #lines == 0 then
+				return '"fallback quote..."'
+			end
 
-      local content = table.concat(lines, "\n")
-      local quotes = vim.json.decode(content).quotes
+			local content = table.concat(lines, "\n")
+			local quotes = vim.json.decode(content).quotes
 
-      return quotes[math.random(#quotes)]
-    end
+			return quotes[math.random(#quotes)]
+		end
 
 		dashboard.section.footer.val = { get_random_quote() }
 
@@ -98,11 +97,11 @@ return {
 		alpha.setup(dashboard.opts)
 
 		-- disable folding
-    vim.api.nvim_create_autocmd("FileType", {
-      pattern = "alpha",
-      callback = function()
-        vim.opt_local.foldenable = false
-      end,
-    })
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = "alpha",
+			callback = function()
+				vim.opt_local.foldenable = false
+			end,
+		})
 	end,
 }

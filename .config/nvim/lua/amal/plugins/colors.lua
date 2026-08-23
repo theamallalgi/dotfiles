@@ -5,14 +5,23 @@ return {
 		"theamallalgi/zitchdog",
 		lazy = false,
 		priority = 1000,
-    branch = 'main',
+		branch = "main",
 		config = function()
 			require("zitchdog").load({
-				variant = "grape", -- grape(d)/pine/dune?
-				-- transparent_bg = true, -- a boolean to toggle transparent background (d:false)
-				-- italic_comments = true, -- a boolean to toggle italic comments (d: false)
-				-- colors = {}, -- a table of colors to override the default palette
+				variant = "grape", -- "grape" | "pine": the default colorscheme variant
+				transparent_bg = true, -- boolean: toggles a transparent background
+				disable_cursorline = true, -- boolean: hides CursorLine highlight by matching it to bg
+				-- italic_comments = false, -- boolean: toggles italic comments
+				-- fg = nil, -- string?: override the base foreground (defaults to the variant's white)
+				-- bg = nil, -- string?: override the base background (defaults to the variant's black)
+				-- colors = {}, -- table<string, string>: override any specific palette color
 			})
 		end,
+	},
+	{
+		"craftzdog/solarized-osaka.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
 	},
 }

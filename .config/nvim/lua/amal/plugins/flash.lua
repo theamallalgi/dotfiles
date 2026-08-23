@@ -3,20 +3,21 @@ return {
 	event = "VeryLazy",
 	opts = {
 		highlight = {
-			backdrop = true,
+			backdrop = false,
 			matches = true,
 			priority = 5000,
 			groups = {
-				match = "MyFlashMatch",
-				current = "MyFlashCurrent",
-				backdrop = "MyFlashBackdrop",
-				label = "MyFlashLabel",
+				-- match = "MyFlashMatch",
+				-- current = "MyFlashCurrent",
+				-- backdrop = "MyFlashBackdrop",
+				backdrop = "",
+				-- label = "MyFlashLabel",
 			},
 		},
 	},
 	keys = {
 		{
-			"ff",
+			"zk",
 			mode = { "n", "x", "o" },
 			function()
 				require("flash").jump()
@@ -24,7 +25,7 @@ return {
 			desc = "Flash",
 		},
 		{
-			"vf",
+			"Zk",
 			mode = { "n", "x", "o" },
 			function()
 				require("flash").treesitter()
@@ -32,7 +33,7 @@ return {
 			desc = "Flash Treesitter",
 		},
 		{
-			"fe",
+			"<Leader>ze",
 			mode = "o",
 			function()
 				require("flash").remote()
@@ -40,7 +41,7 @@ return {
 			desc = "Remote Flash",
 		},
 		{
-			"fr",
+			"<Leader>zr",
 			mode = { "o", "x" },
 			function()
 				require("flash").treesitter_search()
@@ -48,7 +49,7 @@ return {
 			desc = "Treesitter Search",
 		},
 		{
-			"<c-s>",
+			"<Leader><c-s>",
 			mode = { "c" },
 			function()
 				require("flash").toggle()
