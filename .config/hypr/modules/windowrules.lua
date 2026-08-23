@@ -66,7 +66,7 @@ hl.window_rule({ -- floats the bitwarden popup
 	match = { initial_title = "_crx_nngceckbapebfimnlniiiahkandclblb" },
 	float = true,
 	center = true,
-  max_size = { 960, 820 },
+  max_size = { 480, 820 },
 })
 
 -- hyprland-run windowrule
