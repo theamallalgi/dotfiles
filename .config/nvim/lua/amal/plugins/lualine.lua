@@ -8,7 +8,8 @@ local colors = {
 	darkgreen = "#123127",
 	blue = "#8443e3",
 	magenta = "#8443e3",
-	cyan = "#46cea9",
+	cyan = "#17c5cb",
+	darkcyan = "#08313f",
 	yellow = "#e49068",
 	darkyellow = "#4b3b27",
 	orange = "#e4465e",
@@ -73,6 +74,26 @@ return {
 			end
 			return ""
 		end
+
+		local function get_listed_buffers()
+			return vim.tbl_filter(function(b)
+				return vim.api.nvim_buf_is_valid(b) and vim.bo[b].buflisted
+			end, vim.api.nvim_list_bufs())
+		end
+
+		local function buffer_count()
+			local buffers = get_listed_buffers()
+			local current = vim.api.nvim_get_current_buf()
+			local index = 1
+			for i, b in ipairs(buffers) do
+				if b == current then
+					index = i
+					break
+				end
+			end
+      return index .. "/" .. #buffers
+		end
+
 		require("lualine").setup({
 			options = {
 				theme = zitchdog,
@@ -87,30 +108,41 @@ return {
 				lualine_a = { { "fancy_mode", width = 3 } },
 				lualine_b = {},
 				lualine_c = {
-					"fancy_branch",
 					{ "filename", path = 1, symbols = { modified = "󰫢 " }, separator = "" },
+				},
+				lualine_x = {
 					{
 						"diagnostics",
 						sources = { "nvim_diagnostic" },
-						sections = { "error", "warn" },
+						sections = { "error", "warn", "info", "hint" },
 						symbols = {
 							error = "",
 							warn = "",
 						},
 						diagnostics_color = {
-							error = { fg = colors.red, bg = colors.darkred },
-							warn = { fg = colors.orange, bg = colors.darkorange },
+							error = "DiagnosticVirtualTextError",
+							warn = "DiagnosticVirtualTextWarn",
+							info = "DiagnosticVirtualTextInfo",
+							hint = "DiagnosticVirtualTextHint",
 						},
 						colored = true,
 						update_in_insert = false,
 						always_visible = false,
 						separator = "",
-            cond = function() return _G.diagnostics_enabled end,
+						cond = function()
+							return _G.diagnostics_enabled
+						end,
 					},
-				},
-				lualine_x = {
+					{ "fancy_branch", color = { fg = colors.cyan, bg = colors.darkcyan } },
 					"location",
 					"progress",
+					{
+						buffer_count,
+						color = { fg = colors.blue, bg = colors.black },
+						cond = function()
+							return #get_listed_buffers() > 1
+						end,
+					},
 				},
 				lualine_y = {
 					function()
@@ -126,7 +158,7 @@ return {
 				},
 				lualine_z = {
 					function()
-						return _G.copilot_enabled and " " or ""
+						return _G.copilot_enabled and " " or ""
 					end,
 					{ word_count, color = { fg = colors.green, bg = colors.darkgreen } },
 				},
