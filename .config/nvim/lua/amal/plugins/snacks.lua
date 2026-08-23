@@ -8,8 +8,7 @@ return {
 			enabled = true,
 			timeout = 1000,
 			render = "compact",
-			-- render = "minimal",
-      vim_notify = true,
+			vim_notify = true,
 		},
 		styles = {
 			notification = {
@@ -38,12 +37,82 @@ return {
 		terminal = { enabled = true, style = "popup" }, -- snacks.terminal (terminal toggle)
 	},
 	keys = {
-		{ "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
-		{ "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
-		{ "<leader>nn", function() Snacks.notifier.show_history() end, desc = "Notification History" },
-		{ "<leader>sm", function() Snacks.picker.marks() end, desc = "Show Marks" },
-		{ "<leader>sH", function() Snacks.picker.highlights() end, desc = "Show Highlights" },
-		{ "<leader>sK", function() Snacks.picker.keymaps() end, desc = "Show Keymaps" },
-		{ "<leader>sq", function() Snacks.picker.qflist() end, desc = "Quick Fix List" },
+		{
+			"<leader>gg",
+			function()
+				Snacks.lazygit()
+			end,
+			desc = "Lazygit",
+		},
+		{
+			"<leader>gl",
+			function()
+				Snacks.lazygit.log()
+			end,
+			desc = "Lazygit logs",
+		},
+		{
+			"<leader>nu",
+			function()
+				Snacks.notifier.hide()
+			end,
+			desc = "Dismiss All Notifications",
+		},
+		{
+			"<leader>nn",
+			function()
+				Snacks.notifier.show_history()
+			end,
+			desc = "Notification History",
+		},
+		{
+			"<leader>nm",
+			function()
+				Snacks.picker.marks()
+			end,
+			desc = "Show Marks",
+		},
+		{
+			"<leader>nh",
+			function()
+				Snacks.picker.highlights()
+			end,
+			desc = "Show Highlights",
+		},
+		{
+			"<leader>nk",
+			function()
+				Snacks.picker.keymaps()
+			end,
+			desc = "Show Keymaps",
+		},
+		{
+			"<leader>nq",
+			function()
+				Snacks.picker.qflist()
+			end,
+			desc = "Quick Fix List",
+		},
+		{
+			"<leader>ls",
+			function()
+				Snacks.picker.lsp_symbols()
+			end,
+			desc = "Lsp Symbols",
+		},
+		{
+			"<leader>lS",
+			function()
+				Snacks.picker.lsp_workspace_symbols()
+			end,
+			desc = "Lsp Workspace Symbols",
+		},
+		{
+			"<leader>e",
+			function()
+				Snacks.explorer()
+			end,
+			desc = "Open Explorer",
+		},
 	},
 }
