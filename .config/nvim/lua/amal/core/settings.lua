@@ -2,7 +2,7 @@
 
 -- global variables
 _G.diagnostics_enabled = true -- diagnostics enabled by default
-vim.diagnostic.enable(true)   -- keep native diagnostic state in sync with the flag
+vim.diagnostic.enable(true) -- keep native diagnostic state in sync with the flag
 
 -- indentation config
 vim.opt.autoindent = true
@@ -26,6 +26,7 @@ vim.opt.clipboard = "unnamedplus"
 -- status bar
 vim.opt.conceallevel = 0
 vim.opt.cmdheight = 0
+vim.opt.laststatus = 3
 
 -- split screen config (only splits to right and bottom sides)
 vim.opt.splitright = true
@@ -34,7 +35,10 @@ vim.opt.splitbelow = true
 -- netrw config
 vim.g.netrw_banner = 0 -- disable the how tos and stuff from netrw window
 vim.g.netrw_mouse = 2 -- mouse config for netrw
--- vim.cmd("let g:netrw_liststyle = 3") -- sets the default file explorer style to tree structure
+vim.g.netrw_liststyle = 3 -- tree view
+vim.g.netrw_winsize = 20 -- fix the left split width
+vim.g.netrw_browse_split = 0 -- open files in the previous window
+vim.g.netrw_altfile = 1 -- keep the alternate file correct
 
 -- spell
 -- vim.cmd("set spell")
@@ -62,11 +66,12 @@ vim.o.completeopt = "menuone,noselect" -- have a better completion experience
 vim.opt.cursorline = true -- sets the cursor line
 -- vim.opt.guicursor = "" -- fat cursor
 vim.opt.ignorecase = true -- ignore case in search patterns
-vim.opt.smartcase = true  -- makes search case-sensitive when you use uppercase
+vim.opt.smartcase = true -- makes search case-sensitive when you use uppercase
 vim.opt.numberwidth = 4 -- set number column width to 4 {default 4}
 vim.opt.sidescrolloff = 8 -- Makes sure there are always eight lines of context
 vim.opt.fillchars = { eob = " " } -- change the character at the end of buffer
-vim.opt.signcolumn = "auto" -- `yes` fixes sign column jump when diagnostics appear
+vim.opt.signcolumn = "yes" -- `yes` fixes sign column jump when diagnostics appear
+vim.o.winborder = "single" -- sleek window borders
 
 -- timeout and update config
 vim.opt.timeoutlen = 1000 -- time to wait for a mapped sequence to complete (in milliseconds)
