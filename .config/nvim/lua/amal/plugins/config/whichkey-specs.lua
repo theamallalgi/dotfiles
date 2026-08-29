@@ -75,5 +75,6 @@ return {
     { "grr", desc = "References" },
     { "grt", desc = "Type definition" },
     { "grx", desc = "Run codelens" },
+    { "g<", desc = "Display last message" },
 	},
 }
