@@ -86,3 +86,9 @@ vim.opt.updatetime = 100 -- faster completion (4000ms default)
 -- builtin plugins
 -- vim.cmd("packadd nvim.undotree")
 -- vim.keymap.set("n", "<leader>u", require("undotree").open)
+
+-- enable UI2 for adaptive cmdline layout on Neovim 0.12+
+-- see: lua/amal/plugins/noice.lua (disable cmdline)
+-- if vim.fn.has("nvim-0.12") == 1 then
+--   require("vim._core.ui2").enable()
+-- end
