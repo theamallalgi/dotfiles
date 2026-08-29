@@ -37,9 +37,9 @@ return {
 		},
 	},
 
-	pyright = {
+	basedpyright = {
 		settings = {
-			python = {
+			basedpyright = {
 				analysis = {
 					typeCheckingMode = "strict",
 					autoSearchPaths = true,
@@ -52,8 +52,8 @@ return {
 
 	ruff = {},
 
-	-- ts_ls = {},
-	tsgo = {},
+	ts_ls = {},
+	-- tsgo = {}, -- deprecated
 
 	rust_analyzer = {},
 
