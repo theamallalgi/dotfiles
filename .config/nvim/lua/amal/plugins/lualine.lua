@@ -99,7 +99,7 @@ return {
 				theme = zitchdog,
 				globalstatus = true,
 				component_separators = { left = "|", right = "|" },
-				icons_enabled = false,
+				-- icons_enabled = false,
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = { "alpha" },
 				fmt = string.lower,
@@ -133,7 +133,8 @@ return {
 							return _G.diagnostics_enabled
 						end,
 					},
-					{ "fancy_branch", color = { fg = colors.cyan, bg = colors.darkcyan } },
+					-- { "fancy_branch", color = { fg = colors.cyan, bg = colors.darkcyan } },
+          { "fancy_branch", icon = "", color = { fg = colors.cyan, bg = colors.darkcyan } },
 					"location",
 					"progress",
 					{
