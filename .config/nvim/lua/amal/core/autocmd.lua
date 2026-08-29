@@ -76,12 +76,19 @@ local tag_group = vim.api.nvim_create_augroup("CodeTagHighlights", { clear = tru
 local keyword_highlights = {
 	TODO = "DiagnosticVirtualTextOk",
 	OPTIMIZE = "DiagnosticVirtualTextOk",
+	PERF = "DiagnosticVirtualTextOk",
 	NOTE = "DiagnosticVirtualTextInfo",
 	INFO = "DiagnosticVirtualTextInfo",
 	FIXME = "DiagnosticVirtualTextError",
+	FIXIT = "DiagnosticVirtualTextError",
+	FIX = "DiagnosticVirtualTextError",
+	ISSUE = "DiagnosticVirtualTextError",
 	BUG = "DiagnosticVirtualTextError",
 	HACK = "DiagnosticVirtualTextWarn",
+	WARNING = "DiagnosticVirtualTextWarn",
+	WARN = "DiagnosticVirtualTextWarn",
 	XXX = "DiagnosticVirtualTextHint",
+	STATUS = "DiagnosticVirtualTextOk",
 	vim.api.nvim_create_autocmd("BufEnter", {
 		callback = function()
 			if vim.fn.expand("%") ~= "" and vim.bo.buftype == "" then
@@ -181,4 +188,32 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.makeprg = "bash %"
     vim.opt_local.errorformat = "%f: line %l: %m,%-G%.%#"
   end,
+})
+
+-- reduce redraw cost while typing: disable cursorline/relativenumber in insert mode
+-- local insert_ui_perf = vim.api.nvim_create_augroup("insert_ui_perf", { clear = true })
+-- vim.api.nvim_create_autocmd("InsertEnter", {
+-- 	group = insert_ui_perf,
+-- 	callback = function()
+-- 		vim.wo.cursorline = false
+-- 		vim.wo.relativenumber = false
+-- 		vim.wo.number = true -- keep absolute numbers
+-- 	end,
+-- })
+
+-- vim.api.nvim_create_autocmd("InsertLeave", {
+-- 	group = insert_ui_perf,
+-- 	callback = function()
+-- 		vim.wo.cursorline = true
+-- 		vim.wo.relativenumber = true
+-- 	end,
+-- })
+
+-- unlist man page buffers so they don't clutter the buffer list
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("man_unlisted", { clear = true }),
+	pattern = { "man" },
+	callback = function(event)
+		vim.bo[event.buf].buflisted = false
+	end,
 })
