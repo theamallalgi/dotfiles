@@ -28,14 +28,14 @@ hl.config({
 		-- layout = "scrolling",   -- see ./plugins/hyprscrolling.lua for more info
 	},
 
+	cursor = { hide_on_key_press = true },
+
 	dwindle = {
 		preserve_split = true, -- you probably want this to be true (set to true for togglesplit to work)
 		force_split = 2, -- new splits position: 0 follows mouse, 1 left/top, 2 right/bottom
 	},
 
-	master = {
-		new_status = "master",
-	},
+	master = { new_status = "master" },
 
 	misc = {
 		force_default_wallpaper = 1, -- set to 0 or 1 to disable the anime mascot wallpapers

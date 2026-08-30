@@ -52,6 +52,7 @@ hl.window_rule({ match = { class = "^(localsend)$" }, float = true }) -- float l
 hl.window_rule({ match = { class = "^(chromium-browser)$" }, float = true }) -- float chromium browser
 hl.window_rule({ match = { class = "^(tui-float)$" }, float = true }) -- float impala window
 hl.window_rule({ match = { class = "^(sublime_text)$" }, float = true }) -- float sublime text
+hl.window_rule({ match = { class = "^(io.mgba.mGBA)$" }, float = true }) -- float mgba
 
 hl.window_rule({ -- floats sign in / log in and other dialogs on helium browser
 	match = { initial_title = "Untitled - Helium" },
