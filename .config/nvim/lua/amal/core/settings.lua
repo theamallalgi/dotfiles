@@ -14,7 +14,7 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
 -- tabline setup
-vim.opt.showtabline = 0
+vim.opt.showtabline = 1
 
 -- disable confirmation dialogs
 vim.o.confirm = false
@@ -36,7 +36,7 @@ vim.opt.splitbelow = true
 vim.g.netrw_banner = 0 -- disable the how tos and stuff from netrw window
 vim.g.netrw_mouse = 2 -- mouse config for netrw
 vim.g.netrw_liststyle = 3 -- tree view
-vim.g.netrw_winsize = 20 -- fix the left split width
+vim.g.netrw_winsize = 17 -- reduce the left split width
 vim.g.netrw_browse_split = 0 -- open files in the previous window
 vim.g.netrw_altfile = 1 -- keep the alternate file correct
 
@@ -55,6 +55,7 @@ vim.opt.undofile = true
 vim.o.guifont = "JetBrainsMono Nerd Font:h11" -- sets the default font and height
 vim.opt.autoread = true -- updates vim after file update outside
 -- vim.opt.statuscolumn = "%s %l %r " -- relative line numbers
+vim.opt.statuscolumn = "%!v:lua.require'snacks.statuscolumn'.get()"
 vim.opt.number = true -- sets line numbers
 vim.opt.relativenumber = true -- sets relative line numbers
 vim.opt.wrap = false -- turns off word wrap
@@ -76,6 +77,10 @@ vim.o.winborder = "single" -- sleek window borders
 -- timeout and update config
 vim.opt.timeoutlen = 1000 -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.updatetime = 100 -- faster completion (4000ms default)
+
+-- external programs
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.grepformat = "%f:%l:%c:%m"
 
 -- terminal config -- wtf was i even thinking?!
 -- vim.g.floaterm_width = 0.7
