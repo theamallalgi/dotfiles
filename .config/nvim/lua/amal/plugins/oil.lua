@@ -29,8 +29,8 @@ return {
 			},
 			float = {
 				padding = 4,
-				max_width = 0.5,
-				max_height = 0.7,
+				max_width = 0.7,
+				max_height = 0.8,
 				border = "rounded",
 				get_win_title = function(winid)
 					local bufnr = vim.api.nvim_win_get_buf(winid)
@@ -39,6 +39,6 @@ return {
 				end,
 			},
 		})
-		vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
+		vim.keymap.set("n", "-", "<CMD>Oil --float --preview<CR>", { desc = "Open parent directory" })
 	end,
 }
