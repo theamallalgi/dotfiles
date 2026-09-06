@@ -15,7 +15,7 @@ return {
 		{ "[", group = "Prevous" },
 		{ "]", group = "Next" },
 		{ "g", group = "Go to" },
-    { "<leader><tab>", group = "Tabs" },
+		{ "<leader><tab>", group = "Tabs" },
 
 		-- Next ( ] )
 		{ "]a", desc = "Next argument" },
@@ -31,7 +31,7 @@ return {
 		{ "]q", desc = "Next quickfix entry" },
 		{ "]Q", desc = "Last quickfix entry" },
 		{ "]s", desc = "Next misspelled word" },
-		{ "]t", desc = "Next tag" },
+		{ "]t", desc = "Next tab" },
 		{ "]T", desc = "Last tag" },
 		{ "]%", desc = "Next unmatched group" },
 		{ "](", desc = "Next unmatched (" },
@@ -56,7 +56,7 @@ return {
 		{ "[q", desc = "Previous quickfix entry" },
 		{ "[Q", desc = "First quickfix entry" },
 		{ "[s", desc = "Previous misspelled word" },
-		{ "[t", desc = "Previous tag" },
+		{ "[t", desc = "Previous tab" },
 		{ "[T", desc = "First tag" },
 		{ "[%", desc = "Previous unmatched group" },
 		{ "[)", desc = "Previous unmatched )" },
@@ -67,14 +67,14 @@ return {
 		{ "[<C-t>", desc = "Previous tag in tag stack" },
 		{ "[<Space>", desc = "Add empty line above cursor" },
 
-    -- Go to
-    { "gO", desc = "Document symbols" },
-    { "gra", desc = "Code action" },
-    { "gri", desc = "Goto implementation" },
-    { "grn", desc = "Rename symbol" },
-    { "grr", desc = "References" },
-    { "grt", desc = "Type definition" },
-    { "grx", desc = "Run codelens" },
-    { "g<", desc = "Display last message" },
+		-- Go to
+		{ "gO", desc = "Document symbols" },
+		{ "gra", desc = "Code action" },
+		{ "gri", desc = "Goto implementation" },
+		{ "grn", desc = "Rename symbol" },
+		{ "grr", desc = "References" },
+		{ "grt", desc = "Type definition" },
+		{ "grx", desc = "Run codelens" },
+		{ "g<", desc = "Display last message" },
 	},
 }
