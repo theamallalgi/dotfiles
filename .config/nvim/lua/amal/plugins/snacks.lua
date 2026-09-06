@@ -35,6 +35,7 @@ return {
 		lazygit = { enabled = true }, -- snacks.lazygit (lazygit)
 		rename = { enabled = true }, -- snacks.rename (lsp rename)
 		terminal = { enabled = true, style = "popup" }, -- snacks.terminal (terminal toggle)
+		statuscolumn = { enabled = true },
 	},
 	keys = {
 		{
