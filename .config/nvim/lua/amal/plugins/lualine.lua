@@ -91,7 +91,7 @@ return {
 					break
 				end
 			end
-      return index .. "/" .. #buffers
+			return index .. "/" .. #buffers
 		end
 
 		require("lualine").setup({
@@ -108,7 +108,7 @@ return {
 				lualine_a = { { "fancy_mode", width = 3 } },
 				lualine_b = {},
 				lualine_c = {
-					{ "filename", path = 1, symbols = { modified = "󰫢 " }, separator = "" },
+					{ "filename", path = 1, symbols = { modified = "󰫢 ", readonly = "󱈸" }, separator = "" },
 				},
 				lualine_x = {
 					{
@@ -134,7 +134,7 @@ return {
 						end,
 					},
 					-- { "fancy_branch", color = { fg = colors.cyan, bg = colors.darkcyan } },
-          { "fancy_branch", icon = "", color = { fg = colors.cyan, bg = colors.darkcyan } },
+					{ "fancy_branch", icon = "", color = { fg = colors.cyan, bg = colors.darkcyan } },
 					"location",
 					"progress",
 					{
@@ -151,7 +151,7 @@ return {
 						if recording_register == "q" then
 							return "[󰑊]"
 						elseif recording_register ~= "" then
-							return string.format("[󰑊](%s)", recording_register)
+							return string.format(" (%s)", recording_register)
 						else
 							return ""
 						end
