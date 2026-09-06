@@ -3,20 +3,20 @@
 local set = vim.keymap.set
 
 -- general
-set("n", "<Leader>s", "<cmd>write!<CR>", { silent = true, desc = "Save file" })
-set("n", "Q", "<C-W>q", { desc = "Quit window" })
+set("n", "<Leader>s", "<cmd>write!<CR>", { silent = true, desc = "Save current buffer" })
+set("n", "Q", "<C-W>q", { desc = "Quit current buffer" })
 set("n", "<Leader>q", "<cmd>copen<cr>", { desc = "Toggle quickfix list" })
+set("n", "<leader>p", [["*p]], { desc = "Paste from system clipboard" })
 set("n", "<leader>/", "<cmd>normal gcc<CR><DOWN>", { silent = true, desc = "Toggle comment line" })
 set("v", "<leader>/", "<cmd>normal gcc<CR><DOWN>", { silent = true, desc = "Toggle comment selection" })
 set("n", "<Leader>a", "ggVG", { desc = "Select whole document", noremap = true, silent = true })
 set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Clear search highlight" })
 set("n", "J", "mzJ`z", { desc = "Join line, keep cursor" })
-set(
-	"n",
-	"<Leader>rr",
-	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-	{ desc = "Replace word in file" }
-)
+set("n", "<Leader>rr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace word in file" })
+-- NOTE: make sure to `map ctrl+i send_text all \x1b[105;5u` (kitty)
+set("n", "<C-i>", "<C-i>", { desc = "Jump to newer position" })
+-- set("n", "[j", "<C-o>", { desc = "Jump to older position" })
+-- set("n", "]j", "<C-i>", { desc = "Jump to newer position" })
 
 -- paste over currently selected text without yanking it
 set("v", "p", '"_dp', { desc = "Paste without yanking" })
@@ -27,8 +27,10 @@ set({ "n", "x", "o" }, "H", "^", { silent = true, desc = "Go to line start" })
 set({ "n", "x", "o" }, "L", "g_", { silent = true, desc = "Go to line end" })
 
 -- neotree config
-set("n", "<C-n>", "<cmd>Neotree filesystem toggle<CR>", { silent = true, desc = "Toggle file explorer" })
-set("n", "<C-b>", "<cmd>Neotree reveal<CR>", { silent = true, desc = "Reveal file in explorer" })
+-- set("n", "<C-n>", "<cmd>Neotree filesystem toggle<CR>", { silent = true, desc = "Toggle file explorer" })
+-- set("n", "<C-b>", "<cmd>Neotree reveal<CR>", { silent = true, desc = "Reveal file in explorer" })
+set("n", "<C-n>", "<cmd>Lexplore<CR>", { silent = true, desc = "Toggle file explorer" })
+set("n", "<C-b>", "<cmd>Lexplore %:p:h<CR>", { silent = true, desc = "Explore current buffer directory" })
 
 -- split screen configs
 set("n", "vv", "<C-W>v", { desc = "Vertical split" })
@@ -52,8 +54,8 @@ set("n", "<leader><tab>o", "<cmd>tabonly<cr>", { desc = "Close Other Tabs" })
 set("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
 set("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
 set("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
-set("n", "<leader>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
-set("n", "<leader>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+set("n", "]t", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+set("n", "[t", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 set("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { silent = true, desc = "Next buffer tab" })
 set("n", "]b", "<cmd>bnext<CR>", { silent = true, desc = "Next buffer" })
 set("n", "[b", "<cmd>bprevious<CR>", { silent = true, desc = "Previous buffer" })
