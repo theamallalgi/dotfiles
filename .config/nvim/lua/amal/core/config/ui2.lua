@@ -11,19 +11,13 @@ if false then
 			---@type string|table<string, 'cmd'|'msg'|'pager'> Default message target
 			---or table mapping |ui-messages| kinds and triggers to a target.
 			targets = "cmd",
-			cmd = { -- Options related to messages in the cmdline window.
-				height = 0.5, -- Maximum height while expanded for messages beyond 'cmdheight'.
+			cmd = { height = 0.5 },
+			dialog = { height = 0.5 },
+			msg = {
+				height = 0.5,
+				timeout = 4000,
 			},
-			dialog = { -- Options related to dialog window.
-				height = 0.5, -- Maximum height.
-			},
-			msg = { -- Options related to msg window.
-				height = 0.5, -- Maximum height.
-				timeout = 4000, -- Time a message is visible in the message window.
-			},
-			pager = { -- Options related to message window.
-				height = 1, -- Maximum height.
-			},
+			pager = { height = 1 },
 		},
 	})
 end
