@@ -16,7 +16,7 @@ api.nvim_create_autocmd("BufReadPost", {
 		local lcount = vim.api.nvim_buf_line_count(0)
 		if mark[1] > 0 and mark[1] <= lcount then
 			pcall(vim.api.nvim_win_set_cursor, 0, mark)
-      vim.cmd("normal! zz")
+			vim.cmd("normal! zz")
 		end
 	end,
 })
@@ -183,11 +183,11 @@ vim.api.nvim_create_autocmd("VimResized", {
 
 -- make setup (run code)
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "sh",
-  callback = function()
-    vim.opt_local.makeprg = "bash %"
-    vim.opt_local.errorformat = "%f: line %l: %m,%-G%.%#"
-  end,
+	pattern = "sh",
+	callback = function()
+		vim.opt_local.makeprg = "bash %"
+		vim.opt_local.errorformat = "%f: line %l: %m,%-G%.%#"
+	end,
 })
 
 -- reduce redraw cost while typing: disable cursorline/relativenumber in insert mode
@@ -215,5 +215,17 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "man" },
 	callback = function(event)
 		vim.bo[event.buf].buflisted = false
+	end,
+})
+
+-- make netrw buf minimal
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "netrw",
+	callback = function()
+		vim.opt_local.number = false
+		vim.opt_local.relativenumber = false
+		vim.opt_local.signcolumn = "no"
+		vim.opt_local.statuscolumn = ""
+		vim.opt_local.foldcolumn = "0"
 	end,
 })
