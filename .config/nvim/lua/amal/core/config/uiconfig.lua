@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
-vim.api.nvim_set_hl(0, "Search", { bg = "#331b17", fg = "#e39069" }) -- search highlights
+-- vim.api.nvim_set_hl(0, "Search", { bg = "#331b17", fg = "#e39069" }) -- search highlights
 -- vim.api.nvim_set_hl(0, "MatchParen", { bg = "#e39069", fg = "#331b17", bold = true, })
 
 vim.api.nvim_set_hl(0, "BlinkCmpMenu", { bg = "#191324" })
@@ -23,7 +23,6 @@ vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#191324", bg = "#191324" })
 vim.api.nvim_set_hl(0, "NormalFloat", { fg = "#abb2bf", bg = "#0D0910" })
 vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#2c1e36", bg = "NONE" })
 -- vim.api.nvim_set_hl(0, "FloatTitle", { fg = "#abb2bf", bg = "#0D0910", bold = true })
-vim.api.nvim_set_hl(0, "FloatTitle", { fg = "#c0c9c3", bg = "#051177", bold = true })
 vim.api.nvim_set_hl(0, "FloatTitle", { fg = "#c0c9c3", bg = "#051177", bold = true })
 vim.api.nvim_set_hl(0, "FloatFooter", { fg = "#abb2bf", bg = "#0D0910" })
 vim.api.nvim_set_hl(0, "LspFloatWinNormal", { link = "NormalFloat" })
