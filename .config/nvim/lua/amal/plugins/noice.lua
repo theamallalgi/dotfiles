@@ -30,8 +30,8 @@ return {
 			},
 
 			cmdline = {
-        -- set to false after setting up UI2 properly
-        -- see: lua/amal/core/settings.lua
+				-- set to false after setting up UI2 properly
+				-- see: lua/amal/core/settings.lua
 				enabled = true,
 				view = "cmdline",
 
@@ -81,6 +81,10 @@ return {
 			},
 
 			routes = {
+				{
+					filter = { event = "msg_show", kind = "list_cmd" },
+					view = "split",
+				},
 				{
 					filter = {
 						event = "msg_show",
