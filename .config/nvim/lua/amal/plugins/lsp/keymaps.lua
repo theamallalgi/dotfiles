@@ -31,12 +31,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		---@diagnostic disable-next-line: deprecated
 		-- map("n", "]d", vim.diagnostic.goto_next, vim.tbl_extend("force", opts, { desc = "Next Diagnostic" }))
 		map("n", "[d", function()
-			vim.diagnostic.jump({ count = -1, float = true })
+			vim.diagnostic.jump({ count = -1 }) -- removed `float = true`
 			vim.cmd("normal! zz")
 		end, vim.tbl_extend("force", opts, { desc = "Previous Diagnostic" }))
 
 		map("n", "]d", function()
-			vim.diagnostic.jump({ count = 1, float = true })
+			vim.diagnostic.jump({ count = 1 }) -- removed `float = true`
 			vim.cmd("normal! zz")
 		end, vim.tbl_extend("force", opts, { desc = "Next Diagnostic" }))
 	end,
