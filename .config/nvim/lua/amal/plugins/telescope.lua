@@ -78,12 +78,8 @@ return {
 				path_display = { "smart" },
 				layout_strategy = "vertical",
 				layout_config = { preview_cutoff = 0 },
-				cache_picker = {
-					num_pickers = 10,
-				},
-				preview = {
-					treesitter = false,
-				},
+				cache_picker = { num_pickers = 10 },
+				preview = { treesitter = false },
 				mappings = {
 					i = {
 						["<C-j>"] = "move_selection_next",
