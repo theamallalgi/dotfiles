@@ -5,34 +5,17 @@ return {
 	lua_ls = {
 		settings = {
 			Lua = {
-				runtime = {
-					version = "LuaJIT",
-				},
-
+				runtime = { version = "LuaJIT" },
 				workspace = {
 					checkThirdParty = false,
 					library = vim.api.nvim_get_runtime_file("", true),
 				},
-
 				diagnostics = {
-					globals = {
-						"vim",
-						"hl",
-						"Snacks",
-					},
+					globals = { "vim", "hl", "Snacks" },
 				},
-
-				hint = {
-					enable = true,
-				},
-
-				codeLens = {
-					enable = true,
-				},
-
-				telemetry = {
-					enable = false,
-				},
+				hint = { enable = true },
+				codeLens = { enable = true },
+				telemetry = { enable = false },
 			},
 		},
 	},
@@ -98,7 +81,7 @@ return {
 	-- 		},
 	-- 	},
 	-- },
-	--
+
 	-- sqls = {}, -- Postgres/SQL
 
 	-- clangd = {

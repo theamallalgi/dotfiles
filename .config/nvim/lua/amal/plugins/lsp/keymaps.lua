@@ -15,9 +15,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Hover" }))
 		map("i", "<C-h>", vim.lsp.buf.signature_help, vim.tbl_extend("force", opts, { desc = "Signature Help" }))
 		map("n", "<leader>rn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename Symbol" }))
-		map("n", "<leader>fs", function()
+		map({ "n", "v" }, "<leader>fs", function()
 			vim.lsp.buf.format({ async = true })
-		end, vim.tbl_extend("force", opts, { desc = "Format Buffer" }))
+		end, vim.tbl_extend("force", opts, { desc = "Format buffer or selection" }))
 		-- map(
 		-- 	"n",
 		-- 	"<leader>ls",
