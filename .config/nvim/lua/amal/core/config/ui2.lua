@@ -1,4 +1,4 @@
--- ui2: native Neovim 0.12+ message/cmdline redesign
+-- ui2: native Neovim 0.12+ message/cmdline redesignui2
 -- provides pager as a buffer+window.
 -- STATUS: disabled, still in beta as of 2026-08-29. re-enable by flipping
 -- the condition below once it stabilizes.
