@@ -6,13 +6,13 @@ return {
 	config = function()
 		require("ibl").setup({
 			scope = {
-				enabled = false, -- enable scope highlighting
-				show_start = false, -- don't show the start of the scope
-				show_end = false, -- don't show the end of the scope
+				enabled = false,
+				show_start = false,
+				show_end = false,
 			},
 			indent = {
-				char = "|", -- use '|' for indentation character
-				highlight = "AlphaFooter",
+				char = "|",
+				-- highlight = "AlphaFooter",
 			},
 		})
 	end,

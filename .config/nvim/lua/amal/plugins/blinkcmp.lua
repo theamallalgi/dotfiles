@@ -44,11 +44,7 @@ return {
 				},
 				cmdline = {
 					enabled = true,
-					completion = {
-						ghost_text = {
-							enabled = false, -- Specifically disable ghost text for cmdline
-						},
-					},
+					completion = { ghost_text = { enabled = false } },
 				},
 				keymap = {
 					["<C-j>"] = { "select_next", "fallback" },

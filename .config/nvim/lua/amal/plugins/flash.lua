@@ -7,10 +7,10 @@ return {
 			matches = true,
 			priority = 5000,
 			groups = {
+				backdrop = "",
 				-- match = "MyFlashMatch",
 				-- current = "MyFlashCurrent",
 				-- backdrop = "MyFlashBackdrop",
-				backdrop = "",
 				-- label = "MyFlashLabel",
 			},
 		},
@@ -25,7 +25,7 @@ return {
 			desc = "Flash",
 		},
 		{
-			"Zk",
+			"zK",
 			mode = { "n", "x", "o" },
 			function()
 				require("flash").treesitter()
@@ -47,14 +47,6 @@ return {
 				require("flash").treesitter_search()
 			end,
 			desc = "Treesitter Search",
-		},
-		{
-			"<Leader><c-s>",
-			mode = { "c" },
-			function()
-				require("flash").toggle()
-			end,
-			desc = "Toggle Flash Search",
 		},
 	},
 }
