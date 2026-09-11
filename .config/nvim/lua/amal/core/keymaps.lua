@@ -11,7 +11,8 @@ set("n", "<leader>/", "<cmd>normal gcc<CR><DOWN>", { silent = true, desc = "Togg
 set("v", "<leader>/", "<cmd>normal gcc<CR><DOWN>", { silent = true, desc = "Toggle comment selection" })
 set("n", "<Leader>a", "ggVG", { desc = "Select whole document", noremap = true, silent = true })
 set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Clear search highlight" })
-set("n", "J", "mzJ`z", { desc = "Join line, keep cursor" })
+-- set("n", "J", "mzJ`z", { desc = "Join line, keep cursor" })
+set("n", "J", "m`J``", { desc = "Join line, keep cursor" })
 set("n", "<Leader>rr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace word in file" })
 -- NOTE: make sure to `map ctrl+i send_text all \x1b[105;5u` (kitty)
 set("n", "<C-i>", "<C-i>", { desc = "Jump to newer position" })
@@ -84,5 +85,6 @@ vim.keymap.set("n", "<Leader>uw", function()
 	vim.wo.wrap = not vim.wo.wrap
 end, { desc = "Toggle wrap" })
 
--- make file excecutable
+-- misc
 set("n", "<leader>mx", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
+set("n", "<leader>mdm", ":delmarks!", { desc = "Delete all marks" })
