@@ -1,10 +1,9 @@
 return {
 	"stevearc/oil.nvim",
+	keys = { { "-", "<CMD>Oil --float --preview<CR>", desc = "Open parent directory" } },
 	---@module 'oil'
 	---@type oil.SetupOpts
-	opts = {},
 	dependencies = { "nvim-tree/nvim-web-devicons" },
-	lazy = false,
 	config = function()
 		require("oil").setup({
 			default_file_explorer = false,
@@ -13,11 +12,11 @@ return {
 				show_hidden = true,
 				natural_order = true,
 			},
-			-- columns = { "icon", "permissions", "size" },
 			keymaps = {
 				["gd"] = {
 					desc = "Toggle file detail view",
 					callback = function()
+						---@diagnostic disable-next-line: lowercase-global
 						detail = not detail
 						if detail then
 							require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
@@ -28,8 +27,8 @@ return {
 				},
 			},
 			float = {
-				padding = 4,
-				max_width = 0.7,
+				padding = 6,
+				max_width = 0.75,
 				max_height = 0.8,
 				border = "rounded",
 				get_win_title = function(winid)
@@ -39,6 +38,5 @@ return {
 				end,
 			},
 		})
-		vim.keymap.set("n", "-", "<CMD>Oil --float --preview<CR>", { desc = "Open parent directory" })
 	end,
 }

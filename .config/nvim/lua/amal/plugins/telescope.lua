@@ -1,6 +1,16 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
+	keys = {
+		"<space><space>",
+		"<space>tn",
+		"<space>tc",
+		"<Leader>o",
+		"<Leader>fg",
+		"<Leader>fc",
+		"<Leader>b",
+		"<Leader>fb",
+	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -72,9 +82,9 @@ return {
 		telescope.setup({
 			defaults = {
 				color_devicons = false,
-				prompt_prefix = "   ",
+				prompt_prefix = " ",
 				entry_prefix = "    ",
-				selection_caret = " ➤  ",
+				selection_caret = "   ", -- (       󰊠 )
 				path_display = { "smart" },
 				layout_strategy = "vertical",
 				layout_config = { preview_cutoff = 0 },

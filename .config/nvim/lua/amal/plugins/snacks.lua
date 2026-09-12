@@ -4,6 +4,7 @@ return {
 	lazy = false,
 	opts = {
 		bigfile = { enabled = true }, -- snacks.bigfile (faster when opening big files)
+		picker = { ui_select = false }, -- keep vim.ui.select native, don't hijack it
 		notifier = { -- snacks.notifier (works best with notify)
 			enabled = true,
 			timeout = 1000,
@@ -33,8 +34,8 @@ return {
 		},
 		quickfile = { enabled = true }, -- snacks.quickfile (makes opening empty files faster)
 		lazygit = { enabled = true }, -- snacks.lazygit (lazygit)
-		rename = { enabled = true }, -- snacks.rename (lsp rename)
-		terminal = { enabled = true, style = "popup" }, -- snacks.terminal (terminal toggle)
+		rename = { enabled = false }, -- snacks.rename (lsp rename)
+		terminal = { enabled = false }, -- snacks.terminal (terminal toggle)
 		statuscolumn = { enabled = true },
 	},
 	keys = {
@@ -115,5 +116,12 @@ return {
 			end,
 			desc = "Open Explorer",
 		},
+		-- {
+		-- 	"<leader>ut",
+		-- 	function()
+		-- 		Snacks.terminal()
+		-- 	end,
+		-- 	desc = "Snacks terminal",
+		-- },
 	},
 }

@@ -2,6 +2,25 @@ return {
 	"ThePrimeagen/harpoon",
 	branch = "harpoon2",
 	dependencies = { "nvim-lua/plenary.nvim" },
+	keys = {
+		"<C-t>",
+		"<C-y>",
+		"<C-h>",
+		"<C-j>",
+		"<C-k>",
+		"<C-l>",
+		"<C-S-P>",
+		"<C-S-N>",
+		"<leader>1",
+		"<leader>2",
+		"<leader>3",
+		"<leader>4",
+		"<leader>5",
+		"<leader>6",
+		"<leader>7",
+		"<leader>8",
+		"<leader>9",
+	},
 	config = function()
 		local harpoon = require("harpoon")
 		harpoon:setup()
@@ -19,11 +38,6 @@ return {
 			harpoon.ui:toggle_quick_menu(harpoon:list())
 		end, silent)
 
-		-- navigate to harpooned files
-		-- set("n", "<C-e>", function() harpoon:list():select(1) end, silent)
-		-- set("n", "<C-r>", function() harpoon:list():select(2) end, silent)
-		-- set("n", "<C-t>", function() harpoon:list():select(3) end, silent)
-		-- set("n", "<C-y>", function() harpoon:list():select(4) end, silent)
 		set("n", "<C-h>", function()
 			harpoon:list():select(1)
 		end, silent)
@@ -37,14 +51,12 @@ return {
 			harpoon:list():select(4)
 		end, silent)
 
-		-- navigate to harpooned files (leader + number)
 		for i = 1, 9 do
 			set("n", "<leader>" .. i, function()
 				harpoon:list():select(i)
 			end, { silent = true, desc = "Harpoon file " .. i })
 		end
 
-		-- next / prev in list
 		set("n", "<C-S-P>", function()
 			harpoon:list():prev()
 		end, silent)
