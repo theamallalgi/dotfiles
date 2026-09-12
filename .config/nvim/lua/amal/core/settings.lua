@@ -65,7 +65,7 @@ vim.opt.showmode = false -- disables the ~ symbol (end of buffer indicator)
 vim.o.termguicolors = true -- sets proper terminal colors
 vim.o.completeopt = "menuone,noselect" -- have a better completion experience
 vim.opt.cursorline = true -- sets the cursor line
--- vim.opt.guicursor = "" -- fat cursor
+vim.opt.guicursor = "" -- fat cursor
 vim.opt.ignorecase = true -- ignore case in search patterns
 vim.opt.smartcase = true -- makes search case-sensitive when you use uppercase
 vim.opt.numberwidth = 4 -- set number column width to 4 {default 4}
@@ -91,3 +91,10 @@ vim.opt.grepformat = "%f:%l:%c:%m"
 -- builtin plugins
 -- vim.cmd("packadd nvim.undotree")
 -- vim.keymap.set("n", "<leader>u", require("undotree").open)
+
+-- cursor setup
+vim.opt.guicursor = table.concat({
+	"n-v-c-sm:block-Cursor",
+	"i-ci-ve:block-iCursor",
+	"r-cr-o:block-Cursor",
+}, ",")
