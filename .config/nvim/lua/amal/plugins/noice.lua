@@ -15,6 +15,8 @@ return {
 				lsp_doc_border = true,
 			},
 
+      notify = { enabled = false },
+
 			views = {
 				notify = {
 					title = "",
@@ -82,6 +84,10 @@ return {
 
 			routes = {
 				{
+					filter = { event = "msg_show", kind = "number_prompt" },
+					opts = { skip = true }, -- let inputlist() render as plain nvim cmdline text
+				},
+				{
 					filter = { event = "msg_show", kind = "list_cmd" },
 					view = "split",
 				},
@@ -128,5 +134,16 @@ return {
 				},
 			},
 		})
+
+    -- bypass noice for vim.ui.select so code actions use native prompt
+		local native_select = vim.ui.select
+    ---@diagnostic disable-next-line: duplicate-set-field
+		vim.ui.select = function(items, opts, on_choice)
+			require("noice").disable()
+			native_select(items, opts, function(item, idx)
+				require("noice").enable()
+				on_choice(item, idx)
+			end)
+		end
 	end,
 }
