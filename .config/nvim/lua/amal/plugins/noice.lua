@@ -15,7 +15,7 @@ return {
 				lsp_doc_border = true,
 			},
 
-      notify = { enabled = false },
+			notify = { enabled = false },
 
 			views = {
 				notify = {
@@ -135,9 +135,9 @@ return {
 			},
 		})
 
-    -- bypass noice for vim.ui.select so code actions use native prompt
+		-- bypass noice for vim.ui.select so code actions use native prompt
 		local native_select = vim.ui.select
-    ---@diagnostic disable-next-line: duplicate-set-field
+		---@diagnostic disable-next-line: duplicate-set-field
 		vim.ui.select = function(items, opts, on_choice)
 			require("noice").disable()
 			native_select(items, opts, function(item, idx)

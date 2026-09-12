@@ -62,7 +62,7 @@ local zitchdog = {
 
 return {
 	"nvim-lualine/lualine.nvim",
-  event = "VeryLazy",
+	event = "VeryLazy",
 	dependencies = {
 		"meuter/lualine-so-fancy.nvim",
 	},
@@ -118,8 +118,8 @@ return {
 						symbols = {
 							error = "  ",
 							warn = "",
-              info = "",
-              hint = "",
+							info = "",
+							hint = "",
 						},
 						diagnostics_color = {
 							error = "DiagnosticVirtualTextError",
