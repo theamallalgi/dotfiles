@@ -1,5 +1,5 @@
 -- uiconfig.lua
-local palette = require("colors")
+local palette = require("palette")
 
 -- highlight text on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
