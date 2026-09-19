@@ -1,4 +1,6 @@
 -- uiconfig.lua
+
+---@diagnostic disable-next-line: unused-local
 local palette = require("palette")
 
 -- highlight text on yank
@@ -33,3 +35,10 @@ vim.api.nvim_set_hl(0, "LazyBorder", { fg = "#140D19", bg = "#140D19" })
 vim.api.nvim_set_hl(0, "LazyButton", { fg = "#abb2bf", bg = "#140D19" })
 vim.api.nvim_set_hl(0, "LazyButtonActive", { fg = "#c0c9c3", bg = "#051177", bold = true })
 vim.api.nvim_set_hl(0, "LazyH1", { fg = "#c0c9c3", bg = "#051177", bold = true })
+
+-- vim.api.nvim_set_hl(0, "Visual", {bg = "#201638"})
+-- vim.api.nvim_set_hl(0, "Normal", {fg = "#c0c9c3"})
+
+-- TODO: DO THIS
+-- vim.api.nvim_set_hl(0, "@spell", { fg = "#c0c9c3" })
+vim.api.nvim_set_hl(0, "iCursor", { bg = "#c0c9c3" })
