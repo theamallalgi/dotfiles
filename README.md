@@ -38,6 +38,30 @@
 <img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/t-kitty-1.jpg?raw=true" title="" alt="Kitty Terminal Setup with Splits Open" data-align="center">
 <img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/t-kitty-2.jpg?raw=true" title="" alt="Kitty Terminal Setup with Lazygit Open" data-align="center">
 
+### 1. clone just the `nvim` and/or `nvim-test` on your device
+
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/nvim-simple.webp?raw=true" title="" alt="Neovim setup (in tmux)" data-align="center">
+
+Make sure `curl` and `tar` are installed. Back up any existing `nvim` folder first.
+These commands download only the `nvim` folder (not its contents alone) and place it as `~/.config/nvim` (Linux/macOS) or `%LOCALAPPDATA%\nvim` (Windows).
+
+On Linux/macOS, run this command to download just the nvim folder into `~/.config`:
+
+```fish
+curl -L https://codeload.github.com/theamallalgi/dotfiles/tar.gz/main | tar -xz --strip-components=2 -C ~/.config dotfiles-main/.config/nvim/
+```
+
+On Windows, open PowerShell and run this command to download the nvim folder into `%LOCALAPPDATA%`:
+
+```pwsh
+curl -L https://codeload.github.com/theamallalgi/dotfiles/tar.gz/main | tar -xz --strip-components=2 -C $env:LOCALAPPDATA dotfiles-main/.config/nvim
+```
+
+*tweak the `dotfiles-main/.config/nvim` to `dotfiles-main/.config/nvim-test` for `nvim-test`*
+
+> [!CAUTION]
+> Read the commands carefully before running them. You will absolutely lose your current nvim config if you are careless. Back up the contents before proceeding.
+
 ## Waybar and Such
 
 <img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/w-idle.jpg?raw=true" title="" alt="Waybar Modules" data-align="center">
