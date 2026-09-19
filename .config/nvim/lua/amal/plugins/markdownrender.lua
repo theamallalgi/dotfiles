@@ -5,68 +5,42 @@ return {
 	---@type render.md.UserConfig
 	opts = {
 		heading = {
-			enabled = true,
-			sign = false,
 			icons = {},
 			signs = {},
+			sign = false,
 			width = "block",
-			backgrounds = {
-				"NONE",
-				"NONE",
-				"NONE",
-				"NONE",
-				"NONE",
-				"NONE",
-			},
-			foregrounds = {
-				"#a277ff", -- h1 - purple
-				"#ffca85", -- h2 - yellow
-				"#f694ff", -- h3 - pink
-				"#a277ff", -- h4
-				"#ffca85", -- h5
-				"#f694ff", -- h6
-			},
+			backgrounds = { "NONE", "NONE", "NONE", "NONE", "NONE", "NONE" },
+			-- foregrounds = { "#a277ff", "#ffca85", "#f694ff", "#a277ff", "#ffca85", "#f694ff" },
 		},
 		code = {
-			enabled = true,
 			sign = false,
 			style = "normal",
 			border = "none",
 			above = "",
 			below = "",
-			highlight = "RenderMarkdownCode",
 			width = "block",
 		},
-		dash = {
-			enabled = true,
-			icon = "─",
-			highlight = "RenderMarkdownDash",
-		},
-		bullet = {
-			enabled = true,
-			icons = { "•", "◦", "▸", "▹" },
-			highlight = "RenderMarkdownBullet",
-		},
+		dash = { icon = "─" },
+		bullet = { icons = { "", "", "", "" } },
 		checkbox = {
-			enabled = true,
-			unchecked = { icon = "☐" },
-			checked = { icon = "☑" },
+			unchecked = { icon = "󰄮" },
+			checked = { icon = "󰄲" },
 		},
-		quote = {
-			enabled = true,
-			icon = "▌",
-			highlight = "RenderMarkdownQuote",
-		},
-		link = {
-			enabled = false,
+		quote = { icon = "▌" },
+		link = { enabled = true },
+		callout = {
+			note = { raw = "[!NOTE]", rendered = " Note", highlight = "RenderMarkdownInfo" },
+			tip = { raw = "[!TIP]", rendered = " Tip", highlight = "RenderMarkdownSuccess" },
+			important = { raw = "[!IMPORTANT]", rendered = "󰐃 Important", highlight = "RenderMarkdownHint" },
+			warning = { raw = "[!WARNING]", rendered = "󱈸 Warning", highlight = "RenderMarkdownWarn" },
+			caution = { raw = "[!CAUTION]", rendered = "󰊠 Caution", highlight = "RenderMarkdownError" },
 		},
 	},
-	config = function(_, opts)
-		require("render-markdown").setup(opts)
-
-		vim.api.nvim_set_hl(0, "RenderMarkdownCode", { bg = "#1a1a2e" })
-		vim.api.nvim_set_hl(0, "RenderMarkdownDash", { fg = "#3d375e" })
-		vim.api.nvim_set_hl(0, "RenderMarkdownBullet", { fg = "#a277ff" })
-		vim.api.nvim_set_hl(0, "RenderMarkdownQuote", { fg = "#3d375e" })
-	end,
+	-- config = function(_, opts)
+	-- 	require("render-markdown").setup(opts)
+	-- 	vim.api.nvim_set_hl(0, "RenderMarkdownCode", { bg = "#1a1a2e" })
+	-- 	vim.api.nvim_set_hl(0, "RenderMarkdownDash", { fg = "#3d375e" })
+	-- 	vim.api.nvim_set_hl(0, "RenderMarkdownBullet", { fg = "#a277ff" })
+	-- 	vim.api.nvim_set_hl(0, "RenderMarkdownQuote", { fg = "#3d375e" })
+	-- end,
 }
