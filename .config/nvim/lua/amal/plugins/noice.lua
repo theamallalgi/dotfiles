@@ -39,46 +39,20 @@ return {
 
 				format = {
 					---@diagnostic disable-next-line: missing-fields
-					cmdline = {
-						pattern = "^:",
-						icon = ":",
-					},
-
+					cmdline = { pattern = "^:", icon = ":" },
 					---@diagnostic disable-next-line: missing-fields
-					search_down = {
-						kind = "search",
-						pattern = "^/",
-						icon = "/",
-					},
-
+					search_down = { kind = "search", pattern = "^/", icon = "/" },
 					---@diagnostic disable-next-line: missing-fields
-					search_up = {
-						kind = "search",
-						pattern = "^%?",
-						icon = "?",
-					},
-
+					search_up = { kind = "search", pattern = "^%?", icon = "?" },
 					---@diagnostic disable-next-line: missing-fields
 					lua = {
-						pattern = {
-							"^:%s*lua%s+",
-							"^:%s*lua%s*=%s*",
-							"^:%s*=%s*",
-						},
+						pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" },
 						icon = "lua:",
 					},
-
 					---@diagnostic disable-next-line: missing-fields
-					help = {
-						pattern = "^:%s*he?l?p?%s+",
-						icon = "help:",
-					},
-
+					help = { pattern = "^:%s*he?l?p?%s+", icon = "help:" },
 					---@diagnostic disable-next-line: missing-fields
-					input = {
-						view = "cmdline_input",
-						icon = "󰘳 ",
-					},
+					input = { view = "cmdline_input", icon = "󰘳 " },
 				},
 			},
 
@@ -105,9 +79,7 @@ return {
 						},
 					},
 					view = "notify",
-					opts = {
-						stop = true,
-					},
+					opts = { stop = true },
 				},
 			},
 

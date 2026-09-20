@@ -71,11 +71,6 @@ set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up, keep centered" })
 set("n", "n", "nzzzv", { desc = "Next search result, centered" })
 set("n", "N", "Nzzzv", { desc = "Previous search result, centered" })
 
--- telescope keymaps
-set("n", "<leader>tm", "<cmd>Telescope marks<CR>", { silent = true, desc = "Find marks" })
-set("n", "<leader>th", "<cmd>Telescope command_history<CR>", { silent = true, desc = "Command history" })
-set("n", "<leader>tk", "<cmd>Telescope keymaps<CR>", { silent = true, desc = "Find keymaps" })
-
 -- cmdline keymaps
 set("c", "<C-j>", "<C-n>", { noremap = true, desc = "Next cmdline history" })
 set("c", "<C-k>", "<C-p>", { noremap = true, desc = "Previous cmdline history" })
