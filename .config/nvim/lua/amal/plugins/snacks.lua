@@ -3,9 +3,8 @@ return {
 	priority = 1000,
 	lazy = false,
 	opts = {
-		bigfile = { enabled = true }, -- snacks.bigfile (faster when opening big files)
-		picker = { ui_select = false }, -- keep vim.ui.select native, don't hijack it
-		notifier = { -- snacks.notifier (works best with notify)
+		bigfile = { enabled = true },
+		notifier = {
 			enabled = true,
 			timeout = 1000,
 			render = "compact",
@@ -32,10 +31,10 @@ return {
 				},
 			},
 		},
-		quickfile = { enabled = true }, -- snacks.quickfile (makes opening empty files faster)
-		lazygit = { enabled = true }, -- snacks.lazygit (lazygit)
-		rename = { enabled = false }, -- snacks.rename (lsp rename)
-		terminal = { enabled = false }, -- snacks.terminal (terminal toggle)
+		quickfile = { enabled = true },
+		lazygit = { enabled = true },
+		rename = { enabled = false },
+		terminal = { enabled = false },
 		statuscolumn = { enabled = true },
 	},
 	keys = {
@@ -67,61 +66,5 @@ return {
 			end,
 			desc = "Notification History",
 		},
-		{
-			"<leader>nm",
-			function()
-				Snacks.picker.marks()
-			end,
-			desc = "Show Marks",
-		},
-		{
-			"<leader>nh",
-			function()
-				Snacks.picker.highlights()
-			end,
-			desc = "Show Highlights",
-		},
-		{
-			"<leader>nk",
-			function()
-				Snacks.picker.keymaps()
-			end,
-			desc = "Show Keymaps",
-		},
-		{
-			"<leader>nq",
-			function()
-				Snacks.picker.qflist()
-			end,
-			desc = "Quick Fix List",
-		},
-		{
-			"<leader>ls",
-			function()
-				Snacks.picker.lsp_symbols()
-			end,
-			desc = "Lsp Symbols",
-		},
-		{
-			"<leader>lS",
-			function()
-				Snacks.picker.lsp_workspace_symbols()
-			end,
-			desc = "Lsp Workspace Symbols",
-		},
-		{
-			"<leader>e",
-			function()
-				Snacks.explorer()
-			end,
-			desc = "Open Explorer",
-		},
-		-- {
-		-- 	"<leader>ut",
-		-- 	function()
-		-- 		Snacks.terminal()
-		-- 	end,
-		-- 	desc = "Snacks terminal",
-		-- },
 	},
 }
