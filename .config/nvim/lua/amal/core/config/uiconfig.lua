@@ -13,8 +13,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- vim.api.nvim_set_hl(0, "Search", { bg = "#331b17", fg = "#e39069" }) -- search highlights
--- vim.api.nvim_set_hl(0, "MatchParen", { bg = "#e39069", fg = "#331b17", bold = true, })
+-- vim.api.nvim_set_hl(0, "Search", { bg = palette.umber, fg =palette.orange  }) -- search highlights
+-- vim.api.nvim_set_hl(0, "MatchParen", { bg = palette.orange, fg  = palette.umber, bold = true })
+-- vim.api.nvim_set_hl(0, "MatchParen", { bg = palette.maroon, fg = palette.red, bold = true })
 
 vim.api.nvim_set_hl(0, "BlinkCmpMenu", { bg = "#191324" })
 vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#191324", bg = "#191324" })
@@ -36,9 +37,4 @@ vim.api.nvim_set_hl(0, "LazyButton", { fg = "#abb2bf", bg = "#140D19" })
 vim.api.nvim_set_hl(0, "LazyButtonActive", { fg = "#c0c9c3", bg = "#051177", bold = true })
 vim.api.nvim_set_hl(0, "LazyH1", { fg = "#c0c9c3", bg = "#051177", bold = true })
 
--- vim.api.nvim_set_hl(0, "Visual", {bg = "#201638"})
--- vim.api.nvim_set_hl(0, "Normal", {fg = "#c0c9c3"})
-
--- TODO: DO THIS
--- vim.api.nvim_set_hl(0, "@spell", { fg = "#c0c9c3" })
 vim.api.nvim_set_hl(0, "iCursor", { bg = "#c0c9c3" })
