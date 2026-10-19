@@ -23,3 +23,7 @@
 -- hl.workspace_rule({ workspace = "2", persistent = true })
 -- hl.workspace_rule({ workspace = "3", persistent = true })
 -- hl.workspace_rule({ workspace = "4", persistent = true })
+
+-- per workspace layouts
+hl.workspace_rule({ workspace = "9", layout = "scrolling" })
+-- hl.workspace_rule({ workspace = "3", layout = "dwindle" })

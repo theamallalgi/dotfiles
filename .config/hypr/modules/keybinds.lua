@@ -9,9 +9,10 @@ local exec = hl.dsp.exec_cmd
 hl.bind(mainMod .. " + Return", exec(terminal))
 hl.bind(mainMod .. " + E", exec(fileManager))
 hl.bind(mainMod .. " + B", exec("/usr/bin/helium-browser"))
-hl.bind("ALT + Space", exec("vicinae toggle"))
+-- hl.bind("ALT + Space", exec("vicinae toggle"))
+hl.bind("ALT + Space", exec("qs ipc call launcher toggle"))
 hl.bind(mainMod .. " + O", exec("obsidian"))
-hl.bind(mainMod .. " + space", exec("rofi -show drun || pkill rofi"))
+-- hl.bind(mainMod .. " + space", exec("rofi -show drun || pkill rofi"))
 
 -- window management
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = 0 }))
@@ -70,18 +71,21 @@ hl.bind(mainMod .. " + L", hl.dsp.focus({ workspace = 4 }))
 -- hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ workspace = "+1" }))
 
 -- cycle through active windows
-hl.bind(mainMod .. " + TAB", function()
-	hl.dispatch(hl.dsp.window.cycle_next())
-	hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
-end)
--- hl.bind(mainMod .. " + SHIFT + TAB", function()
--- hl.dispatch(hl.dsp.window.cycle_next({ prev = true }))
--- hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
+-- hl.bind(mainMod .. " + TAB", function()
+-- 	hl.dispatch(hl.dsp.window.cycle_next())
+-- 	hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
 -- end)
+-- move focus between tiled and focuced windows
+hl.bind(mainMod .. " + TAB", function()
+  hl.dispatch(hl.dsp.window.cycle_next({
+    floating = not hl.get_active_window().floating
+  }))
+end, { description = "Switch focus between tiled and floating windows" })
 
 -- special workspace (scratchpad)
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+hl.bind(mainMod .. " + CTRL + S", hl.dsp.window.move({ workspace = "+0" }))
 
 -- scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
@@ -96,8 +100,10 @@ hl.bind(mainMod .. " + R", exec("~/.config/waybar/scripts/launch.sh"))
 hl.bind(mainMod .. " + W", exec("killall -SIGUSR1 waybar"))
 
 -- scripts
-hl.bind(mainMod .. " + A", exec("networkmanager_dmenu"))
-hl.bind(mainMod .. " + P", exec("~/.config/waybar/scripts/powermenu.sh"))
+-- hl.bind(mainMod .. " + A", exec("networkmanager_dmenu"))
+-- hl.bind(mainMod .. " + P", exec("~/.config/waybar/scripts/powermenu.sh"))
+hl.bind(mainMod .. " + A", exec("qs ipc call wifimenu toggle"))
+hl.bind(mainMod .. " + P", exec("qs ipc call controlcenter toggle"))
 
 -- system
 -- hl.bind(mainMod .. " + M", exec("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"))

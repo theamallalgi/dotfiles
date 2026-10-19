@@ -14,17 +14,18 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("hyprctl setcursor Naroz 25") -- set custom cursor (naroz)
 
     -- status bar and notifications
-    hl.exec_cmd("waybar")
-    hl.exec_cmd("swaync")
+    hl.exec_cmd("qs")
+    -- hl.exec_cmd("waybar")
+    -- hl.exec_cmd("swaync")
 
     -- network and bluetooth
-    hl.exec_cmd("nm-applet --indicator")
-    hl.exec_cmd("blueman-applet")
+    -- hl.exec_cmd("nm-applet --indicator")
+    -- hl.exec_cmd("blueman-applet")
 
     -- clipboard
     hl.exec_cmd("wl-paste --type text --watch cliphist store")
     hl.exec_cmd("wl-paste --type image --watch cliphist store")
 
     -- other
-    hl.exec_cmd("vicinae server") -- raycast clone
+    -- hl.exec_cmd("vicinae server") -- raycast clone
 end)
