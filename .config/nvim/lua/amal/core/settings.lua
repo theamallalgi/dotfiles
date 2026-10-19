@@ -39,6 +39,8 @@ vim.g.netrw_liststyle = 3 -- tree view
 vim.g.netrw_winsize = 17 -- reduce the left split width
 vim.g.netrw_browse_split = 0 -- open files in the previous window
 vim.g.netrw_altfile = 1 -- keep the alternate file correct
+-- vim.g.loaded_netrw = 1 -- disable netrw
+-- vim.g.loaded_netrwPlugin = 1 -- disable netrw plugin
 
 -- spell
 -- vim.cmd("set spell")

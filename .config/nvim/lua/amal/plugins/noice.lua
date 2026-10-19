@@ -61,15 +61,18 @@ return {
 					filter = { event = "msg_show", kind = "number_prompt" },
 					opts = { skip = true }, -- let inputlist() render as plain nvim cmdline text
 				},
-				{
-					filter = { event = "msg_show", kind = "list_cmd" },
-					view = "split",
-				},
+				-- {
+				-- 	filter = { event = "msg_show", kind = "list_cmd" },
+				-- 	view = "split",
+				-- },
 				{
 					filter = {
 						event = "msg_show",
 						any = {
 							{ find = "yanked" },
+							{ find = "%d+ lines yanked" },
+							{ find = "%d+ lines changed" },
+							{ find = "%d+ lines deleted" },
 							{ find = "%d+ fewer lines" },
 							{ find = "%d+ more lines" },
 							{ find = "%d+L, %d+B" },
@@ -81,22 +84,26 @@ return {
 					view = "notify",
 					opts = { stop = true },
 				},
+				{
+					filter = {
+						event = "msg_show",
+						min_height = 10,
+					},
+					view = "split",
+					opts = { enter = true },
+				},
 			},
 
 			lsp = {
-				progress = {
-					enabled = true,
-				},
-
+				progress = { enabled = true },
+				-- hover = { enabled = false },
+				-- signature = { enabled = false },
 				override = {
 					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
 					["vim.lsp.util.stylize_markdown"] = true,
 					["cmp.entry.get_documentation"] = true,
 				},
-
-				message = {
-					enabled = true,
-				},
+				message = { enabled = true },
 			},
 
 			markdown = {

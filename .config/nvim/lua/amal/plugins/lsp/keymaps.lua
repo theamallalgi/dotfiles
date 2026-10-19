@@ -7,6 +7,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			silent = true,
 		}
 
+		-- Highlight references to the symbol under the cursor
+		-- if vim.lsp.get_clients({ bufnr = event.buf, method = "textDocument/documentHighlight" })[1] then
+		-- 	vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+		-- 		buffer = event.buf,
+		-- 		callback = vim.lsp.buf.document_highlight,
+		-- 	})
+		--
+		-- 	vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+		-- 		buffer = event.buf,
+		-- 		callback = vim.lsp.buf.clear_references,
+		-- 	})
+		-- end
+
 		map("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Goto Definition" }))
 		map("n", "gD", vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "Goto Declaration" }))
 		map("n", "gr", vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "References" }))
