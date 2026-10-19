@@ -80,6 +80,11 @@ vim.keymap.set("n", "<Leader>uw", function()
 	vim.wo.wrap = not vim.wo.wrap
 end, { desc = "Toggle wrap" })
 
+-- runner module
+vim.keymap.set("n", "<leader>cr", function()
+	require("amal.core.lib.runner").run()
+end, { desc = "Run the current buffer" })
+
 -- misc
 set("n", "<leader>mx", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
 set("n", "<leader>mdm", ":delmarks!", { desc = "Delete all marks" })
