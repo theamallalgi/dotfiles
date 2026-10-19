@@ -1,0 +1,2 @@
+singleton Store store.qml
+Notifications notifications.qml
