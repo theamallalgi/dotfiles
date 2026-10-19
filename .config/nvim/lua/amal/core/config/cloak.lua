@@ -1,4 +1,5 @@
--- secret cloaking: hide secret values on screen
+-- cloak: hide secret values on screen (cloak.nvim?)
+
 local namespace = vim.api.nvim_create_namespace("cloak")
 local cloak_char = "*"
 local cloak_length = nil -- nil = mask exact length; a number pads/truncates like cloak.nvim
