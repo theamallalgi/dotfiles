@@ -80,6 +80,12 @@ vim.keymap.set("n", "<Leader>uw", function()
 	vim.wo.wrap = not vim.wo.wrap
 end, { desc = "Toggle wrap" })
 
+-- toggle inlay hints
+set("n", "<leader>uh", function()
+    local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = 0 })
+    vim.lsp.inlay_hint.enable(not enabled, { bufnr = 0 })
+end, { desc = "Toggle inlay hints" })
+
 -- runner module
 vim.keymap.set("n", "<leader>cr", function()
 	require("amal.core.lib.runner").run()
