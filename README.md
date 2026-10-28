@@ -9,7 +9,7 @@
 ## The Desktop
 
 <img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/idle.jpg?raw=true" title="" alt="The Desktop" data-align="center">
-<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/m-tile-1.jpg?raw=true" title="" alt="Tiled Window Setup" data-align="center">
+<img src="https://github.com/theamallalgi/dotfiles/blob/main/dependencies/m-tile-1.png?raw=true" title="" alt="Tiled Window Setup" data-align="center">
 
 <details>
     <summary>See more images of the desktop and layouts</summary>
