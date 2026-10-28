@@ -116,7 +116,8 @@ return {
 						sources = { "nvim_diagnostic" },
 						sections = { "error", "warn", "info", "hint" },
 						symbols = {
-							error = "  ",
+							error = "󱈸 ",
+							-- error = "  ",
 							warn = "",
 							info = "",
 							hint = "",
