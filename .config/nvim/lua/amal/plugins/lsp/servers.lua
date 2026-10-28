@@ -38,7 +38,27 @@ return {
 	ts_ls = {},
 	-- tsgo = {}, -- deprecated
 
-	rust_analyzer = {},
+	rust_analyzer = {
+		settings = {
+			["rust-analyzer"] = {
+				cargo = {
+					allFeatures = true,
+					buildScripts = { enable = true },
+				},
+				procMacro = { enable = true },
+				check = { command = "clippy" },
+				inlayHints = {
+					bindingModeHints = { enable = false },
+					chainingHints = { enable = true },
+					closureReturnTypeHints = { enable = "with_block" },
+					lifetimeElisionHints = { enable = "skip_trivial" },
+					parameterHints = { enable = true },
+					reborrowHints = { enable = "mutable" },
+					typeHints = { enable = true },
+				},
+			},
+		},
+	},
 
 	bashls = {
 		filetypes = { "sh", "bash", "zsh" },

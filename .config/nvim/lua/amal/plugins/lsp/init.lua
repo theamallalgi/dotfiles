@@ -36,6 +36,7 @@ return {
 				"shfmt",
 				"shellcheck",
 				"buf",
+				-- "rust-analyzer", -- let rustup install it
 				-- "rustfmt", -- install via rustup
 				-- "golangci-lint",
 				-- "gofumpt",
@@ -48,14 +49,22 @@ return {
 			}),
 		})
 
-		require("mason-lspconfig").setup({
-			ensure_installed = vim.tbl_keys(servers),
-		})
+		require("mason-lspconfig").setup({ ensure_installed = vim.tbl_keys(servers) })
 
 		for name, config in pairs(servers) do
 			config.capabilities = capabilities
 			vim.lsp.config(name, config)
 			vim.lsp.enable(name)
+			-- inlay hints
+			-- vim.api.nvim_create_autocmd("LspAttach", {
+			-- 	callback = function(args)
+			-- 		local client = vim.lsp.get_client_by_id(args.data.client_id)
+			--
+			-- 		if client and client.name == "rust_analyzer" then
+			-- 			vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+			-- 		end
+			-- 	end,
+			-- })
 		end
 
 		require("amal.plugins.lsp.keymaps")

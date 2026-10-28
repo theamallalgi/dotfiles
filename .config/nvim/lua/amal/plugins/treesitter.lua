@@ -19,6 +19,8 @@ return {
 			"markdown",
 			"markdown_inline",
 			"tsx",
+			"rust",
+			"toml",
 		},
 
 		auto_install = true,
