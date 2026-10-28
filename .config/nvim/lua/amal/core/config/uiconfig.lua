@@ -38,3 +38,10 @@ vim.api.nvim_set_hl(0, "LazyButtonActive", { fg = "#c0c9c3", bg = "#051177", bol
 vim.api.nvim_set_hl(0, "LazyH1", { fg = "#c0c9c3", bg = "#051177", bold = true })
 
 vim.api.nvim_set_hl(0, "iCursor", { bg = "#c0c9c3" })
+
+vim.api.nvim_set_hl(0, "RunnerTitle", { fg = "#c0c9c3", bg = "#051177", bold = true })
+vim.api.nvim_set_hl(0, "RunnerBorder", { fg = "#191324", bg = "#191324" })
+vim.api.nvim_set_hl(0, "RunnerNormal", { bg = "#191324", fg = "#c0c9c3" })
+vim.api.nvim_set_hl(0, "RunnerError", { bg = palette.maroon, fg = palette.red })
+vim.api.nvim_set_hl(0, "RunnerWarn", { bg = palette.umber, fg = palette.yellow })
+vim.api.nvim_set_hl(0, "RunnerHint", { bg = palette.indigo, fg = palette.blue })
